@@ -1,0 +1,10 @@
+#jumbotron-div {
+    background-image: url("../img/jumbotron-bg-3.jpg");
+    background-position: center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    min-height: 500px;
+    color: #aaaaaa;
+}
