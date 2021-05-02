@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <script type="text/javascript" src="js/jquery-3.6.0.js"></script>
+        <script type="text/javascript" src="js/bootstrap.js"></script>
+        <script type="text/javascript">
+            var chartWidth = window.innerWidth * 0.5 - 5;
+            var chartHeight = window.innerHeight * 0.5 - 5;
+            </script>
+    </head>
+    <body>
+
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <!-- TradingView Widget BEGIN -->
+                      <div class="tradingview-widget-container">
+                        <div id="tradingview_4a4e7_1"></div>
+                        <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+                        <script type="text/javascript">
+                        new TradingView.widget(
+                            {
+                                "width": chartWidth,
+                                "height": chartHeight,
+                                "symbol": "BINANCE:BTCBUSD",
+                                "interval": "15",
+                                "timezone": "Australia/Sydney",
+                                "theme": "dark",
+                                "style": "1",
+                                "locale": "en",
+                                "toolbar_bg": "#f1f3f6",
+                                "enable_publishing": false,
+                                "hide_legend": true,
+                                "allow_symbol_change": true,
+                                "save_image": false,
+                                "studies": [
+                                    "MASimple@tv-basicstudies"
+                                ],
+                                "container_id": "tradingview_4a4e7_1"
+                            }
+                        );
+                        </script>
+                    </div>
+                    <!-- TradingView Widget END -->
+                </div>
+                <div class="col">
+                    <!-- TradingView Widget BEGIN -->
+                    <div class="tradingview-widget-container">
+                        <div id="tradingview_4a4e7_2"></div>
+                        <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+                        <script type="text/javascript">
+                        new TradingView.widget(
+                            {
+                                "width": chartWidth,
+                                "height": chartHeight,
+                                "symbol": "BINANCE:ETHBUSD",
+                                "interval": "15",
+                                "timezone": "Australia/Sydney",
+                                "theme": "dark",
+                                "style": "1",
+                                "locale": "en",
+                                "toolbar_bg": "#f1f3f6",
+                                "enable_publishing": false,
+                                "hide_legend": true,
+                                "allow_symbol_change": true,
+                                "save_image": false,
+                                "studies": [
+                                    "MASimple@tv-basicstudies"
+                                ],
+                                "container_id": "tradingview_4a4e7_2"
+                            }
+                        );
+                        </script>
+                    </div>
+                    <!-- TradingView Widget END -->
+                </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                    <!-- TradingView Widget BEGIN -->
+                    <div class="tradingview-widget-container">
+                        <div id="tradingview_4a4e7_3"></div>
+                        <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+                        <script type="text/javascript">
+                        new TradingView.widget(
+                            {
+                                "width": chartWidth,
+                                "height": chartHeight,
+                                "symbol": "BINANCE:XRPBUSD",
+                                "interval": "15",
+                                "timezone": "Australia/Sydney",
+                                "theme": "dark",
+                                "style": "1",
+                                "locale": "en",
+                                "toolbar_bg": "#f1f3f6",
+                                "enable_publishing": false,
+                                "hide_legend": true,
+                                "allow_symbol_change": true,
+                                "save_image": false,
+                                "studies": [
+                                    "MASimple@tv-basicstudies"
+                                ],
+                                "container_id": "tradingview_4a4e7_3"
+                            }
+                        );
+                        </script>
+                    </div>
+                    <!-- TradingView Widget END -->
+              </div>
+              <div class="col">
+                    <!-- TradingView Widget BEGIN -->
+                    <div class="tradingview-widget-container">
+                        <div id="tradingview_4a4e7_4"></div>
+                        <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+                        <script type="text/javascript">
+                        new TradingView.widget(
+                            {
+                                "width": chartWidth,
+                                "height": chartHeight,
+                                "symbol": "ASX:HUM",
+                                "interval": "15",
+                                "timezone": "Australia/Sydney",
+                                "theme": "dark",
+                                "style": "1",
+                                "locale": "en",
+                                "toolbar_bg": "#f1f3f6",
+                                "enable_publishing": false,
+                                "hide_legend": true,
+                                "allow_symbol_change": true,
+                                "save_image": false,
+                                "studies": [
+                                    "MACD@tv-basicstudies",
+                                    "MASimple@tv-basicstudies"
+                                ],
+                                "container_id": "tradingview_4a4e7_4"
+                            }
+                        );
+                        </script>
+                    </div>
+                    <!-- TradingView Widget END -->
+              </div>
+          </div>
+
+        </div>
+
+        <style>
+            
+            body {
+                margin: 0;
+                background-color: #181C27;
+            }
+            /* override TradingView margins for chart wrappers, but then it's not following Bootstrap grid */
+            div {
+                display: inline-block;
+            }
+            /* remove gutter in between col and row */
+            .col {
+                margin: -2px;
+            }
+            .row {
+                margin: -2px;
+            }
+
+        </style>
+    </body>
+</html>
