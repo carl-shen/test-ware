@@ -8,3 +8,15 @@
     min-height: 500px;
     color: #aaaaaa;
 }
+
+.btn-primary {
+    background-color: #8bc502;
+    border-color: #8bc502;
+
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .btn-primaryactive:focus, .open>.dropdown-toggle.btn-primary {
+    background-color: #ffffff;
+    border-color: #8bc502;
+    color: #8bc502;
+}
