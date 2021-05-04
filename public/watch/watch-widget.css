@@ -1,5 +1,29 @@
-#navbar-container {
-    width: 430px;
-    height: 30px;
 
+body {
+    background-color: #1E222D;
+    margin: 0;
+    padding: 0;
+}
+#tv-container {
+    margin: 5px;
+    padding: 5px;
+    display: inline-block;
+    margin-top: 0;  /* make margin top smaller when using a navbar */
+}
+
+
+.navbar {
+    padding-top: 20px;
+    padding-left: 35px;
+    margin: 0;
+    padding-bottom: 0;
+}
+
+.nav-item {
+    font-weight: bold;
+    color: #e2e2e2;
+    padding: 0px 3px;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    display: inline-block;
 }

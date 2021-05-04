@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta charset="utf-8">
+      <!-- Responsive viewport for mobile -->
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+      <link rel="stylesheet" href="./watch-widget.css">
+
+    </head>
+    <body>
+      <div class="container" id="navbar-container"></div>
+
+      <div id="tv-container">
+
+        <!-- TradingView Widget BEGIN -->
+        <div class="tradingview-widget-container">
+          <div class="tradingview-widget-container__widget"></div>
+          <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-tickers.js" async>
+          {
+          "symbols": [
+            {
+              "title": "BTC",
+              "proName": "BINANCE:BTCBUSD"
+            }
+          ],
+          "colorTheme": "dark",
+          "isTransparent": false,
+          "showSymbolLogo": true,
+          "largeChartUrl": "https://www.test-ware.com/watch/lcbtc.html",
+          "locale": "en"
+        }
+          </script>
+        </div>
+        <!-- TradingView Widget END -->
+
+        <!-- TradingView Widget BEGIN -->
+        <div class="tradingview-widget-container">
+          <div class="tradingview-widget-container__widget"></div>
+          <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-tickers.js" async>
+          {
+          "symbols": [
+            {
+              "title": "ETH",
+              "proName": "BINANCE:ETHBUSD"
+            }
+          ],
+          "colorTheme": "dark",
+          "isTransparent": false,
+          "showSymbolLogo": true,
+          "largeChartUrl": "https://www.test-ware.com/watch/lceth.html",
+          "locale": "en"
+        }
+          </script>
+        </div>
+        <!-- TradingView Widget END -->
+
+        <!-- TradingView Widget BEGIN -->
+        <div class="tradingview-widget-container">
+          <div class="tradingview-widget-container__widget"></div>
+          <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-tickers.js" async>
+          {
+          "symbols": [
+            {
+              "title": "XRP",
+              "proName": "BINANCE:XRPBUSD"
+            }
+          ],
+          "colorTheme": "dark",
+          "isTransparent": false,
+          "showSymbolLogo": true,
+          "largeChartUrl": "https://www.test-ware.com/watch/lcxrp.html",
+          "locale": "en"
+        }
+          </script>
+        </div>
+        <!-- TradingView Widget END -->
+
+        <!-- TradingView Widget BEGIN -->
+        <div class="tradingview-widget-container">
+          <div class="tradingview-widget-container__widget"></div>
+          <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com" rel="noopener" target="_blank"><span class="blue-text">Quotes</span></a> by TradingView</div>
+          <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-tickers.js" async>
+          {
+          "symbols": [
+            {
+              "title": "HUM",
+              "proName": "ASX:HUM"
+            }
+          ],
+          "colorTheme": "dark",
+          "isTransparent": false,
+          "showSymbolLogo": true,
+          "largeChartUrl": "https://www.test-ware.com/watch/lchum.html",
+          "locale": "en"
+        }
+          </script>
+        </div>
+        <!-- TradingView Widget END -->
+
+      </div>
+
+      <script type="text/javascript" src="./watch-widget.js"></script>
+
+      <style>
+        /* adjust navbar width just for this page */
+        #navbar-container {
+            width: 250px;
+        }
+      </style>
+
+    </body>
+</html>
