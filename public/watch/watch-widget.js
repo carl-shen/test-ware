@@ -33,6 +33,7 @@ var nav = // non bootstrap navbar
 '    <a class="nav-item" href="./' + chart_style_str + 'hum.html">HUM</a>' +
 '    <a class="nav-item" href="./quotes.html">-Quote-</a>' +
 '    <a class="nav-item" href="./' + alt_style_page_name + '">-Alt-</a>' +
+'    <a class="nav-item" href="./sha.html">-SHA-</a>' +
 '</nav>';
 
 

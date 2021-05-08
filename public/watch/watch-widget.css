@@ -27,3 +27,35 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     display: inline-block;
 }
+
+
+#quotes-container {
+    margin: 0px 0px 30px 25px;
+}
+
+.ticker {
+    font-weight: bold;
+    color: #e2e2e2;
+    padding: 0px 3px;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    display: inline-block;
+}
+
+.price, .chg, .chg-positive, .chg-negative {
+    color: #e2e2e2;
+    padding: 0px 3px;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    display: inline-block;
+}
+
+.chg-positive {
+    border-radius: 5px;
+    background-color: rgb(223, 71, 101);
+}
+
+.chg-negative {
+    border-radius: 5px;
+    background-color: rgb(65, 211, 97);
+}
