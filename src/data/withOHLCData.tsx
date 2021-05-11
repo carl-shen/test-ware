@@ -5,7 +5,7 @@ import { IOHLCData } from "./iOHLCData";
 
 const parseDate = timeParse("%Y-%m-%d");
 
-const parseData = () => {
+export const parseData = () => {
     return (d: any) => {
         const date = parseDate(d.date);
         if (date === null) {
@@ -30,10 +30,11 @@ interface WithOHLCDataProps {
 
 interface WithOHLCState {
     data?: IOHLCData[];
+    endIndex?: number;
     message: string;
 }
 
-export function withOHLCData(dataSet = "DAILY") {
+export function withOHLCData(dataSet = "DAILY", loadToIndex = 80) {
     return <TProps extends WithOHLCDataProps>(OriginalComponent: React.ComponentClass<TProps>) => {
         return class WithOHLCData extends React.Component<Omit<TProps, "data">, WithOHLCState> {
             public constructor(props: Omit<TProps, "data">) {
@@ -45,8 +46,14 @@ export function withOHLCData(dataSet = "DAILY") {
             }
 
             public componentDidMount() {
+                this.moveToDate();
+            }
+
+            public fetchData() {
+                console.log("fetching data..")
                 fetch(
-                    `https://raw.githubusercontent.com/reactivemarkets/react-financial-charts/master/packages/stories/src/data/${dataSet}.tsv`,
+                    // `https://raw.githubusercontent.com/reactivemarkets/react-financial-charts/master/packages/stories/src/data/${dataSet}.tsv`,
+                    `https://www.test-ware.com/data/${dataSet}.tsv`,
                 )
                     .then((response) => response.text())
                     .then((data) => tsvParse(data, parseData()))
@@ -55,20 +62,40 @@ export function withOHLCData(dataSet = "DAILY") {
                             data,
                         });
                     })
-                    .catch(() => {
+                    .catch((error) => {
+                        console.log(error);
                         this.setState({
                             message: `Failed to fetch data.`,
                         });
                     });
             }
 
+            public moveToDate(){
+                if(this.state.data === undefined){  // if no data, try to fetch it 
+                    this.fetchData(); 
+                }
+                this.setState({
+                    endIndex: loadToIndex,
+                });
+
+                // if(loadToIndex !== undefined && this.state.data !== undefined){  // if a specific date is given, only plot till that date
+                //     console.log(loadToIndex);
+
+                //     console.log(this.state.data.slice(0,loadToIndex));
+
+                // }
+            }
+
             public render() {
-                const { data, message } = this.state;
+                const { data, endIndex, message } = this.state;
                 if (data === undefined) {
                     return <div className="center">{message}</div>;
                 }
 
-                return <OriginalComponent {...(this.props as TProps)} data={data} />;
+                console.log(endIndex)
+                console.log(data.slice(0,endIndex));
+
+                return <OriginalComponent {...(this.props as TProps)} data={data.slice(0,endIndex)} />;
             }
         };
     };

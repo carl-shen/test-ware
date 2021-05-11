@@ -2,19 +2,18 @@ import { format } from "d3-format";
 import { timeFormat } from "d3-time-format";
 import * as React from "react";
 import {
-  elderRay,
-  ema,
+  macd,
+  sma,
   discontinuousTimeScaleProviderBuilder,
   Chart,
   ChartCanvas,
   CurrentCoordinate,
   BarSeries,
   CandlestickSeries,
-  ElderRaySeries,
   LineSeries,
   MovingAverageTooltip,
   OHLCTooltip,
-  SingleValueTooltip,
+  MACDTooltip,
   lastVisibleItemBasedZoomAnchor,
   XAxis,
   YAxis,
@@ -24,9 +23,11 @@ import {
   MouseCoordinateY,
   ZoomButtons,
   withDeviceRatio,
-  withSize
+  withSize,
+  MACDSeries
 } from "react-financial-charts";
 import { IOHLCData, withOHLCData } from "../data";
+
 
 interface StockChartProps {
   readonly data: IOHLCData[];
@@ -45,27 +46,47 @@ class StockChart extends React.Component<StockChartProps> {
 
   public render() {
     const { data: initialData, height, dateTimeFormat = "%d %b", width, ratio } = this.props;
-    console.log(height);
 
-    const ema12 = ema()
+    const sma5 = sma()
       .id(1)
-      .options({ windowSize: 12 })
+      .options({ windowSize: 5 })
       .merge((d: any, c: any) => {
-          d.ema12 = c;
+          d.sma5 = c;
       })
-      .accessor((d: any) => d.ema12);
+      .accessor((d: any) => d.sma5);
 
-    const ema26 = ema()
+    const sma10 = sma()
       .id(2)
-      .options({ windowSize: 26 })
+      .options({ windowSize: 10 })
       .merge((d: any, c: any) => {
-          d.ema26 = c;
+          d.sma10 = c;
       })
-      .accessor((d: any) => d.ema26);
-    
-    const elder = elderRay();
+      .accessor((d: any) => d.sma10);
 
-    const calculatedData = elder(ema26(ema12(initialData)));
+    const macdCalculator = macd()
+      .options({
+        fast: 12,
+        signal: 9,
+        slow: 26,
+      })
+      .merge((d: any, c: any) => {
+        d.macd = c;
+      })
+      .accessor((d: any) => d.macd);
+
+    const macdAppearance = {
+        fillStyle: {
+            divergence: "#e0714f",
+        },
+        strokeStyle: {
+            macd: "#0093FF",
+            signal: "#D84315",
+            zero: "rgba(0, 0, 0, 0.3)",
+        },
+    };
+
+
+    const calculatedData = macdCalculator(sma10(sma5(initialData)));
 
     const { margin, xScaleProvider } = this;
 
@@ -77,11 +98,11 @@ class StockChart extends React.Component<StockChartProps> {
 
     const gridHeight = height - margin.top - margin.bottom;
 
-    const elderRayHeight = 100;
-    const elderRayOrigin = (_: number, h: number) => [0, h - elderRayHeight];
+    const secondIndicatorHeight = 150;
+    const secondIndicatorOrigin = (_: number, h: number) => [0, h - secondIndicatorHeight];
     const barChartHeight = gridHeight / 4;
-    const barChartOrigin = (_: number, h: number) => [0, h - barChartHeight - elderRayHeight];
-    const chartHeight = gridHeight - elderRayHeight;
+    const barChartOrigin = (_: number, h: number) => [0, h - barChartHeight - secondIndicatorHeight];
+    const chartHeight = gridHeight - secondIndicatorHeight;
 
     const timeDisplayFormat = timeFormat(dateTimeFormat);
 
@@ -106,10 +127,10 @@ class StockChart extends React.Component<StockChartProps> {
               <XAxis showGridLines showTicks={false} showTickLabel={false} />
               <YAxis showGridLines tickFormat={this.pricesDisplayFormat} />
               <CandlestickSeries />
-              <LineSeries yAccessor={ema26.accessor()} strokeStyle={ema26.stroke()} />
-              <CurrentCoordinate yAccessor={ema26.accessor()} fillStyle={ema26.stroke()} />
-              <LineSeries yAccessor={ema12.accessor()} strokeStyle={ema12.stroke()} />
-              <CurrentCoordinate yAccessor={ema12.accessor()} fillStyle={ema12.stroke()} />
+              <LineSeries yAccessor={sma5.accessor()} strokeStyle={sma5.stroke()} />
+              <CurrentCoordinate yAccessor={sma5.accessor()} fillStyle={sma5.stroke()} />
+              <LineSeries yAccessor={sma10.accessor()} strokeStyle={sma10.stroke()} />
+              <CurrentCoordinate yAccessor={sma10.accessor()} fillStyle={sma10.stroke()} />
               <MouseCoordinateY rectWidth={margin.right} displayFormat={this.pricesDisplayFormat} />
               <EdgeIndicator
                   itemType="last"
@@ -123,16 +144,16 @@ class StockChart extends React.Component<StockChartProps> {
                   origin={[8, 24]}
                   options={[
                       {
-                          yAccessor: ema26.accessor(),
-                          type: "EMA",
-                          stroke: ema26.stroke(),
-                          windowSize: ema26.options().windowSize,
+                          yAccessor: sma5.accessor(),
+                          type: "SMA",
+                          stroke: sma5.stroke(),
+                          windowSize: sma5.options().windowSize,
                       },
                       {
-                          yAccessor: ema12.accessor(),
-                          type: "EMA",
-                          stroke: ema12.stroke(),
-                          windowSize: ema12.options().windowSize,
+                          yAccessor: sma10.accessor(),
+                          type: "SMA",
+                          stroke: sma10.stroke(),
+                          windowSize: sma10.options().windowSize,
                       },
                   ]}
               />
@@ -142,9 +163,9 @@ class StockChart extends React.Component<StockChartProps> {
           </Chart>
           <Chart
               id={4}
-              height={elderRayHeight}
-              yExtents={[0, elder.accessor()]}
-              origin={elderRayOrigin}
+              height={secondIndicatorHeight}
+              yExtents={[0, macdCalculator.accessor()]}
+              origin={secondIndicatorOrigin}
               padding={{ top: 8, bottom: 8 }}
           >
               <XAxis showGridLines gridLinesStrokeStyle="#e0e3eb" />
@@ -153,15 +174,13 @@ class StockChart extends React.Component<StockChartProps> {
               <MouseCoordinateX displayFormat={timeDisplayFormat} />
               <MouseCoordinateY rectWidth={margin.right} displayFormat={this.pricesDisplayFormat} />
 
-              <ElderRaySeries yAccessor={elder.accessor()} />
+              <MACDSeries yAccessor={macdCalculator.accessor()} fillStyle={{divergence:"#e0714f"}} />
 
-              <SingleValueTooltip
-                  yAccessor={elder.accessor()}
-                  yLabel="Elder Ray"
-                  yDisplayFormat={(d: any) =>
-                      `${this.pricesDisplayFormat(d.bullPower)}, ${this.pricesDisplayFormat(d.bearPower)}`
-                  }
+              <MACDTooltip
                   origin={[8, 16]}
+                  appearance={macdAppearance}
+                  options={macdCalculator.options()}
+                  yAccessor={macdCalculator.accessor()}
               />
           </Chart>
           <CrossHairCursor />
@@ -195,16 +214,24 @@ class StockChart extends React.Component<StockChartProps> {
 
 }
 
-export default withOHLCData()(withSize({ style: { minHeight: window.innerHeight * 0.85 } })(withDeviceRatio()(StockChart)));
 
 
-export const MinutesStockChart = withOHLCData("MINUTES")(
-    withSize({ style: { minHeight: window.innerHeight * 0.85 } })(withDeviceRatio()(StockChart)),
-);
+const chartStyle = {
+    minHeight: window.innerHeight * 0.2
+};
 
-export const SecondsStockChart = withOHLCData("SECONDS")(
-    withSize({ style: { minHeight: window.innerHeight * 0.85 } })(withDeviceRatio()(StockChart)),
-);
+// export default withOHLCData()(withSize({ style: chartStyle })(withDeviceRatio()(StockChart)));
+// export default withOHLCData()(withDeviceRatio()(StockChart));
+export default withDeviceRatio()(StockChart);
+
+
+// export const MinutesStockChart = withOHLCData("MINUTES")(
+//     withSize({ style: chartStyle })(withDeviceRatio()(StockChart)),
+// );
+
+// export const SecondsStockChart = withOHLCData("SECONDS")(
+//     withSize({ style: chartStyle })(withDeviceRatio()(StockChart)),
+// );
 
 
 
