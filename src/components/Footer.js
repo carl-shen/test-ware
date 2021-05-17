@@ -2,7 +2,8 @@
 function Footer() {
     const footerStyle = {
         position: 'fixed',
-        bottom: '0%'
+        bottom: '0%',
+        color: '#aaaaaa'
     };
 
     return(

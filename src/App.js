@@ -1,5 +1,6 @@
 
 // import './App.css';
+import './trainer.css'
 import { useState, useEffect } from 'react'
 import StockChartHOC from './components/StockChart';
 import Controls from './components/Controls';
@@ -15,8 +16,10 @@ import { tsvParse } from "d3-dsv";
 function App() {
   const { height, width } = useWindowDimensions();
 
-  const [ dataSet, setDataSet ] = useState("DAILY");
-  const [ loadToIndex, setLoadToIndex ] = useState(80);
+  const [ dataSet, setDataSet ] = useState("stock01");
+  const [ loadToIndex, setLoadToIndex ] = useState(120);
+
+
 
   const nextNBar = (n) => {
     setLoadToIndex(loadToIndex+n);
@@ -38,7 +41,9 @@ function App() {
     return (
     
       <div className="App">
-        <StockChartHOC height={height * 0.8} width={width} data={data.slice(0,loadToIndex)}/>
+        <div id="chart-div">
+          <StockChartHOC height={height * 0.7 - 80} width={width - 100} data={data.slice(0,loadToIndex)}/>
+        </div>
         <Controls nextNBar={nextNBar}/>
         <Footer />
       </div>

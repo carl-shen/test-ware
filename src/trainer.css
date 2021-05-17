@@ -1,0 +1,250 @@
+body {
+    background-color: #161616;
+
+    /* background: rgb(2,0,36);
+    background: linear-gradient(25deg, rgba(2,0,36,1) 0%, rgba(0,41,50,1) 100%); */
+
+    /* background: radial-gradient(ellipse at 50% 50%, #ffffff 0%, #bababa 100%); */
+
+
+    /* background: url('https://st4.depositphotos.com/2605379/25282/i/450/depositphotos_252829444-stock-photo-trading-and-finance-background.jpg') no-repeat center center; */
+
+    background-repeat: no-repeat;
+    background-attachment: fixed;  /* need this to use CSS3 gradient correctly */
+}
+
+ #chart-div {
+    margin: 30px 30px 10px 30px;
+    box-sizing: border-box;
+    padding: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.01);
+    border-radius: 6px;
+    box-shadow: 3px 3px 5px 6px rgba(17, 17, 17, 0.3);
+    background: rgba(255, 255, 255, 0.01);
+    /* backdrop-filter: blur(10px); */
+} 
+
+
+#controls {
+    position: fixed;
+    top: 70.5%;
+    left: 30px;
+    right: 30px;
+    height: auto;
+    /* width: 100%; */
+    /* height: 29.5%; */
+    display: flex;
+    border: 1px solid rgba(255, 255, 255, 0.01);
+    border-radius: 6px;
+    box-shadow: 3px 3px 5px 6px rgba(17, 17, 17, 0.3);
+    background: rgba(255, 255, 255, 0.01);
+}
+
+#controls-left {
+    width: 35%;
+    /* position: absolute;
+    top: 0;
+    left: 0;
+    width: 40%; */
+}
+
+#controls-right {
+    /* position: absolute;
+    top: 0;
+    left: 40%;
+    width: 60%; */
+}
+
+#controls-right-bottom {
+    display: flex;
+}
+
+
+#controls-right-bottom-left {
+    margin-right: 40px;
+}
+
+#controls-portfolio-details div {
+    display: inline-block;
+}
+
+
+
+#controls-left-top, #controls-left-bottom {
+    margin: 10px 20px 10px 20px;
+}
+
+#controls-trade-div {
+    display: inline-block;
+    /* text-align: center; */
+    box-sizing: border-box;
+}
+
+
+span {
+    display: inline-block;
+    margin: 1px 10px 1px 0px;
+    padding: 0;
+}
+
+
+#input-nsteps, #input-numshares {
+    font-size: 20px;
+    width: 7.2rem;
+    padding: 10px;
+    margin:0 0.3em 0.3em 0;
+    background-color: #D07775;
+    color: white;
+    border: 1px solid white;
+    border-radius: 2px;
+}
+
+#input-numshares {
+    width: 273px;
+    box-sizing: border-box;
+    padding: 10px;
+    margin: 0;
+    margin-bottom: 10px;
+    border-color: #D07775;
+    font-size: 20px;
+}
+
+.stepButton, #buyButton, #sellButton{
+    display:inline-block;
+    padding:0.35em 1.2em;
+    border:0.1em solid #FFFFFF;
+    margin:0 0.3em 0.3em 0;
+    border-radius:0.12em;
+    box-sizing: border-box;
+    text-decoration:none;
+    font-family:'Roboto',sans-serif;
+    font-weight:300;
+    color:#FFFFFF;
+    background-color:#161A25;
+    text-align:center;
+    transition: all 0.2s;
+    font-size: 22px;
+}
+.stepButton:hover, #buyButton:hover, #sellButton:hover{
+    color:#000000;
+    background-color:#FFFFFF;
+}
+#buyButton, #sellButton {
+    color:#D07775;
+    border-color: #D07775;
+    font-weight: 800;
+    font-size: 26px;
+    width: 133px;
+    padding-left: auto;
+    padding-right: auto;
+    box-sizing: border-box;
+}
+#sellButton {
+    margin-right: 0;
+}
+
+/*
+@media all and (max-width:30em){
+    .stepButton{
+        display:block;
+        margin:0.4em auto;
+    }
+}*/
+
+
+.labels, #logo-div {
+    color: #effcf7;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    margin: 5px;
+    margin-left: 0;
+}
+span.labels, p.labels {
+    display: inline-block;
+    margin-right: 3px;
+}
+
+#output-timestamp {
+    font-size: 22px;
+    font-weight: bold;
+    color: white;
+}
+
+#output-price {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #FAC2CF;
+}
+
+small {
+    color: rgb(185, 185, 185);
+}
+
+.hint-div {
+    display: block;
+    margin-bottom: 3px;
+}
+
+#logo-div {
+    color: #520025;
+    position: fixed;
+    bottom: 1px;
+}
+
+@media only screen and (max-height: 1100px){
+    .labels{
+        font-size: 16px;
+        margin: 0;
+    }
+    #output-timestamp {
+        font-size: 20px;
+    }
+    #output-price {
+        font-size: 20px;
+        margin-bottom: 0;
+    }
+
+    .stepButton {
+        font-size: 16px;
+    }
+    #buyButton, #sellButton {
+        font-size: 16px;
+        width: 6rem;
+    }
+
+    #input-nsteps, #input-numshares {
+        font-size: 16px;
+        padding: 6px;
+        margin-bottom: 5px;
+        width: 87px;
+    }
+
+    #input-numshares {
+        width: 198px;
+    }
+
+    span, p {
+        margin: 0;
+    }
+
+
+    #controls-left-top, #controls-left-bottom {
+        margin: 2px 4px 2px 4px;
+    }
+}
+
+/* 
+@media only screen and (max-height: 1000px){
+    .labels{
+        font-size: 8px;
+    }
+    #output-timestamp {
+        font-size: 14px;
+    }
+    #output-price {
+        font-size: 14px;
+        margin-bottom: 0;
+    }
+} */
+
