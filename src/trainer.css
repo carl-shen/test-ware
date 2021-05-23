@@ -161,7 +161,10 @@ span {
 }
 span.labels, p.labels {
     display: inline-block;
-    margin-right: 3px;
+    margin-right: 8px;
+}
+span.labels {
+    margin-right: 20px;
 }
 
 #output-timestamp {

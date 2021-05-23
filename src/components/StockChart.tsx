@@ -47,6 +47,10 @@ class StockChart extends React.Component<StockChartProps> {
   public render() {
     const { data: initialData, height, dateTimeFormat = "%d %b", width, ratio } = this.props;
 
+    const gridLineColour = "RGBA(255,255,255,0.1)";
+    const axisColour = "RGBA(255,255,255,0.5)";
+    const tickLabelColour = "RGBA(255,255,255,0.5)";
+
     const sma5 = sma()
       .id(1)
       .options({ windowSize: 5 })
@@ -82,7 +86,7 @@ class StockChart extends React.Component<StockChartProps> {
             macd: "#0093FF",
             signal: "#D84315",
             zero: "rgba(0, 0, 0, 0.3)",
-        },
+        }
     };
 
 
@@ -124,8 +128,8 @@ class StockChart extends React.Component<StockChartProps> {
               <BarSeries fillStyle={this.volumeColor} yAccessor={this.volumeSeries} />
           </Chart>
           <Chart id={3} height={chartHeight} yExtents={this.candleChartExtents}>
-              <XAxis showGridLines showTicks={false} showTickLabel={false} />
-              <YAxis showGridLines tickFormat={this.pricesDisplayFormat} />
+              <XAxis showGridLines gridLinesStrokeStyle={gridLineColour} strokeStyle={axisColour} showTicks={false} showTickLabel={false} />
+              <YAxis showGridLines gridLinesStrokeStyle={gridLineColour} strokeStyle={axisColour} tickFormat={this.pricesDisplayFormat} tickLabelFill={tickLabelColour} />
               <CandlestickSeries />
               <LineSeries yAccessor={sma5.accessor()} strokeStyle={sma5.stroke()} />
               <CurrentCoordinate yAccessor={sma5.accessor()} fillStyle={sma5.stroke()} />
@@ -168,8 +172,8 @@ class StockChart extends React.Component<StockChartProps> {
               origin={secondIndicatorOrigin}
               padding={{ top: 8, bottom: 8 }}
           >
-              <XAxis showGridLines gridLinesStrokeStyle="#e0e3eb" />
-              <YAxis ticks={4} tickFormat={this.pricesDisplayFormat} />
+              <XAxis showGridLines gridLinesStrokeStyle={gridLineColour} tickLabelFill={tickLabelColour} strokeStyle={axisColour} />
+              <YAxis ticks={4} tickFormat={this.pricesDisplayFormat} tickLabelFill={tickLabelColour} strokeStyle={axisColour} />
 
               <MouseCoordinateX displayFormat={timeDisplayFormat} />
               <MouseCoordinateY rectWidth={margin.right} displayFormat={this.pricesDisplayFormat} />
