@@ -6,6 +6,12 @@ import store from './store';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+
+// setup fake backend for testing
+import { configureFakeBackend } from './helpers';
+configureFakeBackend();
+
+
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>

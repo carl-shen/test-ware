@@ -1,9 +1,11 @@
 import React from 'react';
 import { useState } from 'react';
-import { connect } from 'react-redux';
-import { fetchStats, initStats, postStats, updateStats } from '../actions/statsActions';
+import { useDispatch, useSelector } from 'react-redux';
+import { statsActions } from '../actions';
 
-function Stepper( { stats, initStats, updateStats } ) {
+function Stepper() {
+    const stats = useSelector(state => state.stats.items);
+    const dispatch = useDispatch();
 
     const [nsteps, setNSteps] = useState(3);  // default is 3
     
@@ -17,7 +19,7 @@ function Stepper( { stats, initStats, updateStats } ) {
           ...stats,
           currIndex: newLoadToIndex
         };
-        updateStats(tempStats);
+        dispatch(statsActions.updateStats(tempStats));
         console.log(stats);
     };
 
@@ -33,8 +35,4 @@ function Stepper( { stats, initStats, updateStats } ) {
 }
 
 
-const mapStateToProps = state => {
-    return { stats: state.stats.items };
-  };
-  
-export default connect(mapStateToProps, { initStats, updateStats })(Stepper);
+export { Stepper };

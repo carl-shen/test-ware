@@ -1,3 +1,4 @@
+import React from 'react';
 
 function Footer() {
     const footerStyle = {
@@ -15,4 +16,4 @@ function Footer() {
     );
 }
 
-export default Footer;
+export { Footer };

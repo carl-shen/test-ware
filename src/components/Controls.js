@@ -1,18 +1,11 @@
 
-import { useState } from 'react';
-import { connect } from 'react-redux';
-import { fetchStats, initStats, postStats, updateStats } from '../actions/statsActions';
-import Trader from './Trader';
-import Stepper from './Stepper';
-
-function Controls({ nextNBar, stats, fetchStats, initStats }) {
-    
-    // const inputStyling = {
-    //     width: "57px"
-    // };
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { Trader, Stepper } from './';
 
 
-
+function Controls() {
+    const stats = useSelector(state => state.stats.items);    
 
     // console.log(stats);
 
@@ -72,19 +65,11 @@ function Controls({ nextNBar, stats, fetchStats, initStats }) {
                         </div>
                     </div>
                 </div>
-                
-
             </div>
-
-            
-
             <br style={{clear: "left"}} />
         </div>
     );
 }
 
-const mapStateToProps = state => {
-    return { stats: state.stats.items };
-};
 
-export default connect(mapStateToProps, { fetchStats, initStats })(Controls);
+export { Controls };

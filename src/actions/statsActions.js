@@ -1,18 +1,27 @@
 import { statsConstants } from '../constants';
 
-export const fetchStats = () => dispatch => {
+export const statsActions = {
+    fetchStats,
+    postStats,
+    initStats,
+    updateStats
+};
+
+function fetchStats() {
     console.log('fetching stats..');
     fetch('https://jsonplaceholder.typicode.com/posts')
     .then(res => res.json())
-    .then(data => dispatch({
-        type: statsConstants.FETCH_STATS,
-        payload: data
-    }))
+    .then(data => {
+        return {
+            type: statsConstants.FETCH_STATS,
+            payload: data
+        };
+    });
 }
 
-export const initStats = () => dispatch => {
+function initStats() {
     console.log('init stats..');
-    dispatch({
+    return {
         type: statsConstants.INIT_STATS,
         payload: {
             ticker: 'stock01',
@@ -33,26 +42,26 @@ export const initStats = () => dispatch => {
             recentTrade5: 'most recent trade 5',
             trades: []
         }
-    });
+    };
 }
 
-export const postStats = (data) => dispatch => {
+function postStats(data)  {
     console.log('posting stats..');
 
     //TODO Post method
 
-    dispatch({
+    return {
         type: statsConstants.POST_STATS,
         payload: data
-    });
+    };
 }
 
 
-export const updateStats = (data) => dispatch => {
+function updateStats(data) {
     console.log('updating stats..');
     
-    dispatch({
+    return {
         type: statsConstants.UPDATE_STATS,
         payload: data
-    });
+    };
 }

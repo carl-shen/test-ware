@@ -1,0 +1,5 @@
+.verticalUpper {
+    position: fixed;
+    top: 25%;
+    max-width: 500px; 
+}

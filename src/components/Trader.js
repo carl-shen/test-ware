@@ -1,9 +1,12 @@
 import React from 'react';
 import { useState } from 'react';
-import { connect } from 'react-redux';
-import { fetchStats, initStats, postStats, updateStats } from '../actions/statsActions';
+import { useDispatch, useSelector } from 'react-redux';
+import { statsActions } from '../actions';
 
-function Trader( { stats, initStats, updateStats } ) {
+function Trader() {
+
+    const stats = useSelector(state => state.stats.items);
+    const dispatch = useDispatch();
 
     const [numshares, setNumShares] = useState(10000);  // default is 10,000
 
@@ -78,7 +81,7 @@ function Trader( { stats, initStats, updateStats } ) {
             recentTrade4: recentTrade4,
             recentTrade5: recentTrade5
         };
-        updateStats(tempStats);
+        dispatch(statsActions.updateStats(tempStats));
 
         return tradeRecord;
     };
@@ -99,8 +102,5 @@ function Trader( { stats, initStats, updateStats } ) {
 }
 
 
-const mapStateToProps = state => {
-    return { stats: state.stats.items };
-  };
   
-export default connect(mapStateToProps, { initStats, updateStats })(Trader);
+export { Trader };

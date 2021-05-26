@@ -1,5 +1,9 @@
-import config from 'config';
+// import config from 'config';
 import { authHeader } from '../helpers';
+
+const config = {
+    'apiUrl' : 'http://localhost:3000'
+}
 
 export const userService = {
     login,
@@ -41,12 +45,22 @@ function getAll() {
     return fetch(`${config.apiUrl}/users`, requestOptions).then(handleResponse);
 }
 
+function getById(id) {
+    const requestOptions = {
+        method: 'GET',
+        headers: authHeader()
+    };
+
+    return fetch(`${config.apiUrl}/users/${id}`, requestOptions).then(handleResponse);
+}
+
 function register(user) {
     const requestOptions = {
-        method: 'PUT',
-        headers: { ...authHeader(), 'Content-Type': 'application/json' },
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(user)
     };
+    console.log(requestOptions);
 
     return fetch(`${config.apiUrl}/users/register`, requestOptions).then(handleResponse);
 }
@@ -78,7 +92,7 @@ function handleResponse(response) {
             if (response.status === 401) {
                 // auto logout if 401 response returned from api
                 logout();
-                location.reload(true);
+                Location.reload(true);
             }
             const error = (data && data.message) || response.statusText;
             return Promise.reject(error);

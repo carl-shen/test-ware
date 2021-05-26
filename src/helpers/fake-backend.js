@@ -25,6 +25,8 @@ export function configureFakeBackend() {
                     case url.match(/\/users\/\d+$/) && method === 'DELETE':
                         return deleteUser();
                     default:
+                        console.log("defaulted to use real fetch");
+                        console.log(url);
                         // pass through any requests not handled above
                         return realFetch(url, opts)
                             .then(response => resolve(response))
