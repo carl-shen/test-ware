@@ -2,7 +2,16 @@
 // import './App.css';
 import './trainer.css';
 import { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
+import { connect, useDispatch, useSelector } from 'react-redux';
+import { Router, Route, Switch, Redirect } from 'react-router-dom';
+
+import { history } from './helpers';
+import { alertActions } from './actions';
+import { PrivateRoute } from './components';
+import { LoginPage } from './LoginPage';
+import { RegisterPage } from './RegisterPage';
+
+
 import { fetchStats, initStats, postStats, updateStats } from './actions/statsActions';
 
 import StockChartHOC from './components/StockChart';
@@ -14,6 +23,8 @@ import useWindowDimensions from "./components/WindowDimensions";
 import { IOHLCData } from "./data/iOHLCData";
 import { parseData } from "./data/withOHLCData"
 import { tsvParse } from "d3-dsv";
+
+
 
 const dateToYMDStr = (date) => {
   const mm = date.getMonth() + 1;  // getMonth starts from 0
@@ -27,6 +38,17 @@ function App( { stats, initStats, updateStats } ) {
   const [ dataSet, setDataSet ] = useState("stock01");
   const [ loadToIndex, setLoadToIndex ] = useState(120);
   const [ data, setData ] = useState(IOHLCData);
+
+  const alert = useSelector(state => state.alert);
+  const dispatch = useDispatch();
+
+  
+  useEffect(() => {
+    history.listen((location, action) => {
+      // clear alert on location change
+      dispatch(alertActions.clear());
+    });
+  }, []);
 
   useEffect(() => {
     // when stats.currIndex change, update price, portfolio details, and chart data
@@ -54,9 +76,7 @@ function App( { stats, initStats, updateStats } ) {
     }
   }, [stats]);
 
-
   // console.log(stats);
-
 
   useEffect(() => {
     fetchData(dataSet)

@@ -1,11 +1,11 @@
-import { FETCH_STATS, INIT_STATS, POST_STATS, UPDATE_STATS } from './types';
+import { statsConstants } from '../constants';
 
 export const fetchStats = () => dispatch => {
     console.log('fetching stats..');
     fetch('https://jsonplaceholder.typicode.com/posts')
     .then(res => res.json())
     .then(data => dispatch({
-        type: FETCH_STATS,
+        type: statsConstants.FETCH_STATS,
         payload: data
     }))
 }
@@ -13,7 +13,7 @@ export const fetchStats = () => dispatch => {
 export const initStats = () => dispatch => {
     console.log('init stats..');
     dispatch({
-        type: INIT_STATS,
+        type: statsConstants.INIT_STATS,
         payload: {
             ticker: 'stock01',
             currIndex: 120,
@@ -42,7 +42,7 @@ export const postStats = (data) => dispatch => {
     //TODO Post method
 
     dispatch({
-        type: POST_STATS,
+        type: statsConstants.POST_STATS,
         payload: data
     });
 }
@@ -52,7 +52,7 @@ export const updateStats = (data) => dispatch => {
     console.log('updating stats..');
     
     dispatch({
-        type: UPDATE_STATS,
+        type: statsConstants.UPDATE_STATS,
         payload: data
     });
 }

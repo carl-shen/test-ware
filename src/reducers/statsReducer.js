@@ -1,4 +1,4 @@
-import { FETCH_STATS, INIT_STATS, POST_STATS, UPDATE_STATS } from '../actions/types';
+import { statsConstants } from '../constants';
 
 const initialState = {
     items: [],
@@ -6,24 +6,25 @@ const initialState = {
 };
 
 
-export default function(state = initialState, action) {
-    switch(action.type) {
-        case FETCH_STATS:
+// export default function(state = initialState, action) {
+export function stats(state = initialState, action) {
+    switch (action.type) {
+        case statsConstants.FETCH_STATS:
             return {
                 ...state,
                 items: action.payload
             }
-        case INIT_STATS:
+        case statsConstants.INIT_STATS:
             return {
                 ...state,
                 items: action.payload
             }
-        case POST_STATS:
+        case statsConstants.POST_STATS:
             return {
                 ...state,
                 items: action.payload
             }
-        case UPDATE_STATS:
+        case statsConstants.UPDATE_STATS:
             return {
                 ...state,
                 items: action.payload

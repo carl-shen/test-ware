@@ -14,7 +14,7 @@ const url_splits = window.location.href.split("/");
 const page_name = url_splits[url_splits.length-1];
 let chart_style_str = page_name.substring(0,2);  // either lc or ta
 
-if(chart_style_str === 'qu'){  //when going from quotes page, default go to ta
+if(chart_style_str === 'qu' || chart_style_str === 'sq'){  //when going from quotes or squotes page, default go to ta
     chart_style_str = 'ta';
 }
 
@@ -31,9 +31,9 @@ var nav = // non bootstrap navbar
 '    <a class="nav-item" href="./' + chart_style_str + 'eth.html">ETH</a>' +
 '    <a class="nav-item" href="./' + chart_style_str + 'xrp.html">XRP</a>' +
 '    <a class="nav-item" href="./' + chart_style_str + 'hum.html">HUM</a>' +
-'    <a class="nav-item" href="./squotes.html">-SQuote-</a>' +
+'    <a class="nav-item" href="./squotes.php">-SQuote-</a>' +
 '    <a class="nav-item" href="./' + alt_style_page_name + '">-Alt-</a>' +
-'    <a class="nav-item" href="./sha.html">-SHA-</a>' +
+'    <a class="nav-item" href="./sha.php">-SHA-</a>' +
 '</nav>';
 
 

@@ -1,3 +1,7 @@
+<?php
+    require('makePrivate.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>

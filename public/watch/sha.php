@@ -1,3 +1,15 @@
+<?php
+    require('makePrivate.php');
+
+    // echo a tickerList variable from blk file
+    $fileContent = file_get_contents("../../privateData/YDRZC.blk");
+    // make \r\n comma separated instead
+    $fileContent = trim(preg_replace('/(\r\n)/',',',$fileContent));
+    echo '<script type="text/javascript">';
+    echo 'var tickerListRaw = "' . $fileContent . '";';
+    echo '</script>';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -34,27 +46,45 @@
       <script src="./content/js/jquery.min.js"></script>
       <script type="text/javascript" src="./watch-widget.js"></script>
 
+
+
       <script type="text/javascript">
-        // get the tickerlist from blk file
+        
         var tickerList = [];
-        var client = new XMLHttpRequest();
-        client.open('GET', './YDRZC.blk');
-        client.onreadystatechange = function() {
-            if (this.readyState === 4 && this.status === 200) {
-                let tempList = client.responseText.split("\r\n");
-                tempList.forEach((element, index) => {
-                    if(element.length >2){
-                        tickerList.push((element.substr(0,1) == '1'? 'sh' : 'sz') + element.substr(1));
-                    }
-                }); 
-                updatePriceData();  // call once immediately, then set interval for every n seconds
-                setInterval(function(){
-                    updatePriceData();
-                }, 5000);
+
+        // get the tickerlist from blk file
+        // var client = new XMLHttpRequest();
+        // client.open('GET', './YDRZC.blk');
+        // client.onreadystatechange = function() {
+        //     if (this.readyState === 4 && this.status === 200) {
+        //         let tempList = client.responseText.split("\r\n");
+        //         tempList.forEach((element, index) => {
+        //             if(element.length >2){
+        //                 tickerList.push((element.substr(0,1) == '1'? 'sh' : 'sz') + element.substr(1));
+        //             }
+        //         }); 
+        //         updatePriceData();  // call once immediately, then set interval for every n seconds
+        //         setInterval(function(){
+        //             updatePriceData();
+        //         }, 5000);
                 
+        //     }
+        // }
+        // client.send();
+
+        // new method to get tickerlist from blk file, tickerListRaw is loaded by php on page load
+        // console.log(tickerListRaw);
+        let tempList = tickerListRaw.split(",");
+        tempList.forEach((element, index) => {
+            if(element.length >2){
+                tickerList.push((element.substr(0,1) == '1'? 'sh' : 'sz') + element.substr(1));
             }
-        }
-        client.send();
+        }); 
+        updatePriceData();  // call once immediately, then set interval for every n seconds
+        setInterval(function(){
+            updatePriceData();
+        }, 5000);
+
         // console.log(tickerList);
 
         function updatePriceData(){
