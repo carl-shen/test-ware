@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { userActions } from '../actions';
+import { userActions } from '../_actions';
 
 function LoginPage() {
     const [inputs, setInputs] = useState({
@@ -19,8 +19,6 @@ function LoginPage() {
     useEffect(() => {
         dispatch(userActions.logout());
     }, []);
-
-    console.log("in Login page");
 
     function handleChange(e) {
         const { name, value } = e.target;
@@ -41,6 +39,7 @@ function LoginPage() {
     return (
         <div className="col-lg-8 offset-lg-3 verticalUpper">
             <h2 className="text-white">Login</h2>
+            <br />
             <form name="form" onSubmit={handleSubmit}>
                 <div className="form-group">
                     <label className="text-white">Username</label>
@@ -56,12 +55,14 @@ function LoginPage() {
                         <div className="invalid-feedback">Password is required</div>
                     }
                 </div>
+                <br />
                 <div className="form-group">
                     <button className="btn btn-primary">
                         {loggingIn && <span className="spinner-border spinner-border-sm mr-1"></span>}
                         Login
                     </button>
                     <Link to="/register" className="btn btn-link">Register</Link>
+                    <Link to="/guest" className="btn btn-link">Try as Guest</Link>
                 </div>
             </form>
         </div>

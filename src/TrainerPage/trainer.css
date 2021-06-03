@@ -13,31 +13,48 @@ body {
     background-attachment: fixed;  /* need this to use CSS3 gradient correctly */
 }
 
- #chart-div {
-    margin: 30px 30px 10px 30px;
-    box-sizing: border-box;
-    padding: 20px;
+#topnavbar-container {
+    width: 100%;
+    background: rgba(128, 35, 35, 0.144);
+}
+
+#topnavbar {
+    margin: 0px 30px 0px 30px;
+    padding: 5px 0px;
+}
+
+.narrow-button {
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+/* major area boarder and background */
+#chart-div, #controls {
     border: 1px solid rgba(255, 255, 255, 0.01);
     border-radius: 6px;
     box-shadow: 3px 3px 5px 6px rgba(17, 17, 17, 0.3);
     background: rgba(255, 255, 255, 0.01);
+}
+
+ #chart-div {
+    margin: 10px 30px 10px 30px;
+    box-sizing: border-box;
+    padding: 20px;
+    padding-bottom: 10px;
     /* backdrop-filter: blur(10px); */
 } 
 
-
 #controls {
     position: fixed;
-    top: 70.5%;
+    /* bottom: 0%; */
     left: 30px;
     right: 30px;
     height: auto;
     /* width: 100%; */
     /* height: 29.5%; */
     display: flex;
-    border: 1px solid rgba(255, 255, 255, 0.01);
-    border-radius: 6px;
-    box-shadow: 3px 3px 5px 6px rgba(17, 17, 17, 0.3);
-    background: rgba(255, 255, 255, 0.01);
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 #controls-left {
@@ -60,8 +77,8 @@ body {
 }
 
 
-#controls-right-bottom-left {
-    margin-right: 40px;
+#controls-right-bottom-left, #controls-right-bottom-middle {
+    margin-right: 20px;
 }
 
 #controls-portfolio-details div {
@@ -69,8 +86,7 @@ body {
 }
 
 
-
-#controls-left-top, #controls-left-bottom {
+#controls-left-bottom {
     margin: 10px 20px 10px 20px;
 }
 
@@ -89,9 +105,10 @@ span {
 
 
 #input-nsteps, #input-numshares {
+    box-sizing: border-box;
     font-size: 20px;
-    width: 7.2rem;
-    padding: 10px;
+    width: 8.6rem;
+    padding: 6px;
     margin:0 0.3em 0.3em 0;
     background-color: #D07775;
     color: white;
@@ -101,8 +118,6 @@ span {
 
 #input-numshares {
     width: 273px;
-    box-sizing: border-box;
-    padding: 10px;
     margin: 0;
     margin-bottom: 10px;
     border-color: #D07775;
@@ -111,7 +126,7 @@ span {
 
 .stepButton, #buyButton, #sellButton{
     display:inline-block;
-    padding:0.35em 1.2em;
+    padding:0.2em 1.2em;
     border:0.1em solid #FFFFFF;
     margin:0 0.3em 0.3em 0;
     border-radius:0.12em;
@@ -133,7 +148,7 @@ span {
     color:#D07775;
     border-color: #D07775;
     font-weight: 800;
-    font-size: 26px;
+    font-size: 22px;
     width: 133px;
     padding-left: auto;
     padding-right: auto;
@@ -156,7 +171,7 @@ span {
     color: #effcf7;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 16px;
-    margin: 5px;
+    margin: 1px;
     margin-left: 0;
 }
 span.labels, p.labels {
@@ -197,7 +212,7 @@ small {
 
 @media only screen and (max-height: 1100px){
     .labels{
-        font-size: 16px;
+        font-size: 12px;
         margin: 0;
     }
     #output-timestamp {
@@ -218,9 +233,9 @@ small {
 
     #input-nsteps, #input-numshares {
         font-size: 16px;
-        padding: 6px;
+        padding: 3px;
         margin-bottom: 5px;
-        width: 87px;
+        width: 98px;
     }
 
     #input-numshares {

@@ -1,0 +1,18 @@
+.verticalUpper {
+    position: fixed;
+    top: 25%;
+    max-width: 500px; 
+}
+
+.widthWide {
+    max-width: 800px; 
+}
+
+.tooltip-inner {
+    max-width: 500px;
+    background-color: #2c2c2c;
+}
+
+.tooltip.show {
+    opacity: 1!important;
+}

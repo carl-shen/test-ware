@@ -8,8 +8,8 @@ import reportWebVitals from './reportWebVitals';
 
 
 // setup fake backend for testing
-import { configureFakeBackend } from './helpers';
-configureFakeBackend();
+// import { configureFakeBackend } from './helpers';
+// configureFakeBackend();
 
 
 ReactDOM.render(
