@@ -5,6 +5,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { userActions } from '../_actions';
 
 function RegisterPage() {
+    const dispatch = useDispatch();
+    const registering = useSelector(state => state.registration.registering);
+
     const [user, setUser] = useState({
        firstName: '',
        lastName: '',
@@ -12,9 +15,7 @@ function RegisterPage() {
        password: '' 
     });
     const [submitted, setSubmitted] = useState(false);
-    const registering = useSelector(state => state.registration.registering);
-    const dispatch = useDispatch();
-
+    
     // reset login status
     useEffect(() => {
         dispatch(userActions.logout());

@@ -1,3 +1,16 @@
+import { parseData } from "../_data/withOHLCData";
+import { tsvParse } from "d3-dsv";
+
+export const fetchData = function(dataSetName) {
+    return fetch(
+        `https://www.test-ware.com/data/${dataSetName}.tsv`,
+        []
+    ).then((response) => response.text())
+    .then((data) => tsvParse(data, parseData()))
+    .catch((error) => {
+        console.log(error);
+    });
+};
 
 export const dateToYMDStr = function(date) {
     const mm = date.getMonth() + 1;  // getMonth starts from 0

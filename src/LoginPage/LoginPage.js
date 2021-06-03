@@ -5,15 +5,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import { userActions } from '../_actions';
 
 function LoginPage() {
+    const dispatch = useDispatch();
+    const location = useLocation();
+    const loggingIn = useSelector(state => state.authentication.loggingIn);
+
     const [inputs, setInputs] = useState({
         username: '',
         password: ''
     });
     const [submitted, setSubmitted] = useState(false);
     const { username, password } = inputs;
-    const loggingIn = useSelector(state => state.authentication.loggingIn);
-    const dispatch = useDispatch();
-    const location = useLocation();
 
     // reset login status
     useEffect(() => {
@@ -30,8 +31,8 @@ function LoginPage() {
 
         setSubmitted(true);
         if (username && password) {
-            // get return url from location state or default to trainer page
-            const { from } = location.state || { from: { pathname: "/trainer" } };
+            // get return url from location state or default to home page
+            const { from } = location.state || { from: { pathname: "/" } };
             dispatch(userActions.login(username, password, from));
         }
     }

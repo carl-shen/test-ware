@@ -2,32 +2,25 @@
 import './trainer.css';
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect } from 'react-router-dom';
 import config from '../_configs/configs.json';
 
 import { history } from '../_helpers';
 import { alertActions, statsActions } from '../_actions';
 import { StockChart, Controls, Footer, useWindowDimensions, TopNavbar } from '../_components';
-import { dateToYMDStr, challengeCompleted, calcPerformance } from './assistFuncs';
-
-import { IOHLCData } from "../_data/iOHLCData";
-import { parseData } from "../_data/withOHLCData";
-import { tsvParse } from "d3-dsv";
-
+import { fetchData, dateToYMDStr, challengeCompleted, calcPerformance } from './assistFuncs';
 
 function GuestPage() {
-    const windowWidth = useWindowDimensions().width;
-    const windowHeight = useWindowDimensions().height;
-
-    const [ chartHeight, setChartHeight ] = useState(windowHeight * 0.7);
-    const [ dataSetName, setDataSetName ] = useState("stock01");
-    const [ loadToIndex, setLoadToIndex ] = useState(120);
-    const [ data, setData ] = useState(IOHLCData);
-
+    const dispatch = useDispatch();
     const app = useSelector(state => state.app);
     const stats = useSelector(state => state.stats.items);
     const alert = useSelector(state => state.alert);
-    const dispatch = useDispatch();
+
+    const windowWidth = useWindowDimensions().width;
+    const windowHeight = useWindowDimensions().height;
+    const [ chartHeight, setChartHeight ] = useState(windowHeight * 0.7);
+    const [ dataSetName, setDataSetName ] = useState("stock01");
+    const [ loadToIndex, setLoadToIndex ] = useState(120);
+    const [ data, setData ] = useState();
 
     useEffect(() => {
         if (app !== undefined) {
@@ -139,18 +132,5 @@ function GuestPage() {
     }
     
 }
-
-function fetchData(dataSetName) {
-    return fetch(
-        `https://www.test-ware.com/data/${dataSetName}.tsv`,
-        // `../data/${dataSetName}.tsv`,
-        []
-    ).then((response) => response.text())
-    .then((data) => tsvParse(data, parseData()))
-    .catch((error) => {
-        console.log(error);
-    });
-};
-
 
 export { GuestPage };
