@@ -25,7 +25,7 @@ function TrainerPage() {
 
     // adjust chart height when window resizes
     useEffect(() => {
-        if (app !== undefined) {
+        if (app !== undefined && app.ControlsHeight !== undefined && app.FooterHeight !== undefined) {
             setChartHeight(windowHeight - app.ControlsHeight - app.FooterHeight - 100);
         }
     }, [app, windowWidth, windowHeight]);

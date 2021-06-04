@@ -1,7 +1,7 @@
 import { parseData } from "../_data/withOHLCData";
 import { tsvParse } from "d3-dsv";
 
-export const fetchData = function(dataSetName) {
+export const fetchData = function (dataSetName) {
     return fetch(
         `https://www.test-ware.com/data/${dataSetName}.tsv`,
         []
@@ -12,12 +12,12 @@ export const fetchData = function(dataSetName) {
     });
 };
 
-export const roundToDefaultDecimal = function(value) {
+export const roundToDefaultDecimal = function (value) {
     const decimalPlaces = 5;  // default round to 5 decimal places
     return Number(Math.round(parseFloat(value + 'e' + decimalPlaces)) + 'e-' + decimalPlaces);
 }
 
-export const dateToYMDStr = function(date) {
+export const dateToYMDStr = function (date) {
     const mm = date.getMonth() + 1;  // getMonth starts from 0
     const dd = date.getDate();
     return `${date.getFullYear()}-${(mm>9? '':'0')}${mm}-${(dd>9? '':'0')}${dd}`;
@@ -43,4 +43,3 @@ export const calcPerformance = function (stats) {
         return {duration: "invalid", gain: "invalid", CAGR: "invalid"};
     }
 }
-

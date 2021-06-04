@@ -18,7 +18,7 @@ function rtnStatsName(userid, ticker) {
 
 // GET existing stats from server, if non-exist the server will return the USE_LOCAL constant to signal client to use current local stats
 function fetchStats(userid, ticker) {
-    console.log('fetching stats..');
+    // console.log('fetching stats..');
     const statsName = rtnStatsName(userid, ticker);
 
     return dispatch => {
@@ -50,7 +50,7 @@ function fetchStats(userid, ticker) {
 
 // Initialise a set of default stats values before stats are fetched from server
 function initStats(ticker, timestamp, price) {
-    console.log('init stats..');
+    // console.log('init stats..');
     const stats = statsService.initStats(ticker, timestamp, price);
     return { type: statsConstants.INIT_STATS, stats };
 }
@@ -58,7 +58,7 @@ function initStats(ticker, timestamp, price) {
 
 // POST local stats to server. Server will check if currIndex is newer before saving to database (anti-rollback)
 function postStats(userid, ticker, stats)  {
-    console.log('posting stats..');
+    // console.log('posting stats..');
     const statsName = rtnStatsName(userid, ticker);
 
     return dispatch => {
@@ -82,7 +82,7 @@ function postStats(userid, ticker, stats)  {
 
 // update local copy of the stats, used to allow program to run with async POST stats
 function updateStats(data) {
-    console.log('updating stats..');
+    // console.log('updating stats..');
     
     return {
         type: statsConstants.UPDATE_STATS_SUCCESS,

@@ -27,6 +27,7 @@ import {
   MACDSeries
 } from "react-financial-charts";
 import { IOHLCData, withOHLCData } from "../_data";
+import { MACDCalc } from '../_helpers';
 
 
 interface StockChartProps {
@@ -67,16 +68,31 @@ class StockChart extends React.Component<StockChartProps> {
       })
       .accessor((d: any) => d.sma10);
 
-    const macdCalculator = macd()
+      const macdCalculator = macd()
       .options({
         fast: 12,
         signal: 9,
         slow: 26,
       })
-      .merge((d: any, c: any) => {
-        d.macd = c;
-      })
+      // .merge((d: any, c: any) => {
+      //   d.macd = c;
+      // })
       .accessor((d: any) => d.macd);
+
+
+    // react-financial-chart library appears to have a bug where signal of MACD indicator is calculated incorrectly at the beginig of the data series
+    // a macd calculator is implemented here to replace react-financial-chart's actual calculation. macdCalculator is still defined as usual for all the options and styling
+    const customMACDCalculator = (calculatedData: any[]) => {
+      const closingPrice = calculatedData.map((item) => item.close);
+      const { macdLine, signalLine, macdHist }= MACDCalc(closingPrice);
+      calculatedData = calculatedData.map((item, index) => {
+        return {
+          ...item,
+          macd: {macd: macdLine[index], signal: signalLine[index], divergence: macdHist[index]}
+        }
+      })
+      return calculatedData;
+    };
 
     const macdAppearance = {
         fillStyle: {
@@ -90,7 +106,10 @@ class StockChart extends React.Component<StockChartProps> {
     };
 
 
-    const calculatedData = macdCalculator(sma10(sma5(initialData)));
+    // const calculatedData = this.fixMACDSeries(macdCalculator(sma10(sma5(initialData))));
+    let calculatedData = customMACDCalculator(sma10(sma5(initialData)));
+    console.log(macdCalculator.accessor());
+
 
     const { margin, xScaleProvider } = this;
 
