@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { userActions } from '../_actions';
+import { TopNavbar } from '../_components';
 
 function LoginPage() {
     const dispatch = useDispatch();
@@ -38,35 +39,38 @@ function LoginPage() {
     }
 
     return (
-        <div className="col-lg-8 offset-lg-3 verticalUpper">
-            <h2 className="text-white">Login</h2>
-            <br />
-            <form name="form" onSubmit={handleSubmit}>
-                <div className="form-group">
-                    <label className="text-white">Username</label>
-                    <input type="text" name="username" value={username} onChange={handleChange} className={'form-control' + (submitted && !username ? ' is-invalid' : '')} />
-                    {submitted && !username &&
-                        <div className="invalid-feedback">Username is required</div>    
-                    }
-                </div>
-                <div className="form-group">
-                    <label className="text-white">Password</label>
-                    <input type="password" name="password" value={password} onChange={handleChange} className={'form-control' + (submitted && !password ? ' is-invalid' : '')} />
-                    {submitted && !password &&
-                        <div className="invalid-feedback">Password is required</div>
-                    }
-                </div>
+        <>
+            <TopNavbar />
+            <div className="col-lg-8 offset-lg-3 verticalUpper">
+                <h2 className="text-white">Login</h2>
                 <br />
-                <div className="form-group">
-                    <button className="btn btn-primary">
-                        {loggingIn && <span className="spinner-border spinner-border-sm mr-1"></span>}
-                        Login
-                    </button>
-                    <Link to="/register" className="btn btn-link">Register</Link>
-                    <Link to="/guest" className="btn btn-link">Try as Guest</Link>
-                </div>
-            </form>
-        </div>
+                <form name="form" onSubmit={handleSubmit}>
+                    <div className="form-group">
+                        <label className="text-white">Username</label>
+                        <input type="text" name="username" value={username} onChange={handleChange} className={'form-control' + (submitted && !username ? ' is-invalid' : '')} />
+                        {submitted && !username &&
+                            <div className="invalid-feedback">Username is required</div>    
+                        }
+                    </div>
+                    <div className="form-group">
+                        <label className="text-white">Password</label>
+                        <input type="password" name="password" value={password} onChange={handleChange} className={'form-control' + (submitted && !password ? ' is-invalid' : '')} />
+                        {submitted && !password &&
+                            <div className="invalid-feedback">Password is required</div>
+                        }
+                    </div>
+                    <br />
+                    <div className="form-group">
+                        <button className="btn btn-primary">
+                            {loggingIn && <span className="spinner-border spinner-border-sm mr-1"></span>}
+                            Login
+                        </button>
+                        <Link to="/register" className="btn btn-link">Register</Link>
+                        <Link to="/guest" className="btn btn-link">Try as Guest</Link>
+                    </div>
+                </form>
+            </div>
+        </>
     );
 }
 

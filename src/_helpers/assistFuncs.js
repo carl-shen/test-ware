@@ -3,7 +3,7 @@ import { tsvParse } from "d3-dsv";
 
 export const fetchData = function (dataSetName) {
     return fetch(
-        `https://www.test-ware.com/data/${dataSetName}.tsv`,
+        `/data/${dataSetName}.tsv`,
         []
     ).then((response) => response.text())
     .then((data) => tsvParse(data, parseData()))

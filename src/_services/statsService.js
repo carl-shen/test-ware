@@ -52,7 +52,7 @@ function postStats(statsName, stats)  {
         headers: { ...authHeader(), 'Content-Type': 'application/json' },
         body: JSON.stringify( { statsName, stats } )
     };
-    console.log(requestOptions);
+    // console.log(requestOptions);
 
     return fetch(`${config.apiUrl}/users/storeStats.php`, requestOptions).then(handleResponse);
 }

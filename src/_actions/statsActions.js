@@ -2,6 +2,7 @@ import { statsConstants } from '../_constants';
 import { statsService } from '../_services';
 import { alertActions } from './';
 import { userActions } from './userActions';
+import config from '../_configs/configs.json';
 
 export const statsActions = {
     fetchStats,
@@ -35,6 +36,9 @@ function fetchStats(userid, ticker) {
                 error => {
                     dispatch(failure(error.toString()));
                     dispatch(alertActions.error(error.toString()));
+                    setTimeout(() => {
+                        dispatch(alertActions.clear());
+                    }, config.ALERT_TIMEOUT);
                 }
             );
     };
@@ -70,7 +74,10 @@ function postStats(userid, ticker, stats)  {
                 error => {
                     dispatch(failure(error.toString()));
                     dispatch(alertActions.error(error.toString()));
-                    dispatch(userActions.logout());
+                    // dispatch(userActions.logout());
+                    setTimeout(() => {
+                        dispatch(alertActions.clear());
+                    }, config.ALERT_TIMEOUT);
                 }
             );
     };

@@ -1,6 +1,7 @@
 {
     "apiUrl": "https://test-ware.com",
     "POST_STATS_EVERY_N_STEPS": 2,
+    "ALERT_TIMEOUT": 5000,
     "minWindowWidth": 800,
     "minWindowHeight": 600
 }

@@ -51,10 +51,9 @@ function GuestPage() {
 
 
     useEffect(() => {
-        history.listen((location, action) => {
-            // clear alert on location change
+        setTimeout(() => {
             dispatch(alertActions.clear());
-        });
+        }, config.ALERT_TIMEOUT);
     }, []);
 
     // whenever stats gets changed (most likely by Stepper when user steps to next datapoint), update portfolio details etc. 

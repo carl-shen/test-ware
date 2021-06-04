@@ -2,6 +2,7 @@ import { userConstants } from '../_constants';
 import { userService } from '../_services';
 import { alertActions } from './';
 import { history } from '../_helpers';
+import config from '../_configs/configs.json';
 
 // exposing the user actions functions together in one object
 export const userActions = {
@@ -21,10 +22,17 @@ function login(username, password, from) {
                 user => {
                     dispatch(success(user));
                     history.push(from);
+                    dispatch(alertActions.success("Login successful"));
+                    setTimeout(() => {
+                        dispatch(alertActions.clear());
+                    }, config.ALERT_TIMEOUT);
                 },
                 error => {
                     dispatch(failure(error.toString()));
                     dispatch(alertActions.error(error.toString()));
+                    setTimeout(() => {
+                        dispatch(alertActions.clear());
+                    }, config.ALERT_TIMEOUT);
                 }
             );
     };
@@ -49,10 +57,16 @@ function register(user) {
                     dispatch(success());
                     history.push('/login');
                     dispatch(alertActions.success('Registration successful'));
+                    setTimeout(() => {
+                        dispatch(alertActions.clear());
+                    }, config.ALERT_TIMEOUT);
                 },
                 error => {
                     dispatch(failure(error.toString()));
                     dispatch(alertActions.error(error.toString()));
+                    setTimeout(() => {
+                        dispatch(alertActions.clear());
+                    }, config.ALERT_TIMEOUT);
                 }
             );
     };

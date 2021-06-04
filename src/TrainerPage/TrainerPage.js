@@ -46,7 +46,6 @@ function TrainerPage() {
 
     // when historical data is in place, initialise stats with correct timestamp and price data, then fetch existing stats from server (if there exists any)
     useEffect(() => {
-        console.log(data);
         if (stats !== undefined && data !== undefined) {
             const newTimestamp = dateToYMDStr(data[loadToIndex]['date']);
             const newPrice = data[loadToIndex]['close'];
@@ -61,10 +60,9 @@ function TrainerPage() {
     }, [data]);
 
     useEffect(() => {
-        history.listen((location, action) => {
-            // clear alert on location change
+        setTimeout(() => {
             dispatch(alertActions.clear());
-        });
+        }, config.ALERT_TIMEOUT);
     }, []);
 
     // whenever stats gets changed (most likely by Stepper when user steps to next datapoint), update portfolio details etc. 

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import ReactTooltip from 'react-tooltip';
-import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { appActions } from '../_actions';
+import { appActions, alertActions } from '../_actions';
 import { history } from '../_helpers';
-
+import { TopNavbar } from '../_components';
+import config from '../_configs/configs.json';
 
 function HomePage() {
     const dispatch = useDispatch();
@@ -20,11 +20,11 @@ function HomePage() {
 
     const fetchChallengeList = function() {
         return fetch(
-            `https://www.test-ware.com/data/challenges.json`,
-            []
+            `../data/challenges.json`,
+            {method: "GET"}
         ).then((response) => response.text())
         .then((data) => {
-            console.log(JSON.parse(data));
+            // console.log(JSON.parse(data));
             setChallenges(JSON.parse(data));
         })
         .catch((error) => {
@@ -34,6 +34,9 @@ function HomePage() {
 
     useEffect(() => {
         fetchChallengeList();
+        setTimeout(() => {
+            dispatch(alertActions.clear());
+        }, config.ALERT_TIMEOUT);
     }, [])
 
     let challengeList;
@@ -43,14 +46,14 @@ function HomePage() {
         challengeList = challenges.items.map((item, index) => {
             return (
                 <>
-                    <a key={index} onClick={() => selectChallengeGo(item)} href="#" className="list-group-item list-group-item-action flex-column align-items-start" data-tip data-for={item.dataSetName}>
+                    <a onClick={() => selectChallengeGo(item)} href="#" className="list-group-item list-group-item-action flex-column align-items-start" data-tip data-for={item.dataSetName}>
                         <div className="d-flex w-100 justify-content-between">
                             <h5 className="mb-1">{item.dataSetName}</h5>
                             <small>{item.era}</small>
                         </div>
                         <p className="mb-1">{item.shortDescription}</p>
                     </a>
-                    <ReactTooltip className="description-tooltip" id={item.dataSetName} effect='solid' backgroundColor='#353535FF'>
+                    <ReactTooltip key={index} className="description-tooltip" id={item.dataSetName} effect='solid' backgroundColor='#353535FF'>
                         <span>{item.description}</span>
                     </ReactTooltip>
                 </>
@@ -67,15 +70,18 @@ function HomePage() {
     }
 
     return (
-        <div className="col-lg-8 offset-lg-3 verticalUpper widthWide">
-            <h1 className="text-white">Welcome to Test-Ware, {user.username}!</h1>
-            <br />
-            <h4 className="text-white">Select your challenge to begin:</h4>
-            <br />
-            <div className="list-group">
-                { challengeList }
+        <>
+            <TopNavbar />
+            <div className="col-lg-8 offset-lg-3 verticalUpper widthWide">
+                <h1 className="text-white">Welcome to Test-Ware, {user.username}!</h1>
+                <br />
+                <h4 className="text-white">Select your challenge to begin:</h4>
+                <br />
+                <div className="list-group">
+                    { challengeList }
+                </div>
             </div>
-        </div>
+        </>
     );
 }
 

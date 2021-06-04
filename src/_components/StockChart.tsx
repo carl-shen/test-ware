@@ -79,7 +79,6 @@ class StockChart extends React.Component<StockChartProps> {
       // })
       .accessor((d: any) => d.macd);
 
-
     // react-financial-chart library appears to have a bug where signal of MACD indicator is calculated incorrectly at the beginig of the data series
     // a macd calculator is implemented here to replace react-financial-chart's actual calculation. macdCalculator is still defined as usual for all the options and styling
     const customMACDCalculator = (calculatedData: any[]) => {
@@ -105,11 +104,9 @@ class StockChart extends React.Component<StockChartProps> {
         }
     };
 
-
     // const calculatedData = this.fixMACDSeries(macdCalculator(sma10(sma5(initialData))));
     let calculatedData = customMACDCalculator(sma10(sma5(initialData)));
-    console.log(macdCalculator.accessor());
-
+    
 
     const { margin, xScaleProvider } = this;
 

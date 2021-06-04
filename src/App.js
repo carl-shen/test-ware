@@ -30,16 +30,16 @@ function App() {
     return (
         <div className="App">
             {alert.message &&
-                <div className={`alert ${alert.type}`}>{alert.message}</div>
+                <div className={`alert ${alert.type} alertCustom`}>{alert.message}</div>
             }
             <Router history={history}>
                 <Switch>
-                    <PrivateRoute exact path="/" component={HomePage} />
+                    <PrivateRoute exact path="/home" component={HomePage} />
                     <Route path="/login" component={LoginPage} />
                     <Route path="/register" component={RegisterPage} />
                     <Route path="/guest" component={GuestPage} />
                     <PrivateRoute path="/trainer" component={TrainerPage} />
-                    <Redirect from="*" to="/" />
+                    <Redirect from="*" to="/home" />
                 </Switch>
             </Router>
         
