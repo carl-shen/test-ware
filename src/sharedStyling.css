@@ -21,3 +21,16 @@
     top: 10px;
     left: 10px;
 }
+
+
+@media only screen and (max-height: 1000px){
+    .verticalUpper {
+        position: relative;
+    }
+}
+
+@media only screen and (max-width: 800px){
+    .description-tooltip {
+        max-width: 90%;
+    }
+}
