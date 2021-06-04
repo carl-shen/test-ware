@@ -4,15 +4,15 @@ import { useLocation } from 'react-router-dom';
 import { history } from '../_helpers'; 
 
 function TopNavbar() {
-    const challenge = useSelector(state => state.stats.items.ticker);
+    const stats = useSelector(state => state.stats);
     const location = useLocation();
 
     const [ pageTitle, setPageTitle ] = useState("");
 
     useEffect(() => {
         const cleanPath = location.pathname.replace("#","");  // remove any # that may be added by <a> tags
-        if (cleanPath === "/trainer" || cleanPath === "/guest") {
-            setPageTitle(<p className="m-0 labels"><b>{challenge}</b></p>);
+        if (stats !== undefined && (cleanPath === "/trainer" || cleanPath === "/guest")) {
+            setPageTitle(<p className="m-0 labels"><b>{stats.items.ticker}</b></p>);
         } else {
             setPageTitle("");
         }

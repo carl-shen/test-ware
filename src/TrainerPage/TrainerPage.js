@@ -115,7 +115,7 @@ function TrainerPage() {
         if (windowWidth < config.minWindowWidth || windowHeight < config.minWindowWidth) {
             return (
                 <div className="col-lg-8 offset-lg-3 verticalUpper">
-                    <h3 className="text-white">Please try using a different device or screen size.</h3>
+                    <h3 className="text-white">Please try using a different device or adjust window size.</h3>
                     <p className="text-white">Unforturnately, Test-Ware trainer is optimised for screens wider than {config.minWindowWidth}px and taller than {config.minWindowHeight}px.</p>
                 </div>
             );

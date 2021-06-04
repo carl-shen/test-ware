@@ -5,6 +5,8 @@ import { createLogger } from 'redux-logger';
 import rootReducer from './_reducers';
 import { loadState, saveState } from './_helpers';
 
+import {composeWithDevTools} from 'redux-devtools-extension/developmentOnly';
+
 const initialState = {};
 const persistedState = loadState();
 
@@ -16,9 +18,9 @@ const middleware = [thunkMIddleware, loggerMiddleware];
 const store = createStore(
     rootReducer, 
     persistedState, 
-    compose(
-        applyMiddleware(...middleware),
-        window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    composeWithDevTools(
+        applyMiddleware(...middleware)
+        // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
     )
 );
 
