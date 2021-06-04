@@ -45,9 +45,6 @@ export function withOHLCData(dataSet = "DAILY", loadToIndex = 80) {
                 };
             }
 
-            public componentDidMount() {
-                this.moveToDate();
-            }
 
             public fetchData() {
                 console.log("fetching data..")
@@ -70,21 +67,6 @@ export function withOHLCData(dataSet = "DAILY", loadToIndex = 80) {
                     });
             }
 
-            public moveToDate(){
-                if(this.state.data === undefined){  // if no data, try to fetch it 
-                    this.fetchData(); 
-                }
-                this.setState({
-                    endIndex: loadToIndex,
-                });
-
-                // if(loadToIndex !== undefined && this.state.data !== undefined){  // if a specific date is given, only plot till that date
-                //     console.log(loadToIndex);
-
-                //     console.log(this.state.data.slice(0,loadToIndex));
-
-                // }
-            }
 
             public render() {
                 const { data, endIndex, message } = this.state;

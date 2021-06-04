@@ -48,7 +48,7 @@ function Controls() {
                         <div><p className="labels">Position Held: </p><span className="labels">{stats.positionHeld}</span></div>
                         <div><p className="labels">Position Cost Base: </p><span className="labels">{stats.positionCost.toFixed(2)}</span></div>
                         <div><p className="labels">Position Profit/Loss: </p><span className="labels">{stats.positionPL.toFixed(1)}</span></div>
-                        <div><p className="labels">Position P/L Percentage: </p><span className="labels">{stats.positionPLPercent.toFixed(2).toString() + "%"}</span></div>
+                        <div><p className="labels">Position P/L Percentage: </p><span className="labels">{stats.positionPLPercent.toFixed(2) + "%"}</span></div>
                     </div>
                 </div>
                 <div id="controls-right-bottom">

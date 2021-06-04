@@ -4,10 +4,9 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import config from '../_configs/configs.json';
 
-import { history } from '../_helpers';
+import { history, fetchData, dateToYMDStr, roundToDefaultDecimal, challengeCompleted, calcPerformance } from '../_helpers';
 import { alertActions, statsActions } from '../_actions';
 import { StockChart, Controls, Footer, useWindowDimensions, TopNavbar } from '../_components';
-import { fetchData, dateToYMDStr, challengeCompleted, calcPerformance } from './assistFuncs';
 
 function GuestPage() {
     const dispatch = useDispatch();

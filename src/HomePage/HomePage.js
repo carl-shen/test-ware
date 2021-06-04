@@ -38,11 +38,7 @@ function HomePage() {
 
     let challengeList;
     if (challenges === undefined) {
-        challengeList = () => {
-            return (
-                <h3 className="text-white">Loading challenge list..</h3>
-            );
-        };
+        challengeList = <h3 className="text-white">Loading challenge list..</h3>;
     } else {
         challengeList = challenges.items.map((item, index) => {
             return (
@@ -58,6 +54,7 @@ function HomePage() {
                         <span>{item.description}</span>
                     </ReactTooltip>
                 </>
+
                 // <a key={index} onClick={() => selectChallengeGo(item)} href="#" className="list-group-item list-group-item-action flex-column align-items-start" data-toggle="tooltip" title={item.description}>
                 //     <div className="d-flex w-100 justify-content-between">
                 //         <h5 className="mb-1">{item.dataSetName}</h5>

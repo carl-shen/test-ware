@@ -1,13 +1,11 @@
-
 import './trainer.css';
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import config from '../_configs/configs.json';
 
-import { history } from '../_helpers';
+import { history, fetchData, dateToYMDStr, roundToDefaultDecimal, challengeCompleted, calcPerformance } from '../_helpers';
 import { alertActions, statsActions } from '../_actions';
 import { StockChart, Controls, Footer, useWindowDimensions, TopNavbar } from '../_components';
-import { fetchData, dateToYMDStr, challengeCompleted, calcPerformance } from './assistFuncs';
 
 function TrainerPage() {
     const dispatch = useDispatch();
@@ -48,6 +46,7 @@ function TrainerPage() {
 
     // when historical data is in place, initialise stats with correct timestamp and price data, then fetch existing stats from server (if there exists any)
     useEffect(() => {
+        console.log(data);
         if (stats !== undefined && data !== undefined) {
             const newTimestamp = dateToYMDStr(data[loadToIndex]['date']);
             const newPrice = data[loadToIndex]['close'];
@@ -90,10 +89,10 @@ function TrainerPage() {
             const tempStats = {
                 ...stats,
                 timestamp: newTimestamp,
-                price: newPrice,
-                totalPortfolioValue: newTotalPortfolioValue,
-                positionPL: newPositionPL,
-                positionPLPercent : newPositionPLPercent
+                price: roundToDefaultDecimal(newPrice),
+                totalPortfolioValue: roundToDefaultDecimal(newTotalPortfolioValue),
+                positionPL: roundToDefaultDecimal(newPositionPL),
+                positionPLPercent : roundToDefaultDecimal(newPositionPLPercent)
             };
             dispatch(statsActions.updateStats(tempStats));
         }

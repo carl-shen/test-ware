@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { statsActions } from '../_actions';
+import { roundToDefaultDecimal } from '../_helpers';
 
 function Trader() {
 
@@ -72,9 +73,9 @@ function Trader() {
         // update stats
         const tempStats = {
             ...stats,
-            positionCost: positionCost,
+            positionCost: roundToDefaultDecimal(positionCost),
             positionHeld: positionHeld,
-            fundsAvailable: fundsAvailable,
+            fundsAvailable: roundToDefaultDecimal(fundsAvailable),
             statusText: statusText,
             recentTrade1: recentTrade1,
             recentTrade2: recentTrade2,

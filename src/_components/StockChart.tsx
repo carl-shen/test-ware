@@ -104,8 +104,14 @@ class StockChart extends React.Component<StockChartProps> {
 
     const secondIndicatorHeight = 150;
     const secondIndicatorOrigin = (_: number, h: number) => [0, h - secondIndicatorHeight];
-    const barChartHeight = gridHeight / 4;
-    const barChartOrigin = (_: number, h: number) => [0, h - barChartHeight - secondIndicatorHeight];
+    
+    let volBarChartHeight = gridHeight / 4;
+    // if volume data is 0, overwrite the volumn bar chart height to 0 to hide it
+    if (initialData[0].volume === 0) {
+      volBarChartHeight = 0;
+    }
+
+    const barChartOrigin = (_: number, h: number) => [0, h - volBarChartHeight - secondIndicatorHeight];
     const chartHeight = gridHeight - secondIndicatorHeight;
 
     const timeDisplayFormat = timeFormat(dateTimeFormat);
@@ -124,7 +130,7 @@ class StockChart extends React.Component<StockChartProps> {
           xExtents={xExtents}
           zoomAnchor={lastVisibleItemBasedZoomAnchor}
       >
-          <Chart id={2} height={barChartHeight} origin={barChartOrigin} yExtents={this.barChartExtents}>
+          <Chart id={2} height={volBarChartHeight} origin={barChartOrigin} yExtents={this.barChartExtents}>
               <BarSeries fillStyle={this.volumeColor} yAccessor={this.volumeSeries} />
           </Chart>
           <Chart id={3} height={chartHeight} yExtents={this.candleChartExtents}>
@@ -227,15 +233,4 @@ const chartStyle = {
 // export default withOHLCData()(withSize({ style: chartStyle })(withDeviceRatio()(StockChart)));
 // export default withOHLCData()(withDeviceRatio()(StockChart));
 export default withDeviceRatio()(StockChart);
-
-
-// export const MinutesStockChart = withOHLCData("MINUTES")(
-//     withSize({ style: chartStyle })(withDeviceRatio()(StockChart)),
-// );
-
-// export const SecondsStockChart = withOHLCData("SECONDS")(
-//     withSize({ style: chartStyle })(withDeviceRatio()(StockChart)),
-// );
-
-
 
