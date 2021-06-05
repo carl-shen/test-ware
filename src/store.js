@@ -1,27 +1,30 @@
 import { createStore, applyMiddleware, compose } from 'redux';
-import thunk from 'redux-thunk';
+// import thunk from 'redux-thunk';
 import thunkMIddleware from 'redux-thunk';
-import { createLogger } from 'redux-logger';
 import rootReducer from './_reducers';
 import { loadState, saveState } from './_helpers';
 
-import {composeWithDevTools} from 'redux-devtools-extension/developmentOnly';
+// import { createLogger } from 'redux-logger';
+// import {composeWithDevTools} from 'redux-devtools-extension/developmentOnly';
+// import process from 'process';
 
-const initialState = {};
+// const initialState = {};
 const persistedState = loadState();
 
-// const middleware = [thunkMIddleware];
-
-const loggerMiddleware = createLogger();
-const middleware = [thunkMIddleware, loggerMiddleware];
+let selectiveCompose = compose( applyMiddleware(thunkMIddleware) );  // default to production compose
+// console.log(process.env.REACT_APP_ENVIRONMENT);
+// if (process.env.REACT_APP_ENVIRONMENT === 'dev') {
+//     const loggerMiddleware = createLogger();
+//     const middleware = [thunkMIddleware, loggerMiddleware];
+//     selectiveCompose = composeWithDevTools(
+//         applyMiddleware(...middleware)
+//     )
+// }
 
 const store = createStore(
     rootReducer, 
     persistedState, 
-    composeWithDevTools(
-        applyMiddleware(...middleware)
-        // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-    )
+    selectiveCompose
 );
 
 store.subscribe(() => {

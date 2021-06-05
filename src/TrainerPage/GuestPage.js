@@ -23,7 +23,7 @@ function GuestPage() {
 
     useEffect(() => {
         if (app !== undefined) {
-            setChartHeight(windowHeight - app.ControlsHeight - app.FooterHeight - 100);
+            setChartHeight(windowHeight - app.ControlsHeight - app.FooterHeight - 90);
         }
     }, [app, windowWidth, windowHeight]);
 

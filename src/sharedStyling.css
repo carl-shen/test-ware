@@ -26,11 +26,21 @@
 @media only screen and (max-height: 1000px){
     .verticalUpper {
         position: relative;
+        margin: 1%;
     }
 }
 
-@media only screen and (max-width: 800px){
+@media only screen and (max-width: 1400px){
+    .widthWide {
+        max-width: 600px; 
+    }
     .description-tooltip {
-        max-width: 90%;
+        max-width: 500px;
+    }
+}
+
+@media only screen and (max-width: 700px){
+    .description-tooltip {
+        max-width: 80%;
     }
 }

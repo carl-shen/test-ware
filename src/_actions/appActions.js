@@ -7,11 +7,9 @@ export const appActions = {
 
 function updateComponentHeight(componentHeightName, height) {
     const payload = { componentHeightName: componentHeightName , height: height };
-    console.log(payload);
     return { type: appConstants.UPDATE_COMPONENT_HEIGHT, payload };
 }
 
 function setTrainingDataSet(payload) {
     return { type: appConstants.SET_TRAINING_DATA_SET, payload };
-
 }

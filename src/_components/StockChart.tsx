@@ -118,7 +118,7 @@ class StockChart extends React.Component<StockChartProps> {
 
     const gridHeight = height - margin.top - margin.bottom;
 
-    const secondIndicatorHeight = 150;
+    const secondIndicatorHeight = Math.min(160, 0.2*height);
     const secondIndicatorOrigin = (_: number, h: number) => [0, h - secondIndicatorHeight];
     
     let volBarChartHeight = gridHeight / 4;

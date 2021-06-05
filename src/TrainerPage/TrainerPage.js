@@ -26,7 +26,7 @@ function TrainerPage() {
     // adjust chart height when window resizes
     useEffect(() => {
         if (app !== undefined && app.ControlsHeight !== undefined && app.FooterHeight !== undefined) {
-            setChartHeight(windowHeight - app.ControlsHeight - app.FooterHeight - 100);
+            setChartHeight(windowHeight - app.ControlsHeight - app.FooterHeight - 90);
         }
     }, [app, windowWidth, windowHeight]);
 
@@ -112,7 +112,7 @@ function TrainerPage() {
             </div>
         );
     } else {
-        if (windowWidth < config.minWindowWidth || windowHeight < config.minWindowWidth) {
+        if (windowWidth < config.minWindowWidth || windowHeight < config.minWindowHeight) {
             return (
                 <div className="col-lg-8 offset-lg-3 verticalUpper">
                     <h3 className="text-white">Please try using a different device or adjust window size.</h3>

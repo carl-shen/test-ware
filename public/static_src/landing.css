@@ -1,4 +1,5 @@
 #jumbotron-div {
+    background-color: #181818;
     background-image: url("../img/jumbotron-bg-3.jpg");
     background-position: center;
     -webkit-background-size: cover;

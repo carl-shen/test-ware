@@ -13,7 +13,6 @@ function HomePage() {
     const [ challenges, setChallenges ] = useState();
 
     const selectChallengeGo = (challengeItem) => {
-        console.log(challengeItem.dataSetName);
         dispatch(appActions.setTrainingDataSet(challengeItem.dataSetName));
         history.push('/trainer');
     };
