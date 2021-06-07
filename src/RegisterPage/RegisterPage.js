@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { userActions } from '../_actions';
+import config from '../_configs/configs.json';
+import { userActions, appActions } from '../_actions';
 import { TopNavbar } from '../_components';
+import { history } from '../_helpers';
 
 function RegisterPage() {
     const dispatch = useDispatch();
@@ -35,6 +37,11 @@ function RegisterPage() {
             dispatch(userActions.register(user));
         }
     }
+
+    const goToGuestChallenge = () => {
+        dispatch(appActions.setTrainingDataSet(config.DEFAULT_GUEST_CHALLENGE));
+        history.push('/guest');
+    };
 
     return (
         <>
@@ -76,6 +83,7 @@ function RegisterPage() {
                             Register
                         </button>
                         <Link to="/login" className="btn btn-link">Cancel</Link>
+                        <Link onClick={goToGuestChallenge} className="btn btn-link">Try as Guest</Link>
                     </div>
                 </form>
             </div>

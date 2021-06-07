@@ -1,4 +1,3 @@
-
 import './trainer.css';
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -16,19 +15,31 @@ function GuestPage() {
 
     const windowWidth = useWindowDimensions().width;
     const windowHeight = useWindowDimensions().height;
-    const [ chartHeight, setChartHeight ] = useState(windowHeight * 0.7);
+    const [ chartHeight, setChartHeight ] = useState(windowHeight * 0.7);  // these default values will be re-calculated after components report their heights
+    const [ chartWidth, setChartWidth ] = useState(windowWidth - 100);
     const [ dataSetName, setDataSetName ] = useState("stock01");
     const [ loadToIndex, setLoadToIndex ] = useState(120);
     const [ data, setData ] = useState();
 
+    // adjust chart height when window resizes
     useEffect(() => {
-        if (app !== undefined) {
+        if (app !== undefined && app.ControlsHeight !== undefined && app.FooterHeight !== undefined) {
             setChartHeight(windowHeight - app.ControlsHeight - app.FooterHeight - 90);
         }
+        if (app !== undefined && app.ControlsWidth !== undefined) {
+            setChartWidth(app.ControlsWidth - 30);
+        }
+        // console.log(`Height: ${windowHeight}, Width: ${windowWidth}`);
     }, [app, windowWidth, windowHeight]);
 
     // when page is first loaded, dataSetName is first initialised and we initialise dummy stats and fetch asset historical data
     useEffect(() => {
+        let tempDataSetName = dataSetName;
+        // if app.trainingDataSet is specified correctly, use accordingly, otherwise default dataSetName will be in effect
+        if (app.trainingDataSet !== undefined) {
+            tempDataSetName = app.trainingDataSet;
+            setDataSetName(tempDataSetName);
+        }
         if (stats === undefined) {
             dispatch(statsActions.initStats(dataSetName, "2000-01-01", 10.0));  // initialise to dummy values for components to load
         }
@@ -59,7 +70,7 @@ function GuestPage() {
     // whenever stats gets changed (most likely by Stepper when user steps to next datapoint), update portfolio details etc. 
     useEffect(() => {
         // when stats.currIndex change, update price, portfolio details, and chart data
-        if (stats !== undefined && data !== undefined && loadToIndex != stats.currIndex) {
+        if (stats !== undefined && data !== undefined && loadToIndex != stats.currIndex && !challengeCompleted(stats, data)) {
             setLoadToIndex(stats.currIndex);
             const newTimestamp = dateToYMDStr(data[stats.currIndex]['date']);
             const newPrice = data[stats.currIndex]['close'];
@@ -81,50 +92,67 @@ function GuestPage() {
             };
             dispatch(statsActions.updateStats(tempStats));
         }
-
     }, [stats]);
-
-
     
-    if (windowWidth < config.minWindowWidth || windowHeight < config.minWindowWidth) {
+    if (windowWidth < config.MIN_WINDOW_WIDTH || windowHeight < config.MIN_WINDOW_HEIGHT) {
         return (
-            <div className="col-lg-8 offset-lg-3 verticalUpper">
-                <h3 className="text-white">Please try using a different device or adjust window size.</h3>
-                <p className="text-white">Unforturnately, Test-Ware trainer is optimised for screens wider than {config.minWindowWidth}px and taller than {config.minWindowHeight}px.</p>
-            </div>
+            <>
+                <TopNavbar />
+                <div className="col-lg-8 offset-lg-3 verticalUpper">
+                    <h3 className="text-white">Please try using portrait mode, adjusting window size, or using a different device.</h3>
+                    <p className="text-white">Unforturnately, Test-Ware trainer is optimised for screens with a size larger than {config.MIN_WINDOW_WIDTH}px by {config.MIN_WINDOW_HEIGHT}px.</p>
+                    <p className="text-white">Your current screen size: {windowWidth}px by {windowHeight}px.</p>
+                </div>
+            </>
         );
     } else {
-        if (challengeCompleted(stats, data)) {
-            const { duration, gain, CAGR } = calcPerformance(stats);
+        if (windowWidth * windowHeight < config.minWindowArea) {
             return (
-                <div className="col-lg-8 offset-lg-3 verticalUpper widthWide">
-                    <h2 className="text-white">Congratulations!</h2>
-                    <br />
-                    <h3 className="text-white">You've completed the challenge: {dataSetName}</h3>
-                    <br />
-                    <p className="text-white">During the <b>{duration}</b> year period, you've made a gain of <b>{gain}</b>.</p>
-                    <p className="text-white">Annualised, that is a CAGR of <b>{CAGR}</b>.</p>
-                </div>
+                <>
+                    <TopNavbar />
+                    <div className="col-lg-8 offset-lg-3 verticalUpper">
+                        <h3 className="text-white">Please try using portrait mode, adjusting window size, or using a different device.</h3>
+                        <p className="text-white">Unforturnately, Test-Ware trainer is optimised for screens with an area larger than {config.MIN_WINDOW_AREA}px^2.</p>
+                        <p className="text-white">Your current screen area: {windowWidth * windowHeight}px^2.</p>
+                    </div>
+                </>
             );
         } else {
-            if (data != undefined) {
+            if (challengeCompleted(stats, data)) {
+                const { duration, gain, CAGR } = calcPerformance(stats);
                 return (
-                    <div>
+                    <>
                         <TopNavbar />
-                        <div id="chart-div">
-                            <StockChart height={chartHeight} width={windowWidth - 100} data={data.slice(0, stats.currIndex+1)}/>
+                        <div className="col-lg-8 offset-lg-3 verticalUpper widthWide">
+                            <h2 className="text-white">Congratulations!</h2>
+                            <br />
+                            <h3 className="text-white">You've completed the challenge: {dataSetName}</h3>
+                            <br />
+                            <p className="text-white">During the <b>{duration}</b> year period, you've made a gain of <b>{gain}</b>.</p>
+                            <p className="text-white">Annualised, that is a CAGR of <b>{CAGR}</b>.</p>
                         </div>
-                        <h2 style={{color:'red', position: 'fixed', zIndex: 100, left: '120px', top: '0px'}}>Guest demo, your progress is not saved.</h2>
-                        <Controls />
-                        <Footer />
-                    </div>
+                    </>
                 );
             } else {
-                return (
-                    <div>
-                        <h3 className="text-white">Loading data for {dataSetName}..</h3>
-                    </div>
-                );
+                if (data != undefined) {
+                    return (
+                        <div>
+                            <TopNavbar />
+                            <div id="chart-div">
+                                <StockChart height={chartHeight} width={chartWidth} data={data.slice(0, stats.currIndex+1)}/>
+                            </div>
+                            <h2 id="guest-demo-h">Guest demo, your progress is not saved.</h2>
+                            <Controls />
+                            <Footer />
+                        </div>
+                    );
+                } else {
+                    return (
+                        <div>
+                            <h3 className="text-white">Loading data for {dataSetName}..</h3>
+                        </div>
+                    );
+                }
             }
         }
     }

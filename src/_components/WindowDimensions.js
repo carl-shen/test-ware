@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import config from '../_configs/configs.json';
 
 function getWindowDimensions() {
     const { innerWidth: width, innerHeight: height } = window;
@@ -10,14 +11,24 @@ function useWindowDimensions() {
 
     useEffect(() => {
         function handleResize() {
-            setWindowDimensions(getWindowDimensions());
+            const dimensions = getWindowDimensions();
+            // console.log(dimensions);
+            setWindowDimensions(dimensions);
         }
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
     }, []);
 
     return windowDimensions;
-
 }
 
-export { useWindowDimensions };
+function usePortraitMode() {
+    const dimensions = getWindowDimensions();
+    if (dimensions.width < dimensions.height || dimensions.width < config.LANDSCAPE_MODE_MIN_WIDTH) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+export { getWindowDimensions, useWindowDimensions, usePortraitMode };

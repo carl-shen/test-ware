@@ -1,13 +1,13 @@
 import { appConstants } from '../_constants';
 
 export const appActions = {
-    updateComponentHeight,
+    updateComponentSize,
     setTrainingDataSet
 };
 
-function updateComponentHeight(componentHeightName, height) {
-    const payload = { componentHeightName: componentHeightName , height: height };
-    return { type: appConstants.UPDATE_COMPONENT_HEIGHT, payload };
+function updateComponentSize(componentSizeName, size) {
+    const payload = { componentSizeName: componentSizeName , size: size };
+    return { type: appConstants.UPDATE_COMPONENT_SIZE, payload };
 }
 
 function setTrainingDataSet(payload) {

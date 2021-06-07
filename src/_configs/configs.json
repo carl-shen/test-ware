@@ -2,6 +2,9 @@
     "apiUrl": "https://test-ware.com",
     "POST_STATS_EVERY_N_STEPS": 2,
     "ALERT_TIMEOUT": 5000,
-    "minWindowWidth": 800,
-    "minWindowHeight": 600
+    "DEFAULT_GUEST_CHALLENGE": "stock01",
+    "MIN_WINDOW_WIDTH": 400,
+    "MIN_WINDOW_HEIGHT": 400,
+    "MIN_WINDOW_AREA": 206000,
+    "LANDSCAPE_MODE_MIN_WIDTH": 750
 }
