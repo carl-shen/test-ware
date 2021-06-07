@@ -15,6 +15,8 @@ The Home page and Trainer pages are only accessible by users who have logged in.
 
 The Guest page is a spin-off of Trainer page without the user and data interactions with backend. This gives visitors a simple trial before registering for the website. The Guest trainer does not save any progress so as to encourage users to register an account.
 
+![](public/img/sample.jpg)
+
 # Backend Overview
 Due to current hosting limitations (shared hosting), a simple PHP REST API has been written to handle user accounts and app data storage. There are 4 main functionalities currently implemented: user registration, user authentication, user data storage, and user data access. In each of the functionalities, the script will first check the information received from the request and then run SQL queries to work with the database. The PHP source code is not displayed in the repository for security reasons.
 Future implementations will consider replacing the PHP backend with a Node.js backend for better flexibility (e.g. using micro-services to scale better) and performance.
