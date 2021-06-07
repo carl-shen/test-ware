@@ -21,15 +21,135 @@ Future implementations will consider replacing the PHP backend with a Node.js ba
 
 # Folder Structure
 For easy access, pages are placed in their folders with a “Page” postfix whereas non-feature folders are prefixed with an underscore.
+```
+src
+│  App.css
+│  App.js
+│  App.test.js
+│  index.css
+│  index.js
+│  logo.svg
+│  react-app-env.d.ts
+│  reportWebVitals.js
+│  setupTests.js
+│  sharedStyling.css
+│  store.js
+│
+├─HomePage
+│      HomePage.js
+│      index.js
+│
+├─LoginPage
+│      index.js
+│      LoginPage.js
+│
+├─RegisterPage
+│      index.js
+│      RegisterPage.js
+│
+├─TrainerPage
+│      GuestPage.js
+│      index.js
+│      trainer.css
+│      TrainerPage.js
+│
+├─_actions
+│      alertActions.js
+│      appActions.js
+│      index.js
+│      statsActions.js
+│      userActions.js
+│
+├─_components
+│      Controls.js
+│      Footer.js
+│      index.js
+│      PrivateRoute.js
+│      Stepper.js
+│      StockChart.tsx
+│      TopNavbar.js
+│      Trader.js
+│      WindowDimensions.js
+│
+├─_configs
+│      configs.json
+│
+├─_constants
+│      alertConstants.js
+│      appConstants.js
+│      index.js
+│      statsConstants.js
+│      userConstants.js
+│
+├─_data
+│      data.js
+│      index.ts
+│      iOHLCData.ts
+│      withOHLCData.tsx
+│      withUpdatingData.tsx
+│
+├─_helpers
+│      assistFuncs.js
+│      auth-header.js
+│      fake-backend.js
+│      history.js
+│      index.js
+│      localStorage.js
+│      macd.ts
+│
+├─_reducers
+│      alertReducer.js
+│      appReducer.js
+│      authenticationReducer.js
+│      index.js
+│      registrationReducer.js
+│      statsReducer.js
+│      userReducer.js
+│
+└─_services
+        index.js
+        statsService.js
+        userService.js
 
+public
+│  favicon.ico
+│  index.html
+│  landing.html
+│  logo192.png
+│  logo512.png
+│  manifest.json
+│  robots.txt
+│
+├─data
+│      challenges.json
+│      forex01.tsv
+│      stock01.tsv
+│      stock02.tsv
+│      stock03.tsv
+│      stock04.tsv
+│
+├─img
+│      bird-swarm-2-faded.jpg
+│      jumbotron-bg-3.jpg
+│      simplified-market-model.png
+│
+└─static_src
+        footer.js
+        landing.css
+```
 
 # Notable Technical Details
 ## Redux States
 Redux is used to control states of the React app. The states can be categorised logically into 4 groups: user details, user data, alerts, and app details. 
+
 The user details states include actions to communicate with server for registration and authentication. Once authenticated, the user JWT will be stored in localStorage as a way to check the user’s login status.
+
 The user data states handle user progress of their simulated trading using the trainer. These data, referred to as “stats”, include details such as a timestamp, portfolio value, details of any position held, recent trades made, and starting value of their portfolio. These “stats” are updated and stored in localStorage for every action the user makes in the trainer app. The “stats” are also sent to the server for storage regularly and asynchronously.
+
 Both user details and user data state actions call their corresponding services implemented in the _services folder to communicate with the server. This allows for a clean separation between state actions and the service APIs.
+
 The alerts state is used to display any login or app alerts. A toaster notification can be displayed or hidden by simply setting or clearing the alert state.
+
 Lastly, the app details states are used to store information such as component sizes and which challenge the user has selected.
 
 ## Responsive Layout Design
