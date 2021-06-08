@@ -96,7 +96,6 @@ src
 ├─_helpers
 │      assistFuncs.js
 │      auth-header.js
-│      fake-backend.js
 │      history.js
 │      index.js
 │      localStorage.js
@@ -125,14 +124,6 @@ public
 │  manifest.json
 │  robots.txt
 │
-├─data
-│      challenges.json
-│      forex01.tsv
-│      stock01.tsv
-│      stock02.tsv
-│      stock03.tsv
-│      stock04.tsv
-│
 ├─img
 │      bird-swarm-2-faded.jpg
 │      jumbotron-bg-3.jpg
@@ -142,7 +133,6 @@ public
         footer.js
         landing.css
 ```
-
 # Notable Technical Details
 ## Redux States
 Redux is used to control states of the React app. The states can be categorised logically into 4 groups: user details, user data, alerts, and app details. 
