@@ -1,4 +1,5 @@
 Test-Ware is a web app created to provide trading enthusiasts with a platform to test and improve their trading skills.
+[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](http://www.gnu.org/licenses/gpl-3.0)
 
 # Frontend Overview
 The frontend of the website consists of a static landing page (landing.html) and a web app created using ReactJS.
