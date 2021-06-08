@@ -15,6 +15,7 @@ The Home page and Trainer pages are only accessible by users who have logged in.
 
 The Guest page is a spin-off of Trainer page without the user and data interactions with backend. This gives visitors a simple trial before registering for the website. The Guest trainer does not save any progress so as to encourage users to register an account.
 
+### Screenshot of Trainer Page
 ![](public/img/sample.jpg)
 
 # Backend Overview
