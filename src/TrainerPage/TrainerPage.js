@@ -43,9 +43,9 @@ function TrainerPage() {
             tempDataSetName = app.trainingDataSet;
             setDataSetName(tempDataSetName);
         }
-        if (stats === undefined) {
-            dispatch(statsActions.initStats(tempDataSetName, "2000-01-01", 10.0));  // initialise to dummy values for components to load
-        }
+        // if (stats === undefined) {
+            dispatch(statsActions.initStats(tempDataSetName, 500000));  // TODO for user to be able to specify starting portfolio value
+        // }
         fetchData(tempDataSetName).then((response) => { setData(response); });
     }, [dataSetName]); 
 
@@ -54,10 +54,12 @@ function TrainerPage() {
         if (stats !== undefined && data !== undefined) {
             const newTimestamp = dateToYMDStr(data[loadToIndex]['date']);
             const newPrice = data[loadToIndex]['close'];
+            const dataLength = data.length;
             const tempStats = {
                 ...stats,
-                timestamp: newTimestamp,
-                price: newPrice
+                ts: newTimestamp,
+                price: newPrice,
+                endIndex: dataLength
             }
             dispatch(statsActions.updateStats(tempStats));  // update stats to correct initial timestamp and price values
             dispatch(statsActions.fetchStats(user.id, dataSetName));  // check if existing stats available on server and override local stats if so    
@@ -82,20 +84,24 @@ function TrainerPage() {
             const newTimestamp = dateToYMDStr(data[stats.currIndex]['date']);
             const newPrice = data[stats.currIndex]['close'];
             // Total value and Profit/Loss stats need to be updated every bar change
-            const newTotalPortfolioValue = stats.fundsAvailable + stats.positionHeld * newPrice;
-            const newPositionPL = (newPrice - stats.positionCost) * stats.positionHeld;
-            let newPositionPLPercent = 0;  // dafault value to handle div by 0 case
-            if (stats.positionHeld != 0) {  // above code should not be placed inside this IF, to handle the case where all asset is sold and positionHeld just becomes 0
-                newPositionPLPercent = newPrice / stats.positionCost - 1;
-            }
+            const newTotalPortfolioValue = stats.fundsAvail + stats.posHeld * newPrice;
+            const newPositionPL = (newPrice - stats.posCost) * stats.posHeld;
+            // let newPositionPLPercent = 0;  // dafault value to handle div by 0 case
+            // if (stats.posHeld != 0) {  // above code should not be placed inside this IF, to handle the case where all asset is sold and positionHeld just becomes 0
+            //     newPositionPLPercent = newPrice / stats.posCost - 1;
+            // }
+            const newPositionPLPercent = stats.posHeld !== 0 ? newPrice / stats.posCost - 1 : 0.0;
+            const newGain = stats.totPortValue !== stats.stPortValue ? (stats.totPortValue / stats.stPortValue) - 1 : 0.0;
 
             const tempStats = {
                 ...stats,
-                timestamp: newTimestamp,
+                ts: newTimestamp,
                 price: roundToDefaultDecimal(newPrice),
-                totalPortfolioValue: roundToDefaultDecimal(newTotalPortfolioValue),
-                positionPL: roundToDefaultDecimal(newPositionPL),
-                positionPLPercent : roundToDefaultDecimal(newPositionPLPercent)
+                totPortValue: roundToDefaultDecimal(newTotalPortfolioValue),
+                posPL: roundToDefaultDecimal(newPositionPL),
+                posPLPerc: roundToDefaultDecimal(newPositionPLPercent),
+                progress: roundToDefaultDecimal((stats.currIndex - stats.stIndex)/(stats.endIndex - stats.stIndex)),
+                gain: roundToDefaultDecimal(newGain)
             };
             dispatch(statsActions.updateStats(tempStats));
         }

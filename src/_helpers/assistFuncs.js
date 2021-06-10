@@ -1,6 +1,10 @@
 import { parseData } from "../_data/withOHLCData";
 import { tsvParse } from "d3-dsv";
 
+export const rtnStatsName = function (userid, ticker) {
+    return `${userid}-${ticker}`;
+}
+
 export const fetchData = function (dataSetName) {
     return fetch(
         `/data/${dataSetName}.tsv`,
@@ -34,10 +38,10 @@ export const challengeCompleted = function (stats, data) {
 
 export const calcPerformance = function (stats) {
     if (stats !== undefined) {
-        const durationDays = stats.currIndex - stats.startingIndex;
+        const durationDays = stats.currIndex - stats.stIndex;
         const duration = (durationDays/365.242);  // calculate a rough estimate of years
-        const gain = stats.startingPortfolioValue!==0 ? (100 * (stats.totalPortfolioValue / stats.startingPortfolioValue - 1)).toFixed(2) + "%" : "invalid";
-        const CAGR = (stats.startingPortfolioValue!==0 && duration>0) ? (100 * (Math.pow(stats.totalPortfolioValue / stats.startingPortfolioValue, 1 / duration) - 1)).toFixed(2) + "%" : "invalid";
+        const gain = stats.stPortValue!==0 ? (100 * (stats.totPortValue / stats.stPortValue - 1)).toFixed(2) + "%" : "invalid";
+        const CAGR = (stats.stPortValue!==0 && duration>0) ? (100 * (Math.pow(stats.totPortValue / stats.stPortValue, 1 / duration) - 1)).toFixed(2) + "%" : "invalid";
         return {duration: duration.toFixed(2), gain: gain, CAGR: CAGR};
     } else {
         return {duration: "invalid", gain: "invalid", CAGR: "invalid"};

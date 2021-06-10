@@ -2,6 +2,7 @@ import { statsConstants } from '../_constants';
 import { statsService } from '../_services';
 import { alertActions } from './';
 import { userActions } from './userActions';
+import { rtnStatsName } from '../_helpers';
 import config from '../_configs/configs.json';
 
 export const statsActions = {
@@ -10,11 +11,6 @@ export const statsActions = {
     initStats,
     updateStats
 };
-
-
-function rtnStatsName(userid, ticker) {
-    return `${userid}-${ticker}`;
-}
 
 
 // GET existing stats from server, if non-exist the server will return the USE_LOCAL constant to signal client to use current local stats
@@ -96,3 +92,4 @@ function updateStats(data) {
         payload: data
     };
 }
+

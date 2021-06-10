@@ -1,6 +1,6 @@
 import { authHeader } from '../_helpers';
+import { statsDummy } from '../_constants';
 import config from '../_configs/configs.json';
-
 
 export const statsService = {
     fetchStats,
@@ -22,28 +22,15 @@ function fetchStats(statsName) {
         });
 }
 
-function initStats(ticker, timestamp, price) {
-    return ({
-            ticker: ticker,
-            currIndex: 120,
-            timestamp: timestamp,
-            price: price,
-            totalPortfolioValue: 500000,
-            fundsAvailable: 500000,
-            positionHeld: 0.0,
-            positionCost: 0.0,
-            positionPL: 0.0,
-            positionPLPercent: 0.0,
-            statusText: 'Trainer initialised.',
-            recentTrade1: 'most recent trade 1',
-            recentTrade2: 'most recent trade 2',
-            recentTrade3: 'most recent trade 3',
-            recentTrade4: 'most recent trade 4',
-            recentTrade5: 'most recent trade 5',
-            startingIndex: 120,
-            startingPortfolioValue: 500000 
-            // trades: []
-    });
+// Initialise stats with dummy values. Note the variable names are kept short to save database and web traffic load when dealing with JSON encoded strings
+function initStats(ticker, startingPortfolioValue) {
+    return {
+        ...statsDummy,
+        ticker: ticker,
+        totPortValue: startingPortfolioValue,
+        fundsAvail: startingPortfolioValue,
+        stPortValue: startingPortfolioValue
+    };
 }
 
 function postStats(statsName, stats)  {
@@ -60,7 +47,7 @@ function postStats(statsName, stats)  {
 
 function handleResponse(response) {
     return response.text().then(text => {
-        console.log(text);
+        // console.log(text);
 
         const data = text && JSON.parse(text);
         if (!response.ok) {

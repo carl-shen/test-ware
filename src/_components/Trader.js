@@ -21,24 +21,24 @@ function Trader() {
     };
 
     const calcTradeCosts = (isBuy) => {
-        let positionCost = stats.positionCost;
-        let positionHeld = stats.positionHeld;
-        let fundsAvailable = stats.fundsAvailable;
+        let positionCost = stats.posCost;
+        let positionHeld = stats.posHeld;
+        let fundsAvailable = stats.fundsAvail;
         let statusText = "";
         let tradeRecord = "";
-        let recentTrade5 = stats.recentTrade5;
-        let recentTrade4 = stats.recentTrade4;
-        let recentTrade3 = stats.recentTrade3;
-        let recentTrade2 = stats.recentTrade2;
-        let recentTrade1 = stats.recentTrade1;
+        let recentTrade5 = stats.rctTrade5;
+        let recentTrade4 = stats.rctTrade4;
+        let recentTrade3 = stats.rctTrade3;
+        let recentTrade2 = stats.rctTrade2;
+        let recentTrade1 = stats.rctTrade1;
         if(isBuy){  // Buy trade
             const costOfTrade = numshares * stats.price + calcCommission();
-            if(costOfTrade <= stats.fundsAvailable){  // if enough funds available to buy asset
+            if(costOfTrade <= fundsAvailable){  // if enough funds available to buy asset
                 positionCost = (positionCost * positionHeld + costOfTrade) / (positionHeld + numshares);
                 positionHeld = positionHeld + numshares;
-                fundsAvailable = stats.fundsAvailable - costOfTrade;
+                fundsAvailable = fundsAvailable - costOfTrade;
                 statusText = "Buy successful.";
-                tradeRecord = `${stats.timestamp} Bought ${numshares} shares at ${stats.price.toFixed(2)}, total cost ${costOfTrade.toFixed(1)}`;
+                tradeRecord = `${stats.ts} Bought ${numshares} shares at ${stats.price.toFixed(2)}, total cost ${costOfTrade.toFixed(1)}`;
             }else{
                 statusText = "Insufficient funds.";
                 tradeRecord = "NOTRADE";
@@ -55,7 +55,7 @@ function Trader() {
                 }
                 fundsAvailable = fundsAvailable + proceedsFromTrade;
                 statusText = "Sell successful.";
-                tradeRecord = `${stats.timestamp} Sold ${numshares} shares at ${stats.price.toFixed(2)}, total proceeds ${proceedsFromTrade.toFixed(1)}`;
+                tradeRecord = `${stats.ts} Sold ${numshares} shares at ${stats.price.toFixed(2)}, total proceeds ${proceedsFromTrade.toFixed(1)}`;
             }else{
                 statusText = "Not enough asset, shorting not allowed.";
                 tradeRecord = "NOTRADE";
@@ -63,25 +63,25 @@ function Trader() {
         }
 
         if(tradeRecord !== "NOTRADE"){
-            recentTrade5 = stats.recentTrade4;
-            recentTrade4 = stats.recentTrade3;
-            recentTrade3 = stats.recentTrade2;
-            recentTrade2 = stats.recentTrade1;
+            recentTrade5 = stats.rctTrade4;
+            recentTrade4 = stats.rctTrade3;
+            recentTrade3 = stats.rctTrade2;
+            recentTrade2 = stats.rctTrade1;
             recentTrade1 = tradeRecord;
         }
 
         // update stats
         const tempStats = {
             ...stats,
-            positionCost: roundToDefaultDecimal(positionCost),
-            positionHeld: positionHeld,
-            fundsAvailable: roundToDefaultDecimal(fundsAvailable),
-            statusText: statusText,
-            recentTrade1: recentTrade1,
-            recentTrade2: recentTrade2,
-            recentTrade3: recentTrade3,
-            recentTrade4: recentTrade4,
-            recentTrade5: recentTrade5
+            posCost: roundToDefaultDecimal(positionCost),
+            posHeld: positionHeld,
+            fundsAvail: roundToDefaultDecimal(fundsAvailable),
+            status: statusText,
+            rctTrade1: recentTrade1,
+            rctTrade2: recentTrade2,
+            rctTrade3: recentTrade3,
+            rctTrade4: recentTrade4,
+            rctTrade5: recentTrade5
         };
         dispatch(statsActions.updateStats(tempStats));
         dispatch(statsActions.postStats(user.id, stats.ticker, stats));

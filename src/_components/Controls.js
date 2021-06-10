@@ -37,12 +37,12 @@ function Controls() {
                 <div className="hint-div">
                     <small>This area displays action status and recent trades:</small>
                 </div>
-                <div className="labels-div"><p className="labels">{stats.statusText}</p></div>
-                <div className="labels-div"><p className="labels">{stats.recentTrade1}</p></div>
-                <div className="labels-div"><p className="labels">{stats.recentTrade2}</p></div>
-                <div className="labels-div"><p className="labels">{stats.recentTrade3}</p></div>
-                <div className="labels-div"><p className="labels">{stats.recentTrade4}</p></div>
-                <div className="labels-div"><p className="labels">{stats.recentTrade5}</p></div>
+                <div className="labels-div"><p className="labels">{stats.status}</p></div>
+                <div className="labels-div"><p className="labels">{stats.rctTrade1}</p></div>
+                <div className="labels-div"><p className="labels">{stats.rctTrade2}</p></div>
+                <div className="labels-div"><p className="labels">{stats.rctTrade3}</p></div>
+                <div className="labels-div"><p className="labels">{stats.rctTrade4}</p></div>
+                <div className="labels-div"><p className="labels">{stats.rctTrade5}</p></div>
             </div>
         </div>;
     const trades_info_div_bottom = 
@@ -51,9 +51,9 @@ function Controls() {
                 <div className="hint-div">
                     <small>This area displays action status and recent trades:</small>
                 </div>
-                <div className="labels-div"><p className="labels">{stats.statusText}</p></div>
-                <div className="labels-div"><p className="labels">{stats.recentTrade1}</p></div>
-                <div className="labels-div"><p className="labels">{stats.recentTrade2}</p></div>
+                <div className="labels-div"><p className="labels">{stats.status}</p></div>
+                <div className="labels-div"><p className="labels">{stats.rctTrade1}</p></div>
+                <div className="labels-div"><p className="labels">{stats.rctTrade2}</p></div>
             </div>
         </div>;
 
@@ -67,12 +67,12 @@ function Controls() {
                             <small>Details of your simulated portfolio:</small>
                         </div>
                         <div id="controls-portfolio-details">
-                            <div className="labels-div"><p className="labels labels-float">Total Portfolio Value: </p><span className="labels labels-float">{stats.totalPortfolioValue.toFixed(1)}</span></div>
-                            <div className="labels-div"><p className="labels labels-float">Funds Available: </p><span className="labels labels-float">{stats.fundsAvailable.toFixed(1)}</span></div>
-                            <div className="labels-div"><p className="labels labels-float">Position Held: </p><span className="labels labels-float">{stats.positionHeld}</span></div>
-                            <div className="labels-div"><p className="labels labels-float">Position Cost Base: </p><span className="labels labels-float">{stats.positionCost.toFixed(2)}</span></div>
-                            <div className="labels-div"><p className="labels labels-float">Position Profit/Loss: </p><span className="labels labels-float">{stats.positionPL.toFixed(1)}</span></div>
-                            <div className="labels-div"><p className="labels labels-float">Position P/L Percentage: </p><span className="labels labels-float">{stats.positionPLPercent.toFixed(2) + "%"}</span></div>
+                            <div className="labels-div"><p className="labels labels-float">Total Portfolio Value: </p><span className="labels labels-float">{stats.totPortValue.toFixed(1)}</span></div>
+                            <div className="labels-div"><p className="labels labels-float">Funds Available: </p><span className="labels labels-float">{stats.fundsAvail.toFixed(1)}</span></div>
+                            <div className="labels-div"><p className="labels labels-float">Position Held: </p><span className="labels labels-float">{stats.posHeld}</span></div>
+                            <div className="labels-div"><p className="labels labels-float">Position Cost Base: </p><span className="labels labels-float">{stats.posCost.toFixed(2)}</span></div>
+                            <div className="labels-div"><p className="labels labels-float">Position Profit/Loss: </p><span className="labels labels-float">{stats.posPL.toFixed(1)}</span></div>
+                            <div className="labels-div"><p className="labels labels-float">Position P/L Percentage: </p><span className="labels labels-float">{stats.posPLPerc.toFixed(2) + "%"}</span></div>
                             <br style={{clear: "left"}} />
                         </div>
                     </div>
@@ -81,7 +81,7 @@ function Controls() {
                             <div className="hint-div">
                                 <small>The time in history and the closing price:</small>
                             </div>
-                            <div><p className="labels" id="output-timestamp">{stats.timestamp}</p></div>
+                            <div><p className="labels" id="output-timestamp">{stats.ts}</p></div>
                             <div><p className="labels" id="output-price">{stats.price.toFixed(2)}</p></div>
                         </div>
                         <div id="controls-right-bottom-middle">
