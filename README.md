@@ -13,7 +13,11 @@ The ReactJS app, referred to as the “trainer” app, consists of several pages
 
 The Login and Register pages each consists of a form that submits user inputs to the server for authentication and registration, respectively. Once the user submits a registration form, the PHP backend of the server will add the record into an SQL database. During the authentication process, the server backend will check the login details against those stored in the database and generate a JSON Web Token (JWT) for the frontend app to use during communications that follows.
 
-The Home page and Trainer pages are only accessible by users who have logged in. This is controlled by a PrivateRoute component that checks login status. Once logged in, the Home page fetches a list of challenges from the server and displays this list for user to choose from. Clicking on a challenge item will redirect the user to the Trainer page where the user will be able to buy, sell, and step through the historical data as if they are experiencing it in the market.
+The Home page and Trainer pages are only accessible by users who have logged in. This is controlled by a PrivateRoute component that checks login status. 
+
+Once logged in, the Home page fetches a list of challenges from the server and displays this list for user to choose from. The page will also query the server’s database and display a progress bar for each challenge item to show any progress the user has made. Clicking on a challenge item will redirect the user to the Trainer page.
+
+The Trainer page is where the user steps through the historical data and places simulated buy or sell trades as if they are experiencing it in the market. The page displays a StockChart component in the top section of the page and a Controls component in the bottom section. The Constrols component consists of an area that displays recent trade records, an area that shows all portfolio information, the timestamp and price at that point in time, a Trader component that allows the user to place trades, and a Stepper component that moves the time forward in various steps.
 
 The Guest page is a spin-off of Trainer page without the user and data interactions with backend. This gives visitors a simple trial before registering for the website. The Guest trainer does not save any progress so as to encourage users to register an account.
 
@@ -62,6 +66,7 @@ src
 │      alertActions.js
 │      appActions.js
 │      index.js
+│      progressActions.js
 │      statsActions.js
 │      userActions.js
 │
@@ -83,7 +88,9 @@ src
 │      alertConstants.js
 │      appConstants.js
 │      index.js
+│      progressConstants.js
 │      statsConstants.js
+│      statsDummy.js
 │      userConstants.js
 │
 ├─_data
@@ -106,12 +113,14 @@ src
 │      appReducer.js
 │      authenticationReducer.js
 │      index.js
+│      progressReducer.js
 │      registrationReducer.js
 │      statsReducer.js
 │      userReducer.js
 │
 └─_services
         index.js
+        progressService.js
         statsService.js
         userService.js
 
