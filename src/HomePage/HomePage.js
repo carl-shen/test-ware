@@ -63,7 +63,7 @@ function HomePage() {
                         </a>
                         <ReactTooltip key={index} className="description-tooltip" id={item.dataSetName} effect='solid' backgroundColor='#353535FF'>
                             <div>{item.description}</div>
-                            <div><b>Your Progress: {`${progress}%`} Portfolio Performance: {`${gain}%`}</b></div>
+                            <div><b>Your Progress: {`${progress.toFixed(2)}%`} Portfolio Performance: {`${gain.toFixed(2)}%`}</b></div>
                         </ReactTooltip>
                     </>
     
