@@ -76,8 +76,8 @@ function GuestPage() {
             const newTimestamp = dateToYMDStr(data[stats.currIndex]['date']);
             const newPrice = data[stats.currIndex]['close'];
             // Total value and Profit/Loss stats need to be updated every bar change
-            const newTotalPortfolioValue = stats.fundsAvailable + stats.positionHeld * newPrice;
-            const newPositionPL = (newPrice - stats.positionCost) * stats.positionHeld;
+            const newTotalPortfolioValue = stats.fundsAvail + stats.posHeld * newPrice;
+            const newPositionPL = (newPrice - stats.posCost) * stats.posHeld;
             const newPositionPLPercent = stats.posHeld !== 0 ? newPrice / stats.posCost - 1 : 0.0;
             const newGain = stats.totPortValue !== stats.stPortValue ? (stats.totPortValue / stats.stPortValue) - 1 : 0.0;
 

@@ -34,9 +34,11 @@ function Controls() {
     const trades_info_div_left = 
         <div id="controls-left">
             <div id="controls-trades-info-inner">
-                <div className="hint-div">
-                    <small>This area displays action status and recent trades:</small>
-                </div>
+                {!usePortraitMode() ? 
+                    <div className="hint-div">
+                        <small>This area displays action status and recent trades:</small>
+                    </div>
+                : <></>}
                 <div className="labels-div"><p className="labels">{stats.status}</p></div>
                 <div className="labels-div"><p className="labels">{stats.rctTrade1}</p></div>
                 <div className="labels-div"><p className="labels">{stats.rctTrade2}</p></div>
@@ -48,9 +50,11 @@ function Controls() {
     const trades_info_div_bottom = 
         <div id="controls-bottom">
             <div id="controls-trades-info-inner">
-                <div className="hint-div">
-                    <small>This area displays action status and recent trades:</small>
-                </div>
+                {!usePortraitMode() ? 
+                    <div className="hint-div">
+                        <small>This area displays action status and recent trades:</small>
+                    </div>
+                : <></>}
                 <div className="labels-div"><p className="labels">{stats.status}</p></div>
                 <div className="labels-div"><p className="labels">{stats.rctTrade1}</p></div>
                 <div className="labels-div"><p className="labels">{stats.rctTrade2}</p></div>
@@ -63,9 +67,11 @@ function Controls() {
                 { !usePortraitMode() ? trades_info_div_left : <></> }
                 <div id="controls-right">
                     <div id="controls-right-top">
-                        <div className="hint-div">
-                            <small>Details of your simulated portfolio:</small>
-                        </div>
+                        {!usePortraitMode() ? 
+                            <div className="hint-div">
+                                <small>Details of your simulated portfolio:</small>
+                            </div> 
+                        : <></>}
                         <div id="controls-portfolio-details">
                             <div className="labels-div"><p className="labels labels-float">Total Portfolio Value: </p><span className="labels labels-float">{stats.totPortValue.toFixed(1)}</span></div>
                             <div className="labels-div"><p className="labels labels-float">Funds Available: </p><span className="labels labels-float">{stats.fundsAvail.toFixed(1)}</span></div>
@@ -78,24 +84,30 @@ function Controls() {
                     </div>
                     <div id="controls-right-bottom">
                         <div id="controls-right-bottom-left">
-                            <div className="hint-div">
-                                <small>The time in history and the closing price:</small>
-                            </div>
+                            {!usePortraitMode() ? 
+                                <div className="hint-div">
+                                    <small>The time in history and the closing price:</small>
+                                </div>
+                            : <></>}
                             <div><p className="labels" id="output-timestamp">{stats.ts}</p></div>
                             <div><p className="labels" id="output-price">{stats.price.toFixed(2)}</p></div>
                         </div>
                         <div id="controls-right-bottom-middle">
-                            <div className="hint-div">
-                                <small >Trade at the closing price using these controls:</small>
-                            </div>
+                            {!usePortraitMode() ? 
+                                <div className="hint-div">
+                                    <small >Trade at the closing price using these controls:</small>
+                                </div>
+                            : <></>}
                             <div id="controls-trade-div">
                                 <Trader />
                             </div>
                         </div>
                         <div id="controls-right-bottom-right">
-                            <div className="hint-div">
-                                <small>Use these buttons to move to the next day(s):</small>
-                            </div>
+                            {!usePortraitMode() ? 
+                                <div className="hint-div">
+                                    <small>Use these buttons to move to the next day(s):</small>
+                                </div>
+                            : <></>}
                             <div>
                                 <Stepper />
                             </div>

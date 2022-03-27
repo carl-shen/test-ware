@@ -84,7 +84,10 @@ function Trader() {
             rctTrade5: recentTrade5
         };
         dispatch(statsActions.updateStats(tempStats));
-        dispatch(statsActions.postStats(user.id, stats.ticker, stats));
+        if(user != undefined){  // only post stats if user is logged, as opposed to in guest mode where user is not defined
+            dispatch(statsActions.postStats(user.id, stats.ticker, stats));
+        }
+        
 
         return tradeRecord;
     };
