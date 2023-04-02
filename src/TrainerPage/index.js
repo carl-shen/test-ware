@@ -1,2 +1,2 @@
-export * from './TrainerPage';
-export * from './GuestPage';
+export * from "./TrainerPage";
+export * from "./GuestPage";

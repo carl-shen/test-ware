@@ -1,8 +1,8 @@
-import { createStore, applyMiddleware, compose } from 'redux';
+import { createStore, applyMiddleware, compose } from "redux";
 // import thunk from 'redux-thunk';
-import thunkMIddleware from 'redux-thunk';
-import rootReducer from './_reducers';
-import { loadState, saveState } from './_helpers';
+import thunkMIddleware from "redux-thunk";
+import rootReducer from "./_reducers";
+import { loadState, saveState } from "./_helpers";
 
 // import devtools
 // import { createLogger } from 'redux-logger';
@@ -11,7 +11,7 @@ import { loadState, saveState } from './_helpers';
 // const initialState = {};
 const persistedState = loadState();
 
-let selectiveCompose = compose( applyMiddleware(thunkMIddleware) );  // default to production compose
+let selectiveCompose = compose(applyMiddleware(thunkMIddleware)); // default to production compose
 
 // // Apply Redux DevTools
 // const loggerMiddleware = createLogger();
@@ -20,15 +20,10 @@ let selectiveCompose = compose( applyMiddleware(thunkMIddleware) );  // default 
 //     applyMiddleware(...middleware)
 // );
 
-
-const store = createStore(
-    rootReducer, 
-    persistedState, 
-    selectiveCompose
-);
+const store = createStore(rootReducer, persistedState, selectiveCompose);
 
 store.subscribe(() => {
-    saveState(store.getState());
-})
+  saveState(store.getState());
+});
 
 export default store;

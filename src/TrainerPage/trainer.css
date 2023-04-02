@@ -1,75 +1,77 @@
 body {
-    background-color: #161616;
+  background-color: #161616;
 
-    /* background: rgb(2,0,36);
+  /* background: rgb(2,0,36);
     background: linear-gradient(25deg, rgba(2,0,36,1) 0%, rgba(0,41,50,1) 100%); */
 
-    /* background: radial-gradient(ellipse at 50% 50%, #ffffff 0%, #bababa 100%); */
+  /* background: radial-gradient(ellipse at 50% 50%, #ffffff 0%, #bababa 100%); */
 
+  /* background: url('https://st4.depositphotos.com/2605379/25282/i/450/depositphotos_252829444-stock-photo-trading-and-finance-background.jpg') no-repeat center center; */
 
-    /* background: url('https://st4.depositphotos.com/2605379/25282/i/450/depositphotos_252829444-stock-photo-trading-and-finance-background.jpg') no-repeat center center; */
-
-    background-repeat: no-repeat;
-    background-attachment: fixed;  /* need this to use CSS3 gradient correctly */
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* need this to use CSS3 gradient correctly */
 }
 
 #trainer-footer {
-    position: fixed;
-    bottom: 1px;
-    color: #aaaaaa;
-    line-height: 1;
+  position: fixed;
+  bottom: 1px;
+  color: #aaaaaa;
+  line-height: 1;
 }
 
 #topnavbar-container {
-    width: 100%;
-    background: rgba(128, 35, 35, 0.144);
+  width: 100%;
+  background: rgba(128, 35, 35, 0.144);
 }
 
 #topnavbar {
-    margin: 0px 30px 0px 30px;
-    padding: 5px 0px;
+  margin: 0px 30px 0px 30px;
+  padding: 5px 0px;
 }
 
 .narrow-button {
-    padding-top: 0px;
-    padding-bottom: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
 }
 
 /* major area boarder and background */
-#chart-div, #controls {
-    border: 1px solid rgba(255, 255, 255, 0.01);
-    border-radius: 6px;
-    box-shadow: 3px 3px 5px 6px rgba(17, 17, 17, 0.3);
-    background: rgba(255, 255, 255, 0.01);
+#chart-div,
+#controls {
+  border: 1px solid rgba(255, 255, 255, 0.01);
+  border-radius: 6px;
+  box-shadow: 3px 3px 5px 6px rgba(17, 17, 17, 0.3);
+  background: rgba(255, 255, 255, 0.01);
 }
 
 #chart-div {
-    margin: 10px 30px 10px 30px;
-    box-sizing: border-box;
-    padding: 20px;
-    padding-bottom: 10px;
-    /* backdrop-filter: blur(10px); */
-} 
+  margin: 10px 30px 10px 30px;
+  box-sizing: border-box;
+  padding: 20px;
+  padding-bottom: 10px;
+  /* backdrop-filter: blur(10px); */
+}
 
 #controls {
-    position: fixed;
-    /* bottom: 0%; */
-    left: 30px;
-    right: 30px;
-    height: auto;
-    padding-top: 5px;
-    padding-bottom: 5px;
+  position: fixed;
+  /* bottom: 0%; */
+  left: 30px;
+  right: 30px;
+  height: auto;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 #controls-flex {
-    display: flex;
+  display: flex;
 }
 
-#controls-left, #controls-right, #controls-bottom {
-    margin-left: 10px;
+#controls-left,
+#controls-right,
+#controls-bottom {
+  margin-left: 10px;
 }
 
 #controls-left {
-    width: 35%;
+  width: 35%;
 }
 
 /* #controls-bottom {
@@ -80,30 +82,28 @@ body {
 } */
 
 #controls-right-bottom {
-    display: flex;
+  display: flex;
 }
 
-
-#controls-right-bottom-left, #controls-right-bottom-middle {
-    margin-right: 20px;
+#controls-right-bottom-left,
+#controls-right-bottom-middle {
+  margin-right: 20px;
 }
 
 #controls-portfolio-details div {
-    display: inline;
-    line-height: 90%;
+  display: inline;
+  line-height: 90%;
 }
-
 
 /* #controls-trades-info-inner {
     margin: 0px 20px 10px 20px;
 } */
 
 #controls-trade-div {
-    display: inline-block;
-    /* text-align: center; */
-    box-sizing: border-box;
+  display: inline-block;
+  /* text-align: center; */
+  box-sizing: border-box;
 }
-
 
 /* span {
     display: inline-block;
@@ -111,59 +111,64 @@ body {
     padding: 0;
 } */
 
-
-#input-nsteps, #input-numshares {
-    box-sizing: border-box;
-    font-size: 20px;
-    width: 8.6rem;
-    padding: 6px;
-    margin:0.2em 0.3em 0.3em 0;
-    background-color: #D07775;
-    color: white;
-    border: 1px solid white;
-    border-radius: 2px;
+#input-nsteps,
+#input-numshares {
+  box-sizing: border-box;
+  font-size: 20px;
+  width: 8.6rem;
+  padding: 6px;
+  margin: 0.2em 0.3em 0.3em 0;
+  background-color: #d07775;
+  color: white;
+  border: 1px solid white;
+  border-radius: 2px;
 }
 
 #input-numshares {
-    width: 273px;
-    margin: 0;
-    margin-bottom: 10px;
-    border-color: #D07775;
-    font-size: 20px;
+  width: 273px;
+  margin: 0;
+  margin-bottom: 10px;
+  border-color: #d07775;
+  font-size: 20px;
 }
 
-.stepButton, #buyButton, #sellButton{
-    display:inline-block;
-    padding:0.2em 1.2em;
-    border:0.1em solid #FFFFFF;
-    margin:0 0.3em 0.3em 0;
-    border-radius:0.12em;
-    box-sizing: border-box;
-    text-decoration:none;
-    font-family:'Roboto',sans-serif;
-    font-weight:300;
-    color:#FFFFFF;
-    background-color:#161A25;
-    text-align:center;
-    transition: all 0.2s;
-    font-size: 22px;
+.stepButton,
+#buyButton,
+#sellButton {
+  display: inline-block;
+  padding: 0.2em 1.2em;
+  border: 0.1em solid #ffffff;
+  margin: 0 0.3em 0.3em 0;
+  border-radius: 0.12em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  color: #ffffff;
+  background-color: #161a25;
+  text-align: center;
+  transition: all 0.2s;
+  font-size: 22px;
 }
-.stepButton:hover, #buyButton:hover, #sellButton:hover{
-    color:#000000;
-    background-color:#FFFFFF;
+.stepButton:hover,
+#buyButton:hover,
+#sellButton:hover {
+  color: #000000;
+  background-color: #ffffff;
 }
-#buyButton, #sellButton {
-    color:#D07775;
-    border-color: #D07775;
-    font-weight: 800;
-    font-size: 22px;
-    width: 133px;
-    padding-left: auto;
-    padding-right: auto;
-    box-sizing: border-box;
+#buyButton,
+#sellButton {
+  color: #d07775;
+  border-color: #d07775;
+  font-weight: 800;
+  font-size: 22px;
+  width: 133px;
+  padding-left: auto;
+  padding-right: auto;
+  box-sizing: border-box;
 }
 #sellButton {
-    margin-right: 0;
+  margin-right: 0;
 }
 
 /*
@@ -175,185 +180,204 @@ body {
 }*/
 
 .labels-div {
-    line-height: 100%;
+  line-height: 100%;
 }
-span, p {
-    margin: 0;
+span,
+p {
+  margin: 0;
 }
 
-.labels, #logo-div {
-    color: #effcf7;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 16px;
-    margin: 1px;
-    margin-left: 0;
+.labels,
+#logo-div {
+  color: #effcf7;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  margin: 1px;
+  margin-left: 0;
 }
-span.labels, p.labels {
-    display: inline-block;
-    margin-right: 8px;
+span.labels,
+p.labels {
+  display: inline-block;
+  margin-right: 8px;
 }
 span.labels {
-    margin-right: 20px;
+  margin-right: 20px;
 }
-span.labels-float, p.labels-float {
-    float: left;
+span.labels-float,
+p.labels-float {
+  float: left;
 }
 
 #output-timestamp {
-    font-size: 22px;
-    font-weight: bold;
-    color: white;
+  font-size: 22px;
+  font-weight: bold;
+  color: white;
 }
 
 #output-price {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 1px;
-    color: #FAC2CF;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 1px;
+  color: #fac2cf;
 }
 
 small {
-    color: rgb(185, 185, 185);
+  color: rgb(185, 185, 185);
 }
 
 .hint-div {
-    display: block;
-    margin-bottom: 3px;
-    line-height: 110%;
+  display: block;
+  margin-bottom: 3px;
+  line-height: 110%;
 }
 
 #logo-div {
-    color: #520025;
-    position: fixed;
-    bottom: 1px;
+  color: #520025;
+  position: fixed;
+  bottom: 1px;
 }
 
 #guest-demo-h {
-    color: red;
-    position: fixed;
-    z-index: 100;
-    left: 120px;
-    top: 0px;
-    font-size: 24px;
+  color: red;
+  position: fixed;
+  z-index: 100;
+  left: 120px;
+  top: 0px;
+  font-size: 24px;
 }
 
-@media only screen and (max-height: 1100px){
-    .labels{
-        font-size: 12px;
-        margin: 0;
-    }
-    #output-timestamp {
-        font-size: 20px;
-    }
-    #output-price {
-        font-size: 20px;
-        margin-bottom: 0;
-    }
+@media only screen and (max-height: 1100px) {
+  .labels {
+    font-size: 12px;
+    margin: 0;
+  }
+  #output-timestamp {
+    font-size: 20px;
+  }
+  #output-price {
+    font-size: 20px;
+    margin-bottom: 0;
+  }
 
-    .stepButton, #buyButton, #sellButton {
-        font-size: 16px;
-    }
-    #buyButton, #sellButton {
-        width: 6rem;
-    }
+  .stepButton,
+  #buyButton,
+  #sellButton {
+    font-size: 16px;
+  }
+  #buyButton,
+  #sellButton {
+    width: 6rem;
+  }
 
-    #input-nsteps, #input-numshares {
-        font-size: 16px;
-        padding: 3px;
-        margin-bottom: 5px;
-        width: 98px;
-    }
-    #input-numshares {
-        width: 198px;
-    }
+  #input-nsteps,
+  #input-numshares {
+    font-size: 16px;
+    padding: 3px;
+    margin-bottom: 5px;
+    width: 98px;
+  }
+  #input-numshares {
+    width: 198px;
+  }
 
-    #controls-left-top, #controls-left-bottom {
-        margin: 2px 4px 2px 4px;
-    }
+  #controls-left-top,
+  #controls-left-bottom {
+    margin: 2px 4px 2px 4px;
+  }
 
-    #trainer-footer {
-        line-height: 50%;
-    }
-    #trainer-footer small {
-        font-size: 10px;
-    }
+  #trainer-footer {
+    line-height: 50%;
+  }
+  #trainer-footer small {
+    font-size: 10px;
+  }
 }
 
-@media only screen and (max-width: 1100px){
-    #chart-div {
-        margin-left: 10px;
-        margin-right: 10px;
-    }
-    #controls {
-        left: 10px;
-        right: 10px;
-    }
-    #trainer-footer {
-        line-height: 50%;
-    }
-    small {
-        font-size: 10px;
-    }
-    .hint-div {
-        line-height: 70%;
-    }
-    #controls-portfolio-details div {
-        line-height: 80%;
-    }
-    #controls-right-bottom-left, #controls-right-bottom-middle {
-        margin-right: 10px;
-    }
-    #guest-demo-h {
-        font-size: 12px;
-    }
+@media only screen and (max-width: 1100px) {
+  #chart-div {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  #controls {
+    left: 10px;
+    right: 10px;
+  }
+  #trainer-footer {
+    line-height: 50%;
+  }
+  small {
+    font-size: 10px;
+  }
+  .hint-div {
+    line-height: 70%;
+  }
+  #controls-portfolio-details div {
+    line-height: 80%;
+  }
+  #controls-right-bottom-left,
+  #controls-right-bottom-middle {
+    margin-right: 10px;
+  }
+  #guest-demo-h {
+    font-size: 12px;
+  }
 
-    .stepButton, #buyButton, #sellButton {
-        font-size: 12px;
-    }
-    #buyButton, #sellButton {
-        width: 5rem;
-    }
-    #input-nsteps, #input-numshares {
-        font-size: 12px;
-        padding: 2px;
-        margin-bottom: 4px;
-        width: 75px;
-    }
-    #input-numshares {
-        width: 163px;
-    }
-    #output-timestamp, #output-price {
-        font-size: 18px;
-    }
+  .stepButton,
+  #buyButton,
+  #sellButton {
+    font-size: 12px;
+  }
+  #buyButton,
+  #sellButton {
+    width: 5rem;
+  }
+  #input-nsteps,
+  #input-numshares {
+    font-size: 12px;
+    padding: 2px;
+    margin-bottom: 4px;
+    width: 75px;
+  }
+  #input-numshares {
+    width: 163px;
+  }
+  #output-timestamp,
+  #output-price {
+    font-size: 18px;
+  }
 }
 
-@media only screen and (max-width: 800px),
-    screen and (max-height: 800px) {
-    .labels{
-        font-size: 10px;
-    }
-    .labels-div {
-        line-height: 70%;
-    }
-    .stepButton, #buyButton, #sellButton {
-        font-size: 10px;
-        margin-bottom: 0.1em;
-        padding: 0.2em 0.6em;
-    }
-    #buyButton, #sellButton {
-        width: 4rem;
-    }
-    #input-nsteps, #input-numshares {
-        font-size: 10px;
-        margin-bottom: 1px;
-        width: 51px;
-    }
-    #input-numshares {
-        width: 131px;
-    }
-    #output-timestamp, #output-price {
-        font-size: 14px;
-    }
+@media only screen and (max-width: 800px), screen and (max-height: 800px) {
+  .labels {
+    font-size: 10px;
+  }
+  .labels-div {
+    line-height: 70%;
+  }
+  .stepButton,
+  #buyButton,
+  #sellButton {
+    font-size: 10px;
+    margin-bottom: 0.1em;
+    padding: 0.2em 0.6em;
+  }
+  #buyButton,
+  #sellButton {
+    width: 4rem;
+  }
+  #input-nsteps,
+  #input-numshares {
+    font-size: 10px;
+    margin-bottom: 1px;
+    width: 51px;
+  }
+  #input-numshares {
+    width: 131px;
+  }
+  #output-timestamp,
+  #output-price {
+    font-size: 14px;
+  }
 }
 
 /* 
