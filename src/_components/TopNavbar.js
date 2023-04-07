@@ -23,7 +23,7 @@ function TopNavbar() {
     } else {
       setPageTitle("");
     }
-  }, []);
+  }, [location.pathname, stats]);
 
   return (
     <div id="topnavbar-container">

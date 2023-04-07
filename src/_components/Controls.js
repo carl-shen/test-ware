@@ -26,7 +26,7 @@ function Controls() {
         }
       }
     }
-  }, [windowWidth, windowHeight]);
+  }, [app, dispatch, windowWidth, windowHeight]);
 
   // Use different layouts for the trades info panel for landscape and portrait modes.
   const trades_info_div_left = (

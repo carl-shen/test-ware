@@ -22,7 +22,7 @@ function LoginPage() {
   // Reset login status.
   useEffect(() => {
     dispatch(userActions.logout());
-  }, []);
+  }, [dispatch]);
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -93,7 +93,11 @@ function LoginPage() {
             <Link to="/register" className="btn btn-link">
               Register
             </Link>
-            <Link onClick={goToGuestChallenge} className="btn btn-link">
+            <Link
+              to="/guest"
+              onClick={goToGuestChallenge}
+              className="btn btn-link"
+            >
               Try as Guest
             </Link>
           </div>

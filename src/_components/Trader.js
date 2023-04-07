@@ -100,7 +100,7 @@ function Trader() {
       rctTrade5: recentTrade5,
     };
     dispatch(statsActions.updateStats(tempStats));
-    if (user != undefined) {
+    if (user !== undefined) {
       // Only post stats if user is logged in. Data is not uploaded to server in guest mode.
       dispatch(statsActions.postStats(user.id, stats.ticker, stats));
     }

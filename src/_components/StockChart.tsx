@@ -305,9 +305,9 @@ class StockChart extends React.Component<StockChartProps> {
   };
 }
 
-const chartStyle = {
-  minHeight: window.innerHeight * 0.2,
-};
+// const chartStyle = {
+//   minHeight: window.innerHeight * 0.2,
+// };
 
 // export default withOHLCData()(withSize({ style: chartStyle })(withDeviceRatio()(StockChart)));
 // export default withOHLCData()(withDeviceRatio()(StockChart));

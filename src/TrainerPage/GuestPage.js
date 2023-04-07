@@ -26,7 +26,6 @@ function GuestPage() {
   const dispatch = useDispatch();
   const app = useSelector((state) => state.app);
   const stats = useSelector((state) => state.stats.items);
-  const alert = useSelector((state) => state.alert);
 
   const windowWidth = useWindowDimensions().width;
   const windowHeight = useWindowDimensions().height;
@@ -65,7 +64,7 @@ function GuestPage() {
     fetchData(dataSetName).then((response) => {
       setData(response);
     });
-  }, [dataSetName]);
+  }, [app.trainingDataSet, dataSetName, dispatch]);
 
   // When historical data is in place, initialise the "stats" object with stored timestamp and price data, then fetch existing stats from server (if there exists any).
   useEffect(() => {
@@ -81,20 +80,20 @@ function GuestPage() {
       };
       dispatch(statsActions.updateStats(tempStats)); // Update "stats" to correct initial timestamp and price values.
     }
-  }, [data]);
+  }, [data, dispatch, loadToIndex]);
 
   useEffect(() => {
     setTimeout(() => {
       dispatch(alertActions.clear());
     }, config.ALERT_TIMEOUT);
-  }, []);
+  }, [dispatch]);
 
   // Whenever "stats" is changed (most likely by the Stepper component when user steps to next datapoint), update portfolio value and other details.
   useEffect(() => {
     if (
       stats !== undefined &&
       data !== undefined &&
-      loadToIndex != stats.currIndex &&
+      loadToIndex !== stats.currIndex &&
       !challengeCompleted(stats, data)
     ) {
       setLoadToIndex(stats.currIndex);
@@ -125,7 +124,7 @@ function GuestPage() {
       };
       dispatch(statsActions.updateStats(tempStats));
     }
-  }, [stats]);
+  }, [data, dispatch, loadToIndex]);
 
   if (
     windowWidth < config.MIN_WINDOW_WIDTH ||
@@ -194,7 +193,7 @@ function GuestPage() {
           </>
         );
       } else {
-        if (data != undefined) {
+        if (data !== undefined) {
           return (
             <div>
               <TopNavbar />

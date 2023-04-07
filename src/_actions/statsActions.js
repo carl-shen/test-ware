@@ -1,7 +1,6 @@
 import { statsConstants } from "../_constants";
 import { statsService } from "../_services";
 import { alertActions } from "./";
-import { userActions } from "./userActions";
 import { rtnStatsName } from "../_helpers";
 import config from "../_configs/configs.json";
 

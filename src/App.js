@@ -20,7 +20,7 @@ function App() {
       // Clear alert on location change.
       dispatch(alertActions.clear());
     });
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="App">

@@ -21,7 +21,7 @@ function Footer() {
         }
       }
     }
-  }, [windowWidth, windowHeight]);
+  }, [app, dispatch, windowWidth, windowHeight]);
 
   return (
     <div id="trainer-footer" ref={targetRef}>

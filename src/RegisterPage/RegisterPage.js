@@ -22,7 +22,7 @@ function RegisterPage() {
   // Reset login status.
   useEffect(() => {
     dispatch(userActions.logout());
-  }, []);
+  }, [dispatch]);
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -123,7 +123,11 @@ function RegisterPage() {
             <Link to="/login" className="btn btn-link">
               Cancel
             </Link>
-            <Link onClick={goToGuestChallenge} className="btn btn-link">
+            <Link
+              to="/guest"
+              onClick={goToGuestChallenge}
+              className="btn btn-link"
+            >
               Try as Guest
             </Link>
           </div>

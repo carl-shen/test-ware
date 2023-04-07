@@ -28,7 +28,6 @@ function TrainerPage() {
   const app = useSelector((state) => state.app);
   const stats = useSelector((state) => state.stats.items);
   const user = useSelector((state) => state.authentication.user);
-  const alert = useSelector((state) => state.alert);
 
   const windowWidth = useWindowDimensions().width;
   const windowHeight = useWindowDimensions().height;
@@ -70,7 +69,7 @@ function TrainerPage() {
     fetchData(tempDataSetName).then((response) => {
       setData(response);
     });
-  }, [dataSetName]);
+  }, [app.trainingDataSet, dataSetName, dispatch]);
 
   // When historical data is in place, initialise the "stats" object with stored timestamp and price data, then fetch existing stats from server (if there exists any).
   useEffect(() => {
@@ -87,20 +86,20 @@ function TrainerPage() {
       dispatch(statsActions.updateStats(tempStats)); // Update "stats" to correct initial timestamp and price values.
       dispatch(statsActions.fetchStats(user.id, dataSetName)); // Check and override local "stats" object if any existing "stats" object is available on server.
     }
-  }, [data]);
+  }, [data, dataSetName, dispatch, loadToIndex, user.id]);
 
   useEffect(() => {
     setTimeout(() => {
       dispatch(alertActions.clear());
     }, config.ALERT_TIMEOUT);
-  }, []);
+  }, [dispatch]);
 
   // Whenever "stats" is changed (most likely by the Stepper component when user steps to next datapoint), update portfolio value and other details.
   useEffect(() => {
     if (
       stats !== undefined &&
       data !== undefined &&
-      loadToIndex != stats.currIndex &&
+      loadToIndex !== stats.currIndex &&
       !challengeCompleted(stats, data)
     ) {
       setStepCounter(stepCounter + 1);
@@ -145,7 +144,7 @@ function TrainerPage() {
       setNeedToPostStats(false);
       dispatch(statsActions.postStats(user.id, stats.ticker, stats));
     }
-  }, [stats]);
+  }, [data, dispatch, loadToIndex, needToPostStats, stepCounter, user]);
 
   if (user === undefined) {
     // If user is logged out (e.g. by JWT expiration), redirect to the login page.
@@ -229,7 +228,7 @@ function TrainerPage() {
             </>
           );
         } else {
-          if (data != undefined) {
+          if (data !== undefined) {
             return (
               <div>
                 <TopNavbar />

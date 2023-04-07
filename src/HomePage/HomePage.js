@@ -17,11 +17,6 @@ function HomePage() {
     <h3 className="text-white">Loading challenge list..</h3>
   );
 
-  const selectChallengeGo = (challengeItem) => {
-    dispatch(appActions.setTrainingDataSet(challengeItem.dataSetName));
-    history.push("/trainer");
-  };
-
   const fetchChallengeList = function () {
     return fetch(`../data/challenges.json`, { method: "GET" })
       .then((response) => response.text())
@@ -40,9 +35,14 @@ function HomePage() {
     setTimeout(() => {
       dispatch(alertActions.clear());
     }, config.ALERT_TIMEOUT);
-  }, []);
+  }, [dispatch, user.id]);
 
   useEffect(() => {
+    const selectChallengeGo = (challengeItem) => {
+      dispatch(appActions.setTrainingDataSet(challengeItem.dataSetName));
+      history.push("/trainer");
+    };
+
     if (challenges !== undefined && progressItems !== undefined) {
       setChallengeListJSX(
         challenges.items.map((item, index) => {
@@ -108,7 +108,7 @@ function HomePage() {
         })
       );
     }
-  }, [challenges, progressItems]);
+  }, [challenges, dispatch, progressItems, user.id]);
 
   return (
     <>
