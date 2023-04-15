@@ -1,27 +1,16 @@
 #jumbotron-div {
-    background-color: #181818;
-    background-image: url("../img/jumbotron-bg-3.jpg");
-    background-position: center;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    min-height: 500px;
-    color: #aaaaaa;
+  background-color: #181818;
+  background-image: url("../img/jumbotron-bg-4.jpg");
+  background-position: center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  min-height: 500px;
+  color: #aaaaaa;
 }
 
-.btn-primary {
-    background-color: #8bc502;
-    border-color: #8bc502;
-
-}
-
-.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .btn-primaryactive:focus, .open>.dropdown-toggle.btn-primary {
-    background-color: #ffffff;
-    border-color: #8bc502;
-    color: #8bc502;
-}
-
-.word, .descriptions {
-    opacity: 0;
+.word,
+.descriptions {
+  opacity: 0;
 }
