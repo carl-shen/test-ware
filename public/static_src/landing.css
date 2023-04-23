@@ -8,9 +8,35 @@
   background-size: cover;
   min-height: 500px;
   color: #aaaaaa;
+  font-family: "Trebuchet MS", sans-serif;
 }
 
-.word,
-.descriptions {
-  opacity: 0;
+.section-container {
+  margin: 1rem;
+  margin-bottom: 3rem;
+}
+
+.section-image {
+  max-width: 100%;
+  height: auto;
+}
+
+.section-heading,
+.description {
+  font-family: "Trebuchet MS", sans-serif;
+  color: black;
+}
+
+.section-heading {
+  font-weight: bold;
+  margin-top: 1.3rem;
+  margin-bottom: 1rem;
+}
+
+.description {
+  color: #181818;
+}
+
+.text-muted {
+  color: #6c757d;
 }

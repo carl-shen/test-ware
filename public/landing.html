@@ -8,14 +8,6 @@
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
 
-    <!-- TODO: Remove Bootstrap CSS -->
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-      crossorigin="anonymous"
-    />
-
     <script src="https://cdn.tailwindcss.com"></script>
 
     <link rel="stylesheet" href="./static_src/landing.css" />
@@ -23,7 +15,7 @@
     <title>Test Ware - Welcome</title>
   </head>
   <body>
-    <div class="flex flex-col justify-center px-5" id="jumbotron-div">
+    <div class="flex flex-col justify-center px-16" id="jumbotron-div">
       <h1
         class="mb-4 text-4xl font-extrabold text-white tracking-base md:text-5xl lg:text-6xl"
       >
@@ -32,7 +24,7 @@
       <p class="mb-3 text-xl font-normal text-slate-50 md:text-2xl lg:text-3xl">
         Test and sharpen your trading abilities, with real historical data.
       </p>
-      <small class=""
+      <small
         >Test-Ware is a training environment for practising and improving
         trading skills. Historical financial data are replayed step by step and
         simulated trades can be placed. Theoretical profit and loss statistics
@@ -41,7 +33,7 @@
       >
       <div class="my-4">
         <a
-          class="inline-flex items-center justify-center px-5 py-3 font-bold uppercase text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800"
+          class="inline-flex items-center justify-center px-8 py-4 font-bold uppercase text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800"
           href="index.html"
           role="button"
           >Launch Trainer</a
@@ -49,102 +41,103 @@
       </div>
     </div>
 
-    <div class="container my-4">
-      <h2>
-        <span class="words" id="heading1">Understanding the market ..</span>
-      </h2>
-      <p class="descriptions" id="description1">
-        At its core, a market is a place where many people come together and
-        trade an asset with each other. The asset (e.g. a company's stocks, or a
-        car) has some intrinsic value. Each market participant has a subjective
-        perception of the value of the asset. Participants trade with each other
-        based on their opinion of the value and the market price.
-      </p>
-      <img class="img-fluid" src="img/simplified-market-model.png" />
-    </div>
+    <div class="px-6 pt-6 pb-2">
+      <div class="section-container">
+        <h2 class="section-heading">Understanding the market ..</h2>
+        <p class="descriptions">
+          At its core, a market is a place where many people come together and
+          trade an asset with each other. The asset (e.g. a company's stocks, or
+          a car) has some intrinsic value. Each market participant has a
+          subjective perception of the value of the asset. Participants trade
+          with each other based on their opinion of the value and the market
+          price.
+        </p>
+        <img class="ection-image" src="img/simplified-market-model.png" />
+      </div>
 
-    <div class="container my-4">
-      <h2><span class="words" id="heading2">.. as a Complex System</span></h2>
-      <p class="descriptions" id="description2">
-        The participants' subjective perception is what gives the market its
-        efficiency (i.e. the ability to find a fair price), but also
-        inefficiency at times. When a large group of people interact with each
-        other, crowd behaviour emerges and market movements can become
-        irrational for a while. A market is just like other complex systems,
-        such as a flock of birds swarming.
-      </p>
-      <img class="img-fluid" src="img/bird-swarm-2-faded.jpg" />
-      <small class="text-muted ml-4 mt-0"
-        >Photo by
-        <a
-          href="https://unsplash.com/@tumbao1949?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
-          >James Wainscoat</a
+      <div class="section-container">
+        <h2 class="section-heading">.. as a Complex System</h2>
+        <p class="descriptions">
+          The participants' subjective perception is what gives the market its
+          efficiency (i.e. the ability to find a fair price), but also
+          inefficiency at times. When a large group of people interact with each
+          other, crowd behaviour emerges and market movements can become
+          irrational for a while. A market is just like other complex systems,
+          such as a flock of birds swarming.
+        </p>
+        <img class="ection-image" src="img/bird-swarm-2-faded.jpg" />
+        <small class="text-muted ml-4 mt-0"
+          >Photo by
+          <a
+            href="https://unsplash.com/@tumbao1949?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
+            >James Wainscoat</a
+          >
+          on
+          <a
+            href="https://unsplash.com/s/photos/swarm-of-bees?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
+            >Unsplash</a
+          ></small
         >
-        on
+      </div>
+
+      <div class="section-container">
+        <h2 class="section-heading">Where Technical Analysis comes in</h2>
+        <p class="descriptions">
+          Technical Analysis is commonly used to measure market movements.
+          Whilist it is not possible to predict the future, TA can tell you when
+          a trend is weakening and the payout ratio becomes favourible. Whether
+          the market moves in your direction after that is another story.
+        </p>
+      </div>
+
+      <div class="section-container">
+        <h2 class="section-heading">So does it work?</h2>
+        <p class="descriptions">
+          Well, that is the million dollar question (or billion). Like a horse
+          betting pro, a professional trader needs to understand the strategy
+          used like the back of the hand. What's the win rate? What's the
+          average payout? How does the strategy fail in extreme cases? How do I
+          feel when I'm in the red?
+        </p>
+      </div>
+
+      <div class="section-container">
+        <h2 class="section-heading">Finding your answers</h2>
+        <p class="descriptions">
+          These questions can only be answered by you, but Test-Ware trainer
+          aims to help you find your answers through simulated trading with real
+          market data. This is known as backtesting and is a quick way to get
+          better at a strategy.
+        </p>
+      </div>
+
+      <div class="section-container">
+        <h2 class="section-heading">About the Trainer</h2>
+        <p class="descriptions">
+          The trainer includes a number of challenges. Each challenge contains
+          the daily market price and volume data for a financial asset starting
+          from a randomly chosen date after 2000. The name of the asset is not
+          given to reduce bias, but a brief description of the asset is
+          provided. Where applicable, the price is split and dividend-adjusted.
+          And lastly, just like in real life, you may only attemp each challenge
+          once!
+        </p>
+      </div>
+
+      <div class="section-container mb-6">
         <a
-          href="https://unsplash.com/s/photos/swarm-of-bees?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
-          >Unsplash</a
-        ></small
-      >
-    </div>
-
-    <div class="container my-4">
-      <h2>
-        <span class="words" id="heading3"
-          >Where Technical Analysis comes in</span
+          class="inline-flex items-center justify-center px-8 py-4 font-bold uppercase text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800"
+          href="index.html"
+          role="button"
+          >Start training!</a
         >
-      </h2>
-      <p class="descriptions" id="description3">
-        Technical Analysis is commonly used to measure market movements. Whilist
-        it is not possible to predict the future, TA can tell you when a trend
-        is weakening and the payout ratio becomes favourible. Whether the market
-        moves in your direction after that is another story.
-      </p>
+      </div>
     </div>
 
-    <div class="container my-4">
-      <h2><span class="words" id="heading4">So does it work?</span></h2>
-      <p class="descriptions" id="description4">
-        Well, that is the million dollar question (or billion). Like a horse
-        betting pro, a professional trader needs to understand the strategy used
-        like the back of the hand. What's the win rate? What's the average
-        payout? How does the strategy fail in extreme cases? How do I feel when
-        I'm in the red?
-      </p>
-    </div>
-
-    <div class="container my-4">
-      <h2><span class="words" id="heading5">Finding your answers</span></h2>
-      <p class="descriptions" id="description5">
-        These questions can only be answered by you, but Test-Ware trainer aims
-        to help you find your answers through simulated trading with real market
-        data. This is known as backtesting and is a quick way to get better at a
-        strategy.
-      </p>
-    </div>
-
-    <div class="container my-4">
-      <h2><span class="words" id="heading6">About the Trainer</span></h2>
-      <p class="descriptions" id="description6">
-        The trainer includes a number of challenges. Each challenge contains the
-        daily market price and volume data for a financial asset starting from a
-        randomly chosen date after 2000. The name of the asset is not given to
-        reduce bias, but a brief description of the asset is provided. Where
-        applicable, the price is split and dividend-adjusted. And lastly, just
-        like in real life, you may only attemp each challenge once!
-      </p>
-    </div>
-
-    <div class="container my-4">
-      <a
-        class="inline-flex items-center justify-center px-5 py-3 font-bold uppercase text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800"
-        href="index.html"
-        role="button"
-        >Start training!</a
-      >
-    </div>
-
-    <footer class="bg-light text-center text-lg-start" id="footer-id"></footer>
+    <footer
+      class="bg-gray-50 text-center text-lg-start"
+      id="footer-id"
+    ></footer>
     <script src="./static_src/footer.js"></script>
 
     <!-- Optional JavaScript -->
