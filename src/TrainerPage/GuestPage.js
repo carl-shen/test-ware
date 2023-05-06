@@ -204,7 +204,9 @@ function GuestPage() {
                   data={data.slice(0, stats.currIndex + 1)}
                 />
               </div>
-              <h2 id="guest-demo-h">Guest demo, your progress is not saved.</h2>
+              <h2 id="guest-demo-h" className="pt-0.5">
+                [GUEST DEMO] Your progress is not saved.
+              </h2>
               <Controls />
               <Footer />
             </div>

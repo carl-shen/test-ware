@@ -5,6 +5,7 @@ import { history } from "../_helpers";
 
 function TopNavbar() {
   const stats = useSelector((state) => state.stats);
+  const user = useSelector((state) => state.authentication.user);
   const location = useLocation();
 
   const [pageTitle, setPageTitle] = useState("");
@@ -39,7 +40,7 @@ function TopNavbar() {
           className="nav-item btn btn-link narrow-button"
           onClick={() => history.push("/login")}
         >
-          Logout
+          {user === undefined ? "Log In" : "Log Out"}
         </a>
       </div>
     </div>
