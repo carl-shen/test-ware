@@ -8,6 +8,7 @@ import {
   dateToYMDStr,
   roundToDefaultDecimal,
   challengeCompleted,
+  calcNumOfBarsToDisplay,
   calcPerformance,
 } from "../_helpers";
 import { alertActions, statsActions } from "../_actions";
@@ -21,6 +22,7 @@ import {
 
 // TODO for user to be able to specify starting portfolio value
 const DEFAULT_STARTING_PORTFOLIO_VALUE = 500000;
+const DEFAULT_NUM_OF_BARS_TO_DISPLAY = 100;
 
 function GuestPage() {
   const dispatch = useDispatch();
@@ -29,6 +31,9 @@ function GuestPage() {
 
   const windowWidth = useWindowDimensions().width;
   const windowHeight = useWindowDimensions().height;
+  const numOfBarsToDisplay = windowWidth
+    ? calcNumOfBarsToDisplay(windowWidth)
+    : DEFAULT_NUM_OF_BARS_TO_DISPLAY;
   const [chartHeight, setChartHeight] = useState(windowHeight * 0.7); // These default values will be re-calculated after components report their heights.
   const [chartWidth, setChartWidth] = useState(windowWidth - 100);
   const [dataSetName, setDataSetName] = useState("stock01");
@@ -202,6 +207,7 @@ function GuestPage() {
                   height={chartHeight}
                   width={chartWidth}
                   data={data.slice(0, stats.currIndex + 1)}
+                  numOfBarsToDisplay={numOfBarsToDisplay}
                 />
               </div>
               <h2 id="guest-demo-h" className="pt-0.5">

@@ -35,6 +35,7 @@ interface StockChartProps {
   readonly dateTimeFormat?: string;
   readonly width: number;
   readonly ratio: number;
+  readonly numOfBarsToDisplay: number; // This determines how many bars to display at m
 }
 
 class StockChart extends React.Component<StockChartProps> {
@@ -52,6 +53,7 @@ class StockChart extends React.Component<StockChartProps> {
       dateTimeFormat = "%d %b",
       width,
       ratio,
+      numOfBarsToDisplay,
     } = this.props;
 
     const gridLineColour = "RGBA(255,255,255,0.1)";
@@ -123,7 +125,7 @@ class StockChart extends React.Component<StockChartProps> {
       xScaleProvider(calculatedData);
 
     const max = xAccessor(data[data.length - 1]);
-    const min = xAccessor(data[Math.max(0, data.length - 100)]);
+    const min = xAccessor(data[Math.max(0, data.length - numOfBarsToDisplay)]);
     const xExtents = [min, max + 5];
 
     const gridHeight = height - margin.top - margin.bottom;

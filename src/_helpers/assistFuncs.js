@@ -37,6 +37,11 @@ export const challengeCompleted = function (stats, data) {
   }
 };
 
+export const calcNumOfBarsToDisplay = function (windowWidth) {
+  const numOfBarsToDisplay = Math.ceil(windowWidth / 10);
+  return numOfBarsToDisplay;
+};
+
 export const calcPerformance = function (stats) {
   if (stats !== undefined) {
     const durationDays = stats.currIndex - stats.stIndex;

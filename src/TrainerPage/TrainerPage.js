@@ -9,6 +9,7 @@ import {
   dateToYMDStr,
   roundToDefaultDecimal,
   challengeCompleted,
+  calcNumOfBarsToDisplay,
   calcPerformance,
 } from "../_helpers";
 import { alertActions, statsActions } from "../_actions";
@@ -22,6 +23,7 @@ import {
 
 // TODO for user to be able to specify starting portfolio value
 const DEFAULT_STARTING_PORTFOLIO_VALUE = 500000;
+const DEFAULT_NUM_OF_BARS_TO_DISPLAY = 100;
 
 function TrainerPage() {
   const dispatch = useDispatch();
@@ -31,6 +33,9 @@ function TrainerPage() {
 
   const windowWidth = useWindowDimensions().width;
   const windowHeight = useWindowDimensions().height;
+  const numOfBarsToDisplay = windowWidth
+    ? calcNumOfBarsToDisplay(windowWidth)
+    : DEFAULT_NUM_OF_BARS_TO_DISPLAY;
   const [chartHeight, setChartHeight] = useState(windowHeight * 0.7); // These default values will be re-calculated after components report their heights.
   const [chartWidth, setChartWidth] = useState(windowWidth - 100);
   const [dataSetName, setDataSetName] = useState("stock01");
@@ -237,6 +242,7 @@ function TrainerPage() {
                     height={chartHeight}
                     width={chartWidth}
                     data={data.slice(0, stats.currIndex + 1)}
+                    numOfBarsToDisplay={numOfBarsToDisplay}
                   />
                 </div>
                 {/* <h2 style={{color:'red', position: 'fixed', zIndex: 100, left: '30px', top: '10px'}}>Demo only, app currently under construction.</h2> */}
