@@ -1,14 +1,25 @@
 #jumbotron-div {
   background-color: #181818;
+  color: #aaaaaa;
+  font-family: "Trebuchet MS", sans-serif;
+  min-height: 800px;
+}
+
+#jumbotron-div:before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 800px;
   background-image: url("../img/jumbotron-bg-4.jpg");
+  opacity: 0.1;
   background-position: center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  min-height: 500px;
-  color: #aaaaaa;
-  font-family: "Trebuchet MS", sans-serif;
 }
 
 .section-container {
