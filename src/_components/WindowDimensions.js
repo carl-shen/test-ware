@@ -25,10 +25,7 @@ function useWindowDimensions() {
 
 function usePortraitMode() {
   const dimensions = getWindowDimensions();
-  if (
-    dimensions.width < dimensions.height ||
-    dimensions.width < config.LANDSCAPE_MODE_MIN_WIDTH
-  ) {
+  if (dimensions.width < config.LANDSCAPE_MODE_MIN_WIDTH) {
     return true;
   } else {
     return false;

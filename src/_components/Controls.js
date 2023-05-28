@@ -28,9 +28,12 @@ function Controls() {
     }
   }, [app, dispatch, windowWidth, windowHeight]);
 
+  const labels_className = "text-gray-100";
+  const labels_div_classNames = "";
+
   // Use different layouts for the trades info panel for landscape and portrait modes.
   const trades_info_div_left = (
-    <div id="controls-left">
+    <div id="controls-left" className="w-2/6 ml-2">
       <div id="controls-trades-info-inner">
         {!usePortraitMode() ? (
           <div className="hint-div">
@@ -39,29 +42,29 @@ function Controls() {
         ) : (
           <></>
         )}
-        <div className="labels-div">
-          <p className="labels">{stats.status}</p>
+
+        <p className={labels_className}>{stats.status}</p>
+
+        <div className={labels_div_classNames}>
+          <p className={labels_className}>{stats.rctTrade1}</p>
         </div>
-        <div className="labels-div">
-          <p className="labels">{stats.rctTrade1}</p>
+        <div className={labels_div_classNames}>
+          <p className={labels_className}>{stats.rctTrade2}</p>
         </div>
-        <div className="labels-div">
-          <p className="labels">{stats.rctTrade2}</p>
+        <div className={labels_div_classNames}>
+          <p className={labels_className}>{stats.rctTrade3}</p>
         </div>
-        <div className="labels-div">
-          <p className="labels">{stats.rctTrade3}</p>
+        <div className={labels_div_classNames}>
+          <p className={labels_className}>{stats.rctTrade4}</p>
         </div>
-        <div className="labels-div">
-          <p className="labels">{stats.rctTrade4}</p>
-        </div>
-        <div className="labels-div">
-          <p className="labels">{stats.rctTrade5}</p>
+        <div className={labels_div_classNames}>
+          <p className={labels_className}>{stats.rctTrade5}</p>
         </div>
       </div>
     </div>
   );
   const trades_info_div_bottom = (
-    <div id="controls-bottom">
+    <div id="controls-bottom" className="ml-2">
       <div id="controls-trades-info-inner">
         {!usePortraitMode() ? (
           <div className="hint-div">
@@ -70,14 +73,14 @@ function Controls() {
         ) : (
           <></>
         )}
-        <div className="labels-div">
-          <p className="labels">{stats.status}</p>
+        <div className={labels_div_classNames}>
+          <p className={labels_className}>{stats.status}</p>
         </div>
-        <div className="labels-div">
-          <p className="labels">{stats.rctTrade1}</p>
+        <div className={labels_div_classNames}>
+          <p className={labels_className}>{stats.rctTrade1}</p>
         </div>
-        <div className="labels-div">
-          <p className="labels">{stats.rctTrade2}</p>
+        <div className={labels_div_classNames}>
+          <p className={labels_className}>{stats.rctTrade2}</p>
         </div>
       </div>
     </div>
@@ -87,7 +90,7 @@ function Controls() {
     <div id="controls" ref={targetRef}>
       <div id="controls-flex">
         {!usePortraitMode() ? trades_info_div_left : <></>}
-        <div id="controls-right">
+        <div id="controls-right" className="ml-2">
           <div id="controls-right-top">
             {!usePortraitMode() ? (
               <div className="hint-div">
@@ -97,35 +100,35 @@ function Controls() {
               <></>
             )}
             <div id="controls-portfolio-details">
-              <div className="labels-div">
+              <div className={labels_div_classNames}>
                 <p className="labels labels-float">Total Portfolio Value: </p>
                 <span className="labels labels-float">
                   {stats.totPortValue.toFixed(1)}
                 </span>
               </div>
-              <div className="labels-div">
+              <div className={labels_div_classNames}>
                 <p className="labels labels-float">Funds Available: </p>
                 <span className="labels labels-float">
                   {stats.fundsAvail.toFixed(1)}
                 </span>
               </div>
-              <div className="labels-div">
+              <div className={labels_div_classNames}>
                 <p className="labels labels-float">Position Held: </p>
                 <span className="labels labels-float">{stats.posHeld}</span>
               </div>
-              <div className="labels-div">
+              <div className={labels_div_classNames}>
                 <p className="labels labels-float">Position Cost Base: </p>
                 <span className="labels labels-float">
                   {stats.posCost.toFixed(2)}
                 </span>
               </div>
-              <div className="labels-div">
+              <div className={labels_div_classNames}>
                 <p className="labels labels-float">Position Profit/Loss: </p>
                 <span className="labels labels-float">
                   {stats.posPL.toFixed(1)}
                 </span>
               </div>
-              <div className="labels-div">
+              <div className={labels_div_classNames}>
                 <p className="labels labels-float">Position P/L Percentage: </p>
                 <span className="labels labels-float">
                   {stats.posPLPerc.toFixed(2) + "%"}
@@ -144,12 +147,12 @@ function Controls() {
                 <></>
               )}
               <div>
-                <p className="labels" id="output-timestamp">
+                <p className={labels_className} id="output-timestamp">
                   {stats.ts}
                 </p>
               </div>
               <div>
-                <p className="labels" id="output-price">
+                <p className={labels_className} id="output-price">
                   {stats.price.toFixed(2)}
                 </p>
               </div>

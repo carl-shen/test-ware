@@ -25,7 +25,7 @@ function Footer() {
 
   return (
     <div id="trainer-footer" ref={targetRef}>
-      <small>&copy; 2021 Test-Ware.com. </small>
+      <small>&copy; 2023 Test-Ware.com. </small>
       <small>
         This website is provided for entertainment use only. No information
         constitutes financial advice. Performance scores in this simulation may

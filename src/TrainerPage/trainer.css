@@ -64,23 +64,6 @@ body {
   display: flex;
 }
 
-#controls-left,
-#controls-right,
-#controls-bottom {
-  margin-left: 10px;
-}
-
-#controls-left {
-  width: 35%;
-}
-
-/* #controls-bottom {
-    display: block;
-    position: relative;
-
-
-} */
-
 #controls-right-bottom {
   display: flex;
 }
@@ -195,8 +178,7 @@ p {
   margin: 1px;
   margin-left: 0;
 }
-span.labels,
-p.labels {
+span.labels {
   display: inline-block;
   margin-right: 8px;
 }
@@ -246,54 +228,7 @@ small {
   font-size: 24px;
 }
 
-@media only screen and (max-height: 1100px) {
-  .labels {
-    font-size: 12px;
-    margin: 0;
-  }
-  #output-timestamp {
-    font-size: 20px;
-  }
-  #output-price {
-    font-size: 20px;
-    margin-bottom: 0;
-  }
-
-  .stepButton,
-  #buyButton,
-  #sellButton {
-    font-size: 16px;
-  }
-  #buyButton,
-  #sellButton {
-    width: 6rem;
-  }
-
-  #input-nsteps,
-  #input-numshares {
-    font-size: 16px;
-    padding: 3px;
-    margin-bottom: 5px;
-    width: 98px;
-  }
-  #input-numshares {
-    width: 198px;
-  }
-
-  #controls-left-top,
-  #controls-left-bottom {
-    margin: 2px 4px 2px 4px;
-  }
-
-  #trainer-footer {
-    line-height: 50%;
-  }
-  #trainer-footer small {
-    font-size: 10px;
-  }
-}
-
-@media only screen and (max-width: 1100px) {
+@media only screen and (max-width: 1024px) {
   #chart-div {
     margin-left: 10px;
     margin-right: 10px;
@@ -347,7 +282,7 @@ small {
   }
 }
 
-@media only screen and (max-width: 800px), screen and (max-height: 800px) {
+@media only screen and (max-width: 768px) {
   .labels {
     font-size: 10px;
   }
