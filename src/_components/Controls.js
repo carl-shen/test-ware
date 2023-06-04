@@ -31,14 +31,16 @@ function Controls() {
   const labels_className = "text-gray-100";
   const labels_div_classNames = "";
 
+  const hints_className = "text-gray-500 text-sm leading-3 pb-1";
+
   // Use different layouts for the trades info panel for landscape and portrait modes.
   const trades_info_div_left = (
     <div id="controls-left" className="w-2/6 ml-2">
       <div id="controls-trades-info-inner">
         {!usePortraitMode() ? (
-          <div className="hint-div">
-            <small>This area displays action status and recent trades:</small>
-          </div>
+          <p className={hints_className}>
+            This area displays action status and recent trades:
+          </p>
         ) : (
           <></>
         )}
@@ -67,9 +69,9 @@ function Controls() {
     <div id="controls-bottom" className="ml-2">
       <div id="controls-trades-info-inner">
         {!usePortraitMode() ? (
-          <div className="hint-div">
-            <small>This area displays action status and recent trades:</small>
-          </div>
+          <p className={hints_className}>
+            This area displays action status and recent trades:
+          </p>
         ) : (
           <></>
         )}
@@ -93,9 +95,9 @@ function Controls() {
         <div id="controls-right" className="ml-2">
           <div id="controls-right-top">
             {!usePortraitMode() ? (
-              <div className="hint-div">
-                <small>Details of your simulated portfolio:</small>
-              </div>
+              <p className={hints_className}>
+                Details of your simulated portfolio:
+              </p>
             ) : (
               <></>
             )}
@@ -140,9 +142,9 @@ function Controls() {
           <div id="controls-right-bottom">
             <div id="controls-right-bottom-left">
               {!usePortraitMode() ? (
-                <div className="hint-div">
-                  <small>The time in history and the closing price:</small>
-                </div>
+                <p className={hints_className}>
+                  The time in history and the closing price:
+                </p>
               ) : (
                 <></>
               )}
@@ -159,11 +161,9 @@ function Controls() {
             </div>
             <div id="controls-right-bottom-middle">
               {!usePortraitMode() ? (
-                <div className="hint-div">
-                  <small>
-                    Trade at the closing price using these controls:
-                  </small>
-                </div>
+                <p className={hints_className}>
+                  Trade at the closing price using these controls:
+                </p>
               ) : (
                 <></>
               )}
@@ -173,9 +173,9 @@ function Controls() {
             </div>
             <div id="controls-right-bottom-right">
               {!usePortraitMode() ? (
-                <div className="hint-div">
-                  <small>Use these buttons to move to the next day(s):</small>
-                </div>
+                <p className={hints_className}>
+                  Use these buttons to move to the next day(s):
+                </p>
               ) : (
                 <></>
               )}

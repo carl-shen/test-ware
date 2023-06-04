@@ -12,13 +12,6 @@ body {
   background-attachment: fixed; /* need this to use CSS3 gradient correctly */
 }
 
-#trainer-footer {
-  position: fixed;
-  bottom: 1px;
-  color: #aaaaaa;
-  line-height: 1;
-}
-
 #topnavbar-container {
   width: 100%;
   background: rgba(128, 35, 35, 0.144);
@@ -237,9 +230,7 @@ small {
     left: 10px;
     right: 10px;
   }
-  #trainer-footer {
-    line-height: 50%;
-  }
+
   small {
     font-size: 10px;
   }

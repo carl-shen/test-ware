@@ -24,18 +24,18 @@ function Footer() {
   }, [app, dispatch, windowWidth, windowHeight]);
 
   return (
-    <div id="trainer-footer" ref={targetRef}>
-      <small>&copy; 2023 Test-Ware.com. </small>
-      <small>
-        This website is provided for entertainment use only. No information
-        constitutes financial advice. Performance scores in this simulation may
-        not reflect potential performance in real markets.{" "}
-      </small>
-      <small>
-        Financial market conditions change constantly and risk is high. Please
-        consult professional financial advisors before trading in the real
-        markets.
-      </small>
+    <div
+      className="text-gray-500 text-xs leading-3 fixed bottom-1 pt-1 px-1"
+      ref={targetRef}
+    >
+      <p>
+        &copy; 2023 Test-Ware.com. This website is provided for entertainment
+        use only. No information constitutes financial advice. Performance
+        scores in this simulation may not reflect potential performance in real
+        markets. Financial market conditions change constantly and risk is high.
+        Please consult professional financial advisors before trading in the
+        real markets.
+      </p>
     </div>
   );
 }
