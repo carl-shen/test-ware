@@ -28,14 +28,17 @@ function Controls() {
     }
   }, [app, dispatch, windowWidth, windowHeight]);
 
-  const labels_className = "text-gray-100";
-  const labels_div_classNames = "";
+  const labels_className = "text-gray-100 leading-none";
+  const section_div_common_classNames = "mt-1";
 
   const hints_className = "text-gray-500 text-sm leading-3 pb-1";
 
   // Use different layouts for the trades info panel for landscape and portrait modes.
   const trades_info_div_left = (
-    <div id="controls-left" className="w-2/6 ml-2">
+    <div
+      id="controls-left"
+      className={"w-2/6 ml-2 " + section_div_common_classNames}
+    >
       <div id="controls-trades-info-inner">
         {!usePortraitMode() ? (
           <p className={hints_className}>
@@ -47,26 +50,29 @@ function Controls() {
 
         <p className={labels_className}>{stats.status}</p>
 
-        <div className={labels_div_classNames}>
+        <div>
           <p className={labels_className}>{stats.rctTrade1}</p>
         </div>
-        <div className={labels_div_classNames}>
+        <div>
           <p className={labels_className}>{stats.rctTrade2}</p>
         </div>
-        <div className={labels_div_classNames}>
+        <div>
           <p className={labels_className}>{stats.rctTrade3}</p>
         </div>
-        <div className={labels_div_classNames}>
+        <div>
           <p className={labels_className}>{stats.rctTrade4}</p>
         </div>
-        <div className={labels_div_classNames}>
+        <div>
           <p className={labels_className}>{stats.rctTrade5}</p>
         </div>
       </div>
     </div>
   );
   const trades_info_div_bottom = (
-    <div id="controls-bottom" className="ml-2">
+    <div
+      id="controls-bottom"
+      className={"ml-2 " + section_div_common_classNames}
+    >
       <div id="controls-trades-info-inner">
         {!usePortraitMode() ? (
           <p className={hints_className}>
@@ -75,13 +81,13 @@ function Controls() {
         ) : (
           <></>
         )}
-        <div className={labels_div_classNames}>
+        <div>
           <p className={labels_className}>{stats.status}</p>
         </div>
-        <div className={labels_div_classNames}>
+        <div>
           <p className={labels_className}>{stats.rctTrade1}</p>
         </div>
-        <div className={labels_div_classNames}>
+        <div>
           <p className={labels_className}>{stats.rctTrade2}</p>
         </div>
       </div>
@@ -90,10 +96,13 @@ function Controls() {
 
   return (
     <div id="controls" ref={targetRef}>
-      <div id="controls-flex">
+      <div className="flex">
         {!usePortraitMode() ? trades_info_div_left : <></>}
         <div id="controls-right" className="ml-2">
-          <div id="controls-right-top">
+          <div
+            id="controls-right-top"
+            className={section_div_common_classNames}
+          >
             {!usePortraitMode() ? (
               <p className={hints_className}>
                 Details of your simulated portfolio:
@@ -101,36 +110,39 @@ function Controls() {
             ) : (
               <></>
             )}
-            <div id="controls-portfolio-details">
-              <div className={labels_div_classNames}>
+            <div
+              id="controls-portfolio-details"
+              className={section_div_common_classNames}
+            >
+              <div>
                 <p className="labels labels-float">Total Portfolio Value: </p>
                 <span className="labels labels-float">
                   {stats.totPortValue.toFixed(1)}
                 </span>
               </div>
-              <div className={labels_div_classNames}>
+              <div>
                 <p className="labels labels-float">Funds Available: </p>
                 <span className="labels labels-float">
                   {stats.fundsAvail.toFixed(1)}
                 </span>
               </div>
-              <div className={labels_div_classNames}>
+              <div>
                 <p className="labels labels-float">Position Held: </p>
                 <span className="labels labels-float">{stats.posHeld}</span>
               </div>
-              <div className={labels_div_classNames}>
+              <div>
                 <p className="labels labels-float">Position Cost Base: </p>
                 <span className="labels labels-float">
                   {stats.posCost.toFixed(2)}
                 </span>
               </div>
-              <div className={labels_div_classNames}>
+              <div>
                 <p className="labels labels-float">Position Profit/Loss: </p>
                 <span className="labels labels-float">
                   {stats.posPL.toFixed(1)}
                 </span>
               </div>
-              <div className={labels_div_classNames}>
+              <div>
                 <p className="labels labels-float">Position P/L Percentage: </p>
                 <span className="labels labels-float">
                   {stats.posPLPerc.toFixed(2) + "%"}
@@ -139,8 +151,14 @@ function Controls() {
               <br style={{ clear: "left" }} />
             </div>
           </div>
-          <div id="controls-right-bottom">
-            <div id="controls-right-bottom-left">
+          <div
+            id="controls-right-bottom"
+            className={"flex " + section_div_common_classNames}
+          >
+            <div
+              id="controls-right-bottom-left"
+              className={"mr-2 lg:mr-4 " + section_div_common_classNames}
+            >
               {!usePortraitMode() ? (
                 <p className={hints_className}>
                   The time in history and the closing price:
@@ -159,7 +177,10 @@ function Controls() {
                 </p>
               </div>
             </div>
-            <div id="controls-right-bottom-middle">
+            <div
+              id="controls-right-bottom-middle"
+              className={"mr-2 lg:mr-4 " + section_div_common_classNames}
+            >
               {!usePortraitMode() ? (
                 <p className={hints_className}>
                   Trade at the closing price using these controls:
@@ -167,11 +188,17 @@ function Controls() {
               ) : (
                 <></>
               )}
-              <div id="controls-trade-div">
+              <div
+                id="controls-trade-div"
+                className={section_div_common_classNames}
+              >
                 <Trader />
               </div>
             </div>
-            <div id="controls-right-bottom-right">
+            <div
+              id="controls-right-bottom-right"
+              className={section_div_common_classNames}
+            >
               {!usePortraitMode() ? (
                 <p className={hints_className}>
                   Use these buttons to move to the next day(s):
@@ -179,7 +206,7 @@ function Controls() {
               ) : (
                 <></>
               )}
-              <div>
+              <div className={section_div_common_classNames}>
                 <Stepper />
               </div>
             </div>

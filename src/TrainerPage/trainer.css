@@ -53,27 +53,11 @@ body {
   padding-top: 5px;
   padding-bottom: 5px;
 }
-#controls-flex {
-  display: flex;
-}
-
-#controls-right-bottom {
-  display: flex;
-}
-
-#controls-right-bottom-left,
-#controls-right-bottom-middle {
-  margin-right: 20px;
-}
 
 #controls-portfolio-details div {
   display: inline;
   line-height: 90%;
 }
-
-/* #controls-trades-info-inner {
-    margin: 0px 20px 10px 20px;
-} */
 
 #controls-trade-div {
   display: inline-block;
@@ -200,12 +184,6 @@ small {
   color: rgb(185, 185, 185);
 }
 
-.hint-div {
-  display: block;
-  margin-bottom: 3px;
-  line-height: 110%;
-}
-
 #logo-div {
   color: #520025;
   position: fixed;
@@ -234,15 +212,8 @@ small {
   small {
     font-size: 10px;
   }
-  .hint-div {
-    line-height: 70%;
-  }
   #controls-portfolio-details div {
     line-height: 80%;
-  }
-  #controls-right-bottom-left,
-  #controls-right-bottom-middle {
-    margin-right: 10px;
   }
   #guest-demo-h {
     font-size: 12px;
