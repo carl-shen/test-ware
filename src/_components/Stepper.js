@@ -26,24 +26,27 @@ function Stepper() {
     dispatch(statsActions.updateStats(tempStats));
   };
 
+  const stepButtonClassNames =
+    "relative inline-block w-24 px-auto py-1.5 mr-1 mb-1 overflow-hidden text-base font-normal text-gray-200 uppercase rounded-lg bg-gradient-to-br from-green-500 to-blue-500 hover:from-blue-500 hover:to-green-400 hover:text-white";
+
   return (
     <div>
-      <button className="stepButton" onClick={() => nextNBar(1)}>
-        Next bar
+      <button className={stepButtonClassNames} onClick={() => nextNBar(1)}>
+        <span>Next bar</span>
       </button>
-      <button className="stepButton" onClick={() => nextNBar(2)}>
-        Next 2{usePortraitMode() ? "" : " bars"}
+      <button className={stepButtonClassNames} onClick={() => nextNBar(2)}>
+        <span>Next 2</span>
       </button>
       <br />
       <input
-        id="input-nsteps"
+        className="relative inline-block w-24 px-3 py-1.5 mr-1 mb-1 overflow-hidden text-base font-normal text-gray-200 rounded-lg bg-gradient-to-br from-green-500 to-blue-500"
         type="number"
         name="nsteps"
         value={nsteps}
         onChange={handleNStepsChange}
       />
-      <button className="stepButton" onClick={() => nextNBar(nsteps)}>
-        Next N{usePortraitMode() ? "" : " bars"}
+      <button className={stepButtonClassNames} onClick={() => nextNBar(nsteps)}>
+        <span>Next N</span>
       </button>
     </div>
   );

@@ -28,67 +28,64 @@ function Controls() {
     }
   }, [app, dispatch, windowWidth, windowHeight]);
 
-  const labels_className = "text-gray-100 leading-none";
-  const section_div_common_classNames = "mt-1";
+  const labelsClassNames = "text-gray-100 leading-none";
+  const sectionDivCommonClassNames = "mt-1";
 
-  const hints_className = "text-gray-500 text-sm leading-3 pb-1";
+  const hintsClassNames = "text-gray-500 text-sm leading-3 pb-1";
 
   // Use different layouts for the trades info panel for landscape and portrait modes.
   const trades_info_div_left = (
     <div
       id="controls-left"
-      className={"w-2/6 ml-2 " + section_div_common_classNames}
+      className={sectionDivCommonClassNames + " w-2/6 ml-2"}
     >
       <div id="controls-trades-info-inner">
         {!usePortraitMode() ? (
-          <p className={hints_className}>
+          <p className={hintsClassNames}>
             This area displays action status and recent trades:
           </p>
         ) : (
           <></>
         )}
 
-        <p className={labels_className}>{stats.status}</p>
+        <p className={labelsClassNames}>{stats.status}</p>
 
         <div>
-          <p className={labels_className}>{stats.rctTrade1}</p>
+          <p className={labelsClassNames}>{stats.rctTrade1}</p>
         </div>
         <div>
-          <p className={labels_className}>{stats.rctTrade2}</p>
+          <p className={labelsClassNames}>{stats.rctTrade2}</p>
         </div>
         <div>
-          <p className={labels_className}>{stats.rctTrade3}</p>
+          <p className={labelsClassNames}>{stats.rctTrade3}</p>
         </div>
         <div>
-          <p className={labels_className}>{stats.rctTrade4}</p>
+          <p className={labelsClassNames}>{stats.rctTrade4}</p>
         </div>
         <div>
-          <p className={labels_className}>{stats.rctTrade5}</p>
+          <p className={labelsClassNames}>{stats.rctTrade5}</p>
         </div>
       </div>
     </div>
   );
   const trades_info_div_bottom = (
-    <div
-      id="controls-bottom"
-      className={"ml-2 " + section_div_common_classNames}
-    >
+    <div id="controls-bottom" className={sectionDivCommonClassNames + " ml-2"}>
       <div id="controls-trades-info-inner">
         {!usePortraitMode() ? (
-          <p className={hints_className}>
+          <p className={hintsClassNames}>
             This area displays action status and recent trades:
           </p>
         ) : (
           <></>
         )}
         <div>
-          <p className={labels_className}>{stats.status}</p>
+          <p className={labelsClassNames}>{stats.status}</p>
         </div>
         <div>
-          <p className={labels_className}>{stats.rctTrade1}</p>
+          <p className={labelsClassNames}>{stats.rctTrade1}</p>
         </div>
         <div>
-          <p className={labels_className}>{stats.rctTrade2}</p>
+          <p className={labelsClassNames}>{stats.rctTrade2}</p>
         </div>
       </div>
     </div>
@@ -99,12 +96,9 @@ function Controls() {
       <div className="flex">
         {!usePortraitMode() ? trades_info_div_left : <></>}
         <div id="controls-right" className="ml-2">
-          <div
-            id="controls-right-top"
-            className={section_div_common_classNames}
-          >
+          <div id="controls-right-top" className={sectionDivCommonClassNames}>
             {!usePortraitMode() ? (
-              <p className={hints_className}>
+              <p className={hintsClassNames}>
                 Details of your simulated portfolio:
               </p>
             ) : (
@@ -112,7 +106,7 @@ function Controls() {
             )}
             <div
               id="controls-portfolio-details"
-              className={section_div_common_classNames}
+              className={sectionDivCommonClassNames}
             >
               <div>
                 <p className="labels labels-float">Total Portfolio Value: </p>
@@ -153,36 +147,36 @@ function Controls() {
           </div>
           <div
             id="controls-right-bottom"
-            className={"flex " + section_div_common_classNames}
+            className={sectionDivCommonClassNames + " flex"}
           >
             <div
               id="controls-right-bottom-left"
-              className={"mr-2 lg:mr-4 " + section_div_common_classNames}
+              className={sectionDivCommonClassNames + " mr-2 lg:mr-4"}
             >
               {!usePortraitMode() ? (
-                <p className={hints_className}>
+                <p className={hintsClassNames}>
                   The time in history and the closing price:
                 </p>
               ) : (
                 <></>
               )}
               <div>
-                <p className={labels_className} id="output-timestamp">
+                <p className={labelsClassNames} id="output-timestamp">
                   {stats.ts}
                 </p>
               </div>
               <div>
-                <p className={labels_className} id="output-price">
+                <p className={labelsClassNames} id="output-price">
                   {stats.price.toFixed(2)}
                 </p>
               </div>
             </div>
             <div
               id="controls-right-bottom-middle"
-              className={"mr-2 lg:mr-4 " + section_div_common_classNames}
+              className={sectionDivCommonClassNames + " mr-2 lg:mr-4"}
             >
               {!usePortraitMode() ? (
-                <p className={hints_className}>
+                <p className={hintsClassNames}>
                   Trade at the closing price using these controls:
                 </p>
               ) : (
@@ -190,23 +184,23 @@ function Controls() {
               )}
               <div
                 id="controls-trade-div"
-                className={section_div_common_classNames}
+                className={sectionDivCommonClassNames}
               >
                 <Trader />
               </div>
             </div>
             <div
               id="controls-right-bottom-right"
-              className={section_div_common_classNames}
+              className={sectionDivCommonClassNames + " w-auto"}
             >
               {!usePortraitMode() ? (
-                <p className={hints_className}>
+                <p className={hintsClassNames}>
                   Use these buttons to move to the next day(s):
                 </p>
               ) : (
                 <></>
               )}
-              <div className={section_div_common_classNames}>
+              <div className={sectionDivCommonClassNames}>
                 <Stepper />
               </div>
             </div>
