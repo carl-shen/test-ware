@@ -26,20 +26,17 @@ function TopNavbar() {
     }
   }, [location.pathname, stats]);
 
+  const linkClassNames =
+    "px-2 py-1 cursor-pointer font-semibold text-link-text-blue hover:text-white transition duration-200 ease-in-out";
+
   return (
-    <div id="topnavbar-container">
+    <div className="w-full z-30 bg-gradient-to-r from-dark-dark-gray to-dark-darker-gray">
       <div className="navbar" id="topnavbar">
-        <a
-          className="nav-item btn btn-primary narrow-button"
-          onClick={() => history.push("/home")}
-        >
+        <a className={linkClassNames} onClick={() => history.push("/home")}>
           Home
         </a>
         {pageTitle}
-        <a
-          className="nav-item btn btn-link narrow-button"
-          onClick={() => history.push("/login")}
-        >
+        <a className={linkClassNames} onClick={() => history.push("/login")}>
           {user === undefined ? "Log In" : "Log Out"}
         </a>
       </div>

@@ -210,7 +210,7 @@ function GuestPage() {
                   numOfBarsToDisplay={numOfBarsToDisplay}
                 />
               </div>
-              <h2 id="guest-demo-h" className="pt-0.5">
+              <h2 id="guest-demo-h" className="pt-1">
                 [GUEST DEMO] Your progress is not saved.
               </h2>
               <Controls />

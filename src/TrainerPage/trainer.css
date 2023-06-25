@@ -12,11 +12,6 @@ body {
   background-attachment: fixed; /* need this to use CSS3 gradient correctly */
 }
 
-#topnavbar-container {
-  width: 100%;
-  background: rgba(128, 35, 35, 0.144);
-}
-
 #topnavbar {
   margin: 0px 30px 0px 30px;
   padding: 5px 0px;
