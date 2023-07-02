@@ -113,20 +113,23 @@ function Trader() {
     return numshares * stats.price * commissionRate;
   };
 
+  const tradeButtonClassNames =
+    "relative inline-block w-24 px-auto py-2 mr-1 mb-1 overflow-hidden text-base font-normal text-gray-200 uppercase rounded-lg bg-gradient-to-br from-green-500 to-blue-500 hover:from-blue-500 hover:to-green-400 hover:text-white";
+
   return (
     <div>
       <input
-        id="input-numshares"
+        className="relative inline-block w-auto px-2 py-2 mb-1 overflow-hidden text-base font-normal text-gray-200 rounded-lg bg-gradient-to-br from-green-500 to-blue-500"
         type="number"
         name="numshares"
         value={numshares}
         onChange={handleNumSharesChange}
       />
       <br />
-      <button id="buyButton" onClick={() => doTrade(true)}>
+      <button className={tradeButtonClassNames} onClick={() => doTrade(true)}>
         BUY
       </button>
-      <button id="sellButton" onClick={() => doTrade(false)}>
+      <button className={tradeButtonClassNames} onClick={() => doTrade(false)}>
         SELL
       </button>
     </div>
