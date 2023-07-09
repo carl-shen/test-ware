@@ -30,16 +30,15 @@ function Stepper() {
     "relative inline-block w-24 px-auto py-2 mr-1 mb-1 overflow-hidden text-base font-normal text-gray-200 uppercase rounded-lg bg-gradient-to-br from-green-500 to-blue-500 hover:from-blue-500 hover:to-green-400 hover:text-white";
 
   return (
-    <div>
+    <div className="flex flex-wrap">
       <button className={stepButtonClassNames} onClick={() => nextNBar(1)}>
         <span>Next bar</span>
       </button>
       <button className={stepButtonClassNames} onClick={() => nextNBar(2)}>
         <span>Next 2</span>
       </button>
-      <br />
       <input
-        className="relative inline-block w-24 px-3 py-2 mr-1 mb-1 overflow-hidden text-base font-normal text-gray-200 rounded-lg bg-gradient-to-br from-green-500 to-blue-500"
+        className="relative inline-block w-24 pl-3 text-center py-2 mr-1 mb-1 overflow-hidden text-base font-normal text-gray-200 rounded-lg bg-gradient-to-br from-green-500 to-blue-500"
         type="number"
         name="nsteps"
         value={nsteps}

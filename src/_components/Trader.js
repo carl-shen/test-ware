@@ -114,24 +114,28 @@ function Trader() {
   };
 
   const tradeButtonClassNames =
-    "relative inline-block w-24 px-auto py-2 mr-1 mb-1 overflow-hidden text-base font-normal text-gray-200 uppercase rounded-lg bg-gradient-to-br from-green-500 to-blue-500 hover:from-blue-500 hover:to-green-400 hover:text-white";
+    "flex-1 relative inline-block min-w-trainer-button py-2 mr-1 mb-1 overflow-hidden text-base font-normal text-gray-200 uppercase rounded-lg bg-gradient-to-br from-green-500 to-blue-500 hover:from-blue-500 hover:to-green-400 hover:text-white";
 
   return (
-    <div>
+    <div className="flex flex-wrap max-w-xxs">
       <input
-        className="relative inline-block w-auto px-2 py-2 mb-1 overflow-hidden text-base font-normal text-gray-200 rounded-lg bg-gradient-to-br from-green-500 to-blue-500"
+        className="flex-auto relative inline-block w-32 lg:48 text-center pl-3 py-2 mr-1 mb-1 overflow-hidden text-base font-normal text-gray-200 rounded-lg bg-gradient-to-br from-green-500 to-blue-500"
         type="number"
         name="numshares"
         value={numshares}
         onChange={handleNumSharesChange}
       />
-      <br />
-      <button className={tradeButtonClassNames} onClick={() => doTrade(true)}>
-        BUY
-      </button>
-      <button className={tradeButtonClassNames} onClick={() => doTrade(false)}>
-        SELL
-      </button>
+      <div className="flex-auto flex">
+        <button className={tradeButtonClassNames} onClick={() => doTrade(true)}>
+          BUY
+        </button>
+        <button
+          className={tradeButtonClassNames}
+          onClick={() => doTrade(false)}
+        >
+          SELL
+        </button>
+      </div>
     </div>
   );
 }

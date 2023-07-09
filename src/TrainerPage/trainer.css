@@ -54,12 +54,6 @@ body {
   line-height: 90%;
 }
 
-#controls-trade-div {
-  display: inline-block;
-  /* text-align: center; */
-  box-sizing: border-box;
-}
-
 #input-nsteps,
 #input-numshares {
   box-sizing: border-box;
@@ -176,6 +170,14 @@ small {
   left: 120px;
   top: 0px;
   font-size: 24px;
+}
+
+.max-w-xxs {
+  max-width: 14rem;
+}
+
+.min-w-trainer-button {
+  min-width: 3rem;
 }
 
 @tailwind base;
