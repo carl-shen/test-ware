@@ -176,7 +176,12 @@ small {
   max-width: 14rem;
 }
 
-.min-w-trainer-button {
+.min-w-xxs {
+  min-width: 8rem;
+}
+
+.min-w-trainer-button,
+.min-w-stepper-button {
   min-width: 3rem;
 }
 
