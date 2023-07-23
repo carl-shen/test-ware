@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
-import config from "../_configs/configs.json";
+import config from "_configs/configs.json";
 
-function getWindowDimensions() {
+import { WindowDimensions } from "_types/common";
+
+export function getWindowDimensions(): WindowDimensions {
   const { innerWidth: width, innerHeight: height } = window;
   return { width, height };
 }
 
-function useWindowDimensions() {
+export function useWindowDimensions(): WindowDimensions {
   const [windowDimensions, setWindowDimensions] = useState(
     getWindowDimensions()
   );
@@ -23,7 +25,7 @@ function useWindowDimensions() {
   return windowDimensions;
 }
 
-function usePortraitMode() {
+export function usePortraitMode(): boolean {
   const dimensions = getWindowDimensions();
   if (dimensions.width < config.LANDSCAPE_MODE_MIN_WIDTH) {
     return true;
@@ -31,5 +33,3 @@ function usePortraitMode() {
     return false;
   }
 }
-
-export { getWindowDimensions, useWindowDimensions, usePortraitMode };

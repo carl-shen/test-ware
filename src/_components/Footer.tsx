@@ -1,15 +1,15 @@
 import React, { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { appActions } from "../_actions";
+import { RootState } from "store";
+import { appActions } from "_actions";
 import { getWindowDimensions } from "./";
 
 function Footer() {
-  const targetRef = useRef();
+  const targetRef = useRef<HTMLDivElement>(null);
   const dispatch = useDispatch();
-  const app = useSelector((state) => state.app);
+  const app: Record<string, any> = useSelector((state: RootState) => state.app);
 
-  const windowWidth = getWindowDimensions().width;
-  const windowHeight = getWindowDimensions().height;
+  const { width: windowWidth, height: windowHeight } = getWindowDimensions();
 
   useEffect(() => {
     // Dispatch the component's own height when its height changes.
