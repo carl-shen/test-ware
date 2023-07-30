@@ -129,7 +129,7 @@ function GuestPage() {
       };
       dispatch(statsActions.updateStats(tempStats));
     }
-  }, [data, dispatch, loadToIndex]);
+  }, [stats, data, dispatch, loadToIndex]);
 
   if (
     windowWidth < config.MIN_WINDOW_WIDTH ||

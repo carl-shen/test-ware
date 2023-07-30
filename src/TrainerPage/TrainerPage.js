@@ -149,7 +149,7 @@ function TrainerPage() {
       setNeedToPostStats(false);
       dispatch(statsActions.postStats(user.id, stats.ticker, stats));
     }
-  }, [data, dispatch, loadToIndex, needToPostStats, stepCounter, user]);
+  }, [stats, data, dispatch, loadToIndex, needToPostStats, stepCounter, user]);
 
   if (user === undefined) {
     // If user is logged out (e.g. by JWT expiration), redirect to the login page.

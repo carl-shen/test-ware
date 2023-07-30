@@ -1,6 +1,8 @@
-import { userConstants } from "../_constants";
+import { userConstants } from "_constants";
+import { AppState, User } from "_types/reducer";
+import { AnyAction } from "redux";
 
-export function users(state = {}, action) {
+export function users(state: AppState = {}, action: AnyAction): AppState {
   switch (action.type) {
     case userConstants.GETALL_REQUEST:
       return {
@@ -19,19 +21,19 @@ export function users(state = {}, action) {
       // Add "deteting: true" for users being deleted.
       return {
         ...state,
-        items: state.items.map((user) =>
+        items: state.items.map((user: User) =>
           user.id === action.id ? { ...user, deleting: true } : user
         ),
       };
     case userConstants.DELETE_SUCCESS:
       // Remove deleted user from state.
       return {
-        items: state.items.filter((user) => user.id !== action.id),
+        items: state.items.filter((user: User) => user.id !== action.id),
       };
     case userConstants.DELETE_FAILURE:
       return {
         ...state,
-        items: state.items.map((user) => {
+        items: state.items.map((user: User) => {
           if (user.id === action.id) {
             // Make a copy of user without the "deleting" key.
             const { deleting, ...userCopy } = user;

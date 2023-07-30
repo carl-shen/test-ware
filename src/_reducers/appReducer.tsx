@@ -1,6 +1,8 @@
-import { appConstants } from "../_constants";
+import { appConstants } from "_constants";
+import { AppState } from "_types/reducer";
+import { AnyAction } from "redux";
 
-export function app(state = {}, action) {
+export function app(state: AppState = {}, action: AnyAction): AppState {
   switch (action.type) {
     case appConstants.UPDATE_COMPONENT_SIZE:
       return {

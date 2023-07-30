@@ -1,6 +1,11 @@
-import { userConstants } from "../_constants";
+import { userConstants } from "_constants";
+import { AppState } from "_types/reducer";
+import { AnyAction } from "redux";
 
-export function registration(state = {}, action) {
+export function registration(
+  state: AppState = {},
+  action: AnyAction
+): AppState {
   switch (action.type) {
     case userConstants.REGISTER_REQUEST:
       return { registering: true };

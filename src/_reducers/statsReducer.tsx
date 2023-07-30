@@ -1,6 +1,8 @@
-import { statsConstants } from "../_constants";
+import { statsConstants } from "_constants";
+import { AppState } from "_types/reducer";
+import { AnyAction } from "redux";
 
-export function stats(state = {}, action) {
+export function stats(state: AppState = {}, action: AnyAction): AppState {
   switch (action.type) {
     case statsConstants.FETCH_STATS_SUCCESS:
       return {
