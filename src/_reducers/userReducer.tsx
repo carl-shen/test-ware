@@ -1,23 +1,23 @@
-import { userConstants } from "_constants";
+import { UserConstants } from "_constants";
 import { AppState, User } from "_types/reducer";
 import { AnyAction } from "redux";
 
 export function users(state: AppState = {}, action: AnyAction): AppState {
   switch (action.type) {
-    case userConstants.GETALL_REQUEST:
+    case UserConstants.GETALL_REQUEST:
       return {
         loading: true,
       };
-    case userConstants.GETALL_SUCCESS:
+    case UserConstants.GETALL_SUCCESS:
       return {
         items: action.users,
       };
-    case userConstants.GETALL_FAILURE:
+    case UserConstants.GETALL_FAILURE:
       return {
         error: action.error,
       };
 
-    case userConstants.DELETE_REQUEST:
+    case UserConstants.DELETE_REQUEST:
       // Add "deteting: true" for users being deleted.
       return {
         ...state,
@@ -25,12 +25,12 @@ export function users(state: AppState = {}, action: AnyAction): AppState {
           user.id === action.id ? { ...user, deleting: true } : user
         ),
       };
-    case userConstants.DELETE_SUCCESS:
+    case UserConstants.DELETE_SUCCESS:
       // Remove deleted user from state.
       return {
         items: state.items.filter((user: User) => user.id !== action.id),
       };
-    case userConstants.DELETE_FAILURE:
+    case UserConstants.DELETE_FAILURE:
       return {
         ...state,
         items: state.items.map((user: User) => {

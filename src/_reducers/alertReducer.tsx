@@ -1,4 +1,4 @@
-import { alertConstants } from "_constants";
+import { AlertConstants } from "_constants";
 import { AlertMessage, AppState } from "_types/reducer";
 import { AnyAction } from "redux";
 
@@ -7,17 +7,17 @@ export function alert(
   action: AnyAction
 ): AlertMessage | AppState {
   switch (action.type) {
-    case alertConstants.SUCCESS:
+    case AlertConstants.SUCCESS:
       return {
         type: "alert-success",
         message: action.message,
       };
-    case alertConstants.ERROR:
+    case AlertConstants.ERROR:
       return {
         type: "alert-danger",
         message: action.message,
       };
-    case alertConstants.CLEAR:
+    case AlertConstants.CLEAR:
       return {};
     default:
       return state;

@@ -1,4 +1,4 @@
-import { userConstants } from "../_constants";
+import { UserConstants } from "../_constants";
 import { userService } from "../_services";
 import { alertActions } from "./";
 import { history } from "../_helpers";
@@ -35,19 +35,19 @@ function login(username, password, from) {
   };
 
   function request(user) {
-    return { type: userConstants.LOGIN_REQUEST, user };
+    return { type: UserConstants.LOGIN_REQUEST, user };
   }
   function success(user) {
-    return { type: userConstants.LOGIN_SUCCESS, user };
+    return { type: UserConstants.LOGIN_SUCCESS, user };
   }
   function failure(error) {
-    return { type: userConstants.LOGIN_FAILURE, error };
+    return { type: UserConstants.LOGIN_FAILURE, error };
   }
 }
 
 function logout() {
   userService.logout();
-  return { type: userConstants.LOGOUT };
+  return { type: UserConstants.LOGOUT };
 }
 
 function register(user) {
@@ -74,13 +74,13 @@ function register(user) {
   };
 
   function request(user) {
-    return { type: userConstants.REGISTER_REQUEST, user };
+    return { type: UserConstants.REGISTER_REQUEST, user };
   }
   function success(user) {
-    return { type: userConstants.REGISTER_SUCCESS, user };
+    return { type: UserConstants.REGISTER_SUCCESS, user };
   }
   function failure(error) {
-    return { type: userConstants.REGISTER_FAILURE, error };
+    return { type: UserConstants.REGISTER_FAILURE, error };
   }
 }
 
@@ -96,13 +96,13 @@ function register(user) {
 //   };
 
 //   function request() {
-//     return { type: userConstants.GETALL_REQUEST };
+//     return { type: UserConstants.GETALL_REQUEST };
 //   }
 //   function success(users) {
-//     return { type: userConstants.GETALL_SUCCESS, users };
+//     return { type: UserConstants.GETALL_SUCCESS, users };
 //   }
 //   function failure(error) {
-//     return { type: userConstants.GETALL_FAILURE, error };
+//     return { type: UserConstants.GETALL_FAILURE, error };
 //   }
 // }
 
@@ -117,12 +117,12 @@ function register(user) {
 //   };
 
 //   function request(id) {
-//     return { type: userConstants.DELETE_REQUEST, id };
+//     return { type: UserConstants.DELETE_REQUEST, id };
 //   }
 //   function success(id) {
-//     return { type: userConstants.DELETE_SUCCESS, id };
+//     return { type: UserConstants.DELETE_SUCCESS, id };
 //   }
 //   function failure(id, error) {
-//     return { type: userConstants.DELETE_FAILURE, id, error };
+//     return { type: UserConstants.DELETE_FAILURE, id, error };
 //   }
 // }

@@ -1,4 +1,4 @@
-import { userConstants } from "_constants";
+import { UserConstants } from "_constants";
 import { AppState } from "_types/reducer";
 import { AnyAction } from "redux";
 
@@ -7,19 +7,19 @@ export function authentication(
   action: AnyAction
 ): AppState {
   switch (action.type) {
-    case userConstants.LOGIN_REQUEST:
+    case UserConstants.LOGIN_REQUEST:
       return {
         loggingIn: true,
         user: action.user,
       };
-    case userConstants.LOGIN_SUCCESS:
+    case UserConstants.LOGIN_SUCCESS:
       return {
         loggedIn: true,
         user: action.user,
       };
-    case userConstants.LOGIN_FAILURE:
+    case UserConstants.LOGIN_FAILURE:
       return {};
-    case userConstants.LOGOUT:
+    case UserConstants.LOGOUT:
       return {};
     default:
       return state;

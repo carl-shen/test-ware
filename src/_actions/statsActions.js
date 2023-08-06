@@ -1,4 +1,4 @@
-import { statsConstants } from "../_constants";
+import { StatsConstants } from "../_constants";
 import { statsService } from "../_services";
 import { alertActions } from "./";
 import { rtnStatsName } from "../_helpers";
@@ -19,7 +19,7 @@ function fetchStats(userid, ticker) {
     statsService.fetchStats(statsName).then(
       (stats) => {
         stats = JSON.parse(stats);
-        if (stats.ticker === statsConstants.FETCH_STATS_SUCCESS_USE_LOCAL) {
+        if (stats.ticker === StatsConstants.FETCH_STATS_SUCCESS_USE_LOCAL) {
           dispatch(successUseLocal(stats));
         } else {
           dispatch(success(stats));
@@ -36,20 +36,20 @@ function fetchStats(userid, ticker) {
   };
 
   function success(stats) {
-    return { type: statsConstants.FETCH_STATS_SUCCESS, stats };
+    return { type: StatsConstants.FETCH_STATS_SUCCESS, stats };
   }
   function successUseLocal(stats) {
-    return { type: statsConstants.FETCH_STATS_SUCCESS_USE_LOCAL, stats };
+    return { type: StatsConstants.FETCH_STATS_SUCCESS_USE_LOCAL, stats };
   }
   function failure(error) {
-    return { type: statsConstants.FETCH_STATS_FAILURE, error };
+    return { type: StatsConstants.FETCH_STATS_FAILURE, error };
   }
 }
 
 // Initialise a set of default stats values before stats are fetched from server.
 function initStats(ticker, timestamp, price) {
   const stats = statsService.initStats(ticker, timestamp, price);
-  return { type: statsConstants.INIT_STATS, stats };
+  return { type: StatsConstants.INIT_STATS, stats };
 }
 
 // Pose local "stats" data to server. Server will check if currIndex is newer before saving to database (anti-rollback).
@@ -73,17 +73,17 @@ function postStats(userid, ticker, stats) {
   };
 
   function success(stats) {
-    return { type: statsConstants.POST_STATS_SUCCESS, stats };
+    return { type: StatsConstants.POST_STATS_SUCCESS, stats };
   }
   function failure(error) {
-    return { type: statsConstants.POST_STATS_FAILURE, error };
+    return { type: StatsConstants.POST_STATS_FAILURE, error };
   }
 }
 
 // Update local copy of the "stats" object. This is used to allow program to run with async POST stats.
 function updateStats(data) {
   return {
-    type: statsConstants.UPDATE_STATS_SUCCESS,
+    type: StatsConstants.UPDATE_STATS_SUCCESS,
     payload: data,
   };
 }

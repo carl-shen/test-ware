@@ -1,4 +1,4 @@
-import { appConstants } from "../_constants";
+import { AppConstants } from "../_constants";
 
 export const appActions = {
   updateComponentSize,
@@ -7,9 +7,9 @@ export const appActions = {
 
 function updateComponentSize(componentSizeName, size) {
   const payload = { componentSizeName: componentSizeName, size: size };
-  return { type: appConstants.UPDATE_COMPONENT_SIZE, payload };
+  return { type: AppConstants.UPDATE_COMPONENT_SIZE, payload };
 }
 
 function setTrainingDataSet(payload) {
-  return { type: appConstants.SET_TRAINING_DATA_SET, payload };
+  return { type: AppConstants.SET_TRAINING_DATA_SET, payload };
 }

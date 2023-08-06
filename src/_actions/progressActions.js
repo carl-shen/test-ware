@@ -1,4 +1,4 @@
-import { progressConstants } from "../_constants";
+import { ProgressConstants } from "../_constants";
 import { progressService } from "../_services";
 import { alertActions } from "./";
 import config from "../_configs/configs.json";
@@ -26,11 +26,11 @@ function fetchAllProgress(userid) {
 
   function success(progressItems) {
     return {
-      type: progressConstants.FETCH_ALL_PROGRESS_SUCCESS,
+      type: ProgressConstants.FETCH_ALL_PROGRESS_SUCCESS,
       progressItems,
     };
   }
   function failure(error) {
-    return { type: progressConstants.FETCH_ALL_PROGRESS_FAILURE, error };
+    return { type: ProgressConstants.FETCH_ALL_PROGRESS_FAILURE, error };
   }
 }
