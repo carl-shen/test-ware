@@ -1,14 +1,16 @@
-export const statsDummy = {
+import { Stats } from "_types/stats";
+
+export const statsDummy: Stats = {
   ticker: "ticker",
   currIndex: 120,
-  ts: "2000-01-01", // timestamp
+  ts: "2000-01-01",
   price: 10.0,
-  totPortValue: 500000, // total portfolio value
-  fundsAvail: 500000, // funds available
-  posHeld: 0.0, // position held
+  totPortValue: 500000,
+  fundsAvail: 500000,
+  posHeld: 0.0,
   posCost: 0.0,
   posPL: 0.0,
-  posPLPerc: 0.0, // position PL percentage
+  posPLPerc: 0.0,
   status: "Trainer initialised.",
   rctTrade1: "most recent trade 1",
   rctTrade2: "most recent trade 2",
@@ -16,9 +18,8 @@ export const statsDummy = {
   rctTrade4: "most recent trade 4",
   rctTrade5: "most recent trade 5",
   stIndex: 120,
-  stPortValue: 500000, // starting portfolio value
-  endIndex: 5000, // length of the challenge data, will be updated once data is properly initialised
-  progress: 0.0, // a percentage value, e.g. 0.50 means 50%
-  gain: 0.0, // current performance of the portfolio since challenge start
-  // trades: []
+  stPortValue: 500000,
+  endIndex: 5000,
+  progress: 0.0,
+  gain: 0.0,
 };

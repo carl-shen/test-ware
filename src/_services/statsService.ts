@@ -1,6 +1,7 @@
-import { authHeader } from "../_helpers";
-import { statsDummy } from "../_constants";
-import config from "../_configs/configs.json";
+import { buildAuthHeader } from "_helpers";
+import { statsDummy } from "_constants";
+import config from "_configs/configs.json";
+import { Stats } from "_types/stats";
 
 export const statsService = {
   fetchStats,
@@ -8,10 +9,10 @@ export const statsService = {
   postStats,
 };
 
-function fetchStats(statsName) {
+function fetchStats(statsName: string) {
   const requestOptions = {
     method: "GET",
-    headers: authHeader(),
+    headers: buildAuthHeader(),
   };
 
   return fetch(
@@ -25,7 +26,7 @@ function fetchStats(statsName) {
 }
 
 // Initialise stats with dummy values. Note the variable names are kept short to save database and web traffic load when dealing with JSON encoded strings.
-function initStats(ticker, startingPortfolioValue) {
+function initStats(ticker: string, startingPortfolioValue: number) {
   return {
     ...statsDummy,
     ticker: ticker,
@@ -35,10 +36,10 @@ function initStats(ticker, startingPortfolioValue) {
   };
 }
 
-function postStats(statsName, stats) {
+function postStats(statsName: string, stats: Stats) {
   const requestOptions = {
     method: "PUT",
-    headers: { ...authHeader(), "Content-Type": "application/json" },
+    headers: { ...buildAuthHeader(), "Content-Type": "application/json" },
     body: JSON.stringify({ statsName, stats }),
   };
   return fetch(`${config.apiUrl}/users/storeStats.php`, requestOptions).then(
@@ -46,7 +47,7 @@ function postStats(statsName, stats) {
   );
 }
 
-function handleResponse(response) {
+function handleResponse(response: Response) {
   return response.text().then((text) => {
     const data = text && JSON.parse(text);
     if (!response.ok) {

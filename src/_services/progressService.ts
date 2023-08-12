@@ -1,18 +1,18 @@
-import { authHeader } from "../_helpers";
-import config from "../_configs/configs.json";
+import { buildAuthHeader } from "_helpers";
+import config from "_configs/configs.json";
 
 export const progressService = {
   fetchAllProgress,
 };
 
-function fetchAllProgress(userid) {
-  const requestOptions = {
+function fetchAllProgress(userId: string) {
+  const requestOptions: RequestInit = {
     method: "GET",
-    headers: authHeader(),
+    headers: buildAuthHeader(),
   };
 
   return fetch(
-    `${config.apiUrl}/users/rtnAllProgress.php?userID=${userid}`,
+    `${config.apiUrl}/users/rtnAllProgress.php?userId=${userId}`,
     requestOptions
   )
     .then(handleResponse)
@@ -21,7 +21,7 @@ function fetchAllProgress(userid) {
     });
 }
 
-function handleResponse(response) {
+function handleResponse(response: Response) {
   return response.text().then((text) => {
     const data = text && JSON.parse(text);
     if (!response.ok) {

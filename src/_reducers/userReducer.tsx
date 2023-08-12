@@ -1,5 +1,6 @@
 import { UserConstants } from "_constants";
-import { AppState, User } from "_types/reducer";
+import { AppState } from "_types/reducer";
+import { User } from "_types/user";
 import { AnyAction } from "redux";
 
 export function users(state: AppState = {}, action: AnyAction): AppState {

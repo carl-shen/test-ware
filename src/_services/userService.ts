@@ -1,5 +1,6 @@
-import { authHeader } from "../_helpers";
-import config from "../_configs/configs.json";
+import { buildAuthHeader } from "_helpers";
+import config from "_configs/configs.json";
+import { User } from "_types/user";
 
 export const userService = {
   login,
@@ -11,7 +12,7 @@ export const userService = {
   delete: _delete,
 };
 
-function login(username, password) {
+function login(username: string, password: string) {
   const requestOptions = {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -35,16 +36,16 @@ function logout() {
 function getAll() {
   const requestOptions = {
     method: "GET",
-    headers: authHeader(),
+    headers: buildAuthHeader(),
   };
 
   return fetch(`${config.apiUrl}/users`, requestOptions).then(handleResponse);
 }
 
-function getById(id) {
+function getById(id: string) {
   const requestOptions = {
     method: "GET",
-    headers: authHeader(),
+    headers: buildAuthHeader(),
   };
 
   return fetch(`${config.apiUrl}/users/${id}`, requestOptions).then(
@@ -52,7 +53,7 @@ function getById(id) {
   );
 }
 
-function register(user) {
+function register(user: User) {
   const requestOptions = {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -64,10 +65,10 @@ function register(user) {
   );
 }
 
-function update(user) {
+function update(user: User) {
   const requestOptions = {
     method: "PUT",
-    headers: { ...authHeader(), "Content-Type": "application/json" },
+    headers: { ...buildAuthHeader(), "Content-Type": "application/json" },
     body: JSON.stringify(user),
   };
 
@@ -77,10 +78,10 @@ function update(user) {
 }
 
 // The keyword delete is reserved in js, use _detele instead.
-function _delete(id) {
+function _delete(id: string) {
   const requestOptions = {
     method: "DELETE",
-    headers: authHeader(),
+    headers: buildAuthHeader(),
   };
 
   return fetch(`${config.apiUrl}/users/${id}`, requestOptions).then(
@@ -88,14 +89,14 @@ function _delete(id) {
   );
 }
 
-function handleResponse(response) {
+function handleResponse(response: Response) {
   return response.text().then((text) => {
     const data = text && JSON.parse(text);
     if (!response.ok) {
       if (response.status === 401) {
         // Auto logout if 401 response returned from the API.
         logout();
-        Location.reload(true);
+        Location.prototype.reload();
       }
       const error = (data && data.message) || response.statusText;
       return Promise.reject(error);
