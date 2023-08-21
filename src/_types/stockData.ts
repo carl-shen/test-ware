@@ -6,3 +6,5 @@ export interface IOHLCData {
   readonly open: number;
   readonly volume: number;
 }
+
+export type PriceData = IOHLCData[];

@@ -26,7 +26,8 @@ import {
   withSize,
   MACDSeries,
 } from "react-financial-charts";
-import { IOHLCData, withOHLCData } from "../_data";
+import { withOHLCData } from "../_data";
+import { IOHLCData } from "_types/stockData";
 import { MACDCalc } from "../_helpers";
 
 interface StockChartProps {

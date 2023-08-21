@@ -22,3 +22,9 @@ export interface Stats {
   gain: number; // current performance of the portfolio since challenge start
   // trades: []
 }
+
+export interface PortfolioPerformance {
+  duration: string;
+  gain: string;
+  CAGR: string;
+}

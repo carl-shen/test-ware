@@ -1,4 +1,6 @@
-export const loadState = function () {
+import { AppState } from "_types/reducer";
+
+export const loadState = function (): AppState | undefined {
   try {
     const serialisedState = localStorage.getItem("state");
     if (serialisedState === null) {
@@ -10,7 +12,7 @@ export const loadState = function () {
   }
 };
 
-export const saveState = function (state) {
+export const saveState = function (state: AppState) {
   try {
     const serialisedState = JSON.stringify(state);
     localStorage.setItem("state", serialisedState);
