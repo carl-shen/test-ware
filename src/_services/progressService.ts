@@ -1,5 +1,6 @@
 import { buildAuthHeader } from "_helpers";
 import config from "_configs/configs.json";
+import { ProgressItems } from "_types/stats";
 
 export const progressService = {
   fetchAllProgress,
@@ -16,7 +17,7 @@ function fetchAllProgress(userId: string) {
     requestOptions
   )
     .then(handleResponse)
-    .then((progressItems) => {
+    .then((progressItems: ProgressItems) => {
       return progressItems;
     });
 }

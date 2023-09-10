@@ -65,7 +65,7 @@ function HomePage() {
               : 0.0;
 
           return (
-            <>
+            <div key={index}>
               <a
                 onClick={() => selectChallengeGo(item)}
                 href="#"
@@ -81,7 +81,6 @@ function HomePage() {
                 <ProgressBar animated variant="success" now={progress} />
               </a>
               <ReactTooltip
-                key={index}
                 className="description-tooltip"
                 id={item.dataSetName}
                 effect="solid"
@@ -95,7 +94,7 @@ function HomePage() {
                   </b>
                 </div>
               </ReactTooltip>
-            </>
+            </div>
 
             // <a key={index} onClick={() => selectChallengeGo(item)} href="#" className="list-group-item list-group-item-action flex-column align-items-start" data-toggle="tooltip" title={item.description}>
             //     <div className="d-flex w-100 justify-content-between">

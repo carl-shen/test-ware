@@ -28,3 +28,11 @@ export interface PortfolioPerformance {
   gain: string;
   CAGR: string;
 }
+
+export type ProgressItems = ProgressItem[];
+
+export interface ProgressItem {
+  statsName: string;
+  progress: string;
+  gain: string;
+}
